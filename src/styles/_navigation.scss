@@ -1,0 +1,76 @@
+$nav-width: 250px;
+
+nav {
+  color: white;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    font-size: 14px;
+    font-weight: 200;
+    padding: 8px 15px 8px 15px;
+    margin: 0;
+  }
+
+  hr {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    margin: 10px 15px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .active {
+    li {
+      border-left: 5px solid $sub-nav-active-bar;
+      padding-left: 10px;
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  padding: 10px 15px;
+}
+
+.grid-col {
+  &.nav,
+  &.sub-nav {
+    flex: 0 0 $nav-width;
+  }
+  &.nav {
+    background: $nav-bg;
+  }
+  &.sub-nav {
+    background: $sub-nav-bg;
+    flex: 0.00001;
+    overflow: hidden;
+    animation: flexGrow 500ms ease-out forwards;
+
+    nav {
+      color: $sub-nav-text;
+      @include fade-in;
+
+      hr {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+@keyframes flexGrow {
+  to {
+    flex: 0 0 $nav-width;
+  }
+}

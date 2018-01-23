@@ -1,0 +1,17 @@
+html {
+  background: $nav-bg;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: white;
+  box-sizing: border-box;
+  color: $body-text;
+  font-weight: 200;
+}
+
+main {
+  padding: 0 15px;
+}

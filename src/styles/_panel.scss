@@ -1,0 +1,17 @@
+.panel {
+  padding: 15px;
+
+  &.header {
+    background: $panel-header;
+    text-align: center;
+
+    &.align-left {
+      text-align: left;
+    }
+  }
+
+  &.border {
+    border: 5px solid $panel-header;
+    padding: 15px 30px;
+  }
+}
