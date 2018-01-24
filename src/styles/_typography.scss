@@ -10,11 +10,18 @@ a {
   &.blue {
     color: $link-blue;
   }
+  &.underline {
+    text-decoration: underline;
+  }
 }
 
 hr {
   border: 1px solid $panel-header;
   margin: 0 15px;
+}
+
+mark {
+  background-color: $highlight;
 }
 
 .phase-tag {
@@ -39,4 +46,7 @@ hr {
 
 .text-extra-bold {
   font-weight: 600;
+}
+
+.highlight {
 }

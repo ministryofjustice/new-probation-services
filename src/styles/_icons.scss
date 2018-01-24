@@ -27,3 +27,22 @@
     bottom: -10px;
   }
 }
+
+.risk-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0;
+
+  &.risk-green {
+    background: $risk-green;
+  }
+  &.risk-amber {
+    background: $risk-yellow;
+  }
+  &.risk-red {
+    background: $risk-red;
+  }
+}
