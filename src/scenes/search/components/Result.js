@@ -232,7 +232,7 @@ export default class Result extends Component<Props> {
           <p>
             <a
               id={'contact-' + this.props.id}
-              className="clickable"
+              className="clickable blue underline"
               onClick={this.props.contact}>
               Add contact
             </a>

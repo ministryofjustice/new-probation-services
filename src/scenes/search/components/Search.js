@@ -270,12 +270,20 @@ export default class Search extends Component<Props, State> {
             </p>
           )}
 
-          <p className="text-bold">
-            Can't find who you are looking for?{' '}
-            <a className="clickable blue" onClick={this.handleNewOffenderClick}>
-              Add a new offender
-            </a>
-          </p>
+          {this.state.searchParams.length >= 2 &&
+            this.state.hits !== -1 && (
+              <p className="text-bold">
+                Can't find who you are looking for?{' '}
+                <a
+                  className="clickable blue"
+                  onClick={this.handleNewOffenderClick}>
+                  Add a new offender
+                </a>
+              </p>
+            )}
+
+          {this.state.searchParams.length === 0 &&
+            this.state.hits <= 0 && <div>&nbsp;</div>}
         </div>
         <div>
           <h2>

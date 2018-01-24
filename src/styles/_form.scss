@@ -61,6 +61,17 @@ button {
       font-size: 18px;
     }
   }
+
+  &.input-bumper {
+    position: relative;
+    bottom: -1px;
+    width: 40px;
+    height: 40px;
+    border-left: 0;
+    color: white;
+    background: $input-border;
+    padding: 0;
+  }
 }
 
 .form-group {
@@ -70,6 +81,10 @@ button {
 .form-control {
   display: block;
   margin-top: 10px;
+
+  &.inline {
+    display: inline-block;
+  }
 
   &.center {
     margin: 10px auto;
