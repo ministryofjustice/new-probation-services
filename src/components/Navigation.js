@@ -1,9 +1,13 @@
+// @flow
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 import logo from '../assets/logo.svg';
 
-export default class Navigation extends Component {
+type Props = {};
+type State = {};
+
+export default class Navigation extends Component<Props, State> {
   render() {
     return (
       <nav className="fixed fade-in">

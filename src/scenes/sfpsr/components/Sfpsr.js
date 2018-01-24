@@ -1,14 +1,20 @@
+// @flow
 import React, { Component } from 'react';
 
-export default class Sfpsr extends Component {
+type Props = {
+  history: Array<any>
+};
+type State = {};
+
+export default class Sfpsr extends Component<Props, State> {
   /**
    *
    * @param props
    */
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
-    this.startClick = this.startClick.bind(this);
+    (this: any).startClick = this.startClick.bind(this);
   }
 
   /**

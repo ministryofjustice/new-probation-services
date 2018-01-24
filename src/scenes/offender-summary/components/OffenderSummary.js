@@ -1,9 +1,13 @@
+// @flow
 import React, { Component } from 'react';
+
+type Props = {};
+type State = {};
 
 /**
  *
  */
-export default class OffenderSummary extends Component {
+export default class OffenderSummary extends Component<Props, State> {
   /**
    *
    */

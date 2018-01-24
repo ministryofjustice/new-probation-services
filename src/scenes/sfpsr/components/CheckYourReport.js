@@ -1,17 +1,23 @@
+// @flow
 import React, { Component } from 'react';
+
+type Props = {
+  history: Array<any>
+};
+type State = {};
 
 /**
  *
  */
-export default class CheckYourReport extends Component {
+export default class CheckYourReport extends Component<Props, State> {
   /**
    *
    * @param props
    */
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
-    this.continueClick = this.continueClick.bind(this);
+    (this: any).continueClick = this.continueClick.bind(this);
   }
 
   /**

@@ -1,6 +1,10 @@
+// @flow
 import React, { Component } from 'react';
 
-export default class Search extends Component {
+type Props = {};
+type State = {};
+
+export default class Search extends Component<Props, State> {
   render() {
     return (
       <div className="space-top fade-in">
