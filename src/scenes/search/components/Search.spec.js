@@ -24,7 +24,7 @@ jest.mock('elasticsearch', () => ({
 
 import Search from './Search';
 
-describe('Search', () => {
+xdescribe('Search', () => {
   let wrapper, handleChangeSpy, searchInstance;
 
   describe('', () => {
