@@ -2,8 +2,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import './App.css';
-
 import Feedback from '../scenes/feedback/components/Feedback';
 import Navigation from './Navigation';
 import Search from '../scenes/search/components/Search';
