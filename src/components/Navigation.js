@@ -1,4 +1,5 @@
 // @flow
+
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
@@ -33,24 +34,16 @@ export default class Navigation extends Component<Props, State> {
         </ul>
         <ul>
           <li>
-            <NavLink to="/offender-summary">
-              <span className="far fa-user-o" /> John Smith
-            </NavLink>
+            <span className="far fa-user-o" /> John Smith
           </li>
           <li>
-            <NavLink to="/offender-summary">
-              <span className="far fa-user-o" /> Christopher Jones
-            </NavLink>
+            <span className="far fa-user-o" /> John Jones
           </li>
           <li>
-            <NavLink to="/offender-summary">
-              <span className="far fa-user-o" /> Jack Wilson
-            </NavLink>
+            <span className="far fa-user-o" /> Paul Whitley
           </li>
           <li>
-            <NavLink to="/offender-summary">
-              <span className="far fa-user-o" /> Rick Grimes
-            </NavLink>
+            <span className="far fa-user-o" /> Chris Jones
           </li>
         </ul>
         <hr />

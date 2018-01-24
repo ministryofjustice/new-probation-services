@@ -33,3 +33,27 @@
 .clickable {
   cursor: pointer;
 }
+
+.expand-content {
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 8.7px;
+    border-color: transparent transparent transparent $link-blue;
+    margin-right: 10px;
+  }
+
+  &.active {
+    &:before {
+      border-width: 8.7px 5px 0 5px;
+      border-color: $link-blue transparent transparent transparent;
+    }
+  }
+}
+
+.js-hidden {
+  display: none;
+}

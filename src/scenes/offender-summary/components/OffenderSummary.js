@@ -51,48 +51,59 @@ export default class OffenderSummary extends Component<Props, State> {
       restricted = offender.CURRENT_RESTRICTION || offender.CURRENT_EXCLUSION;
 
     return (
-      <div className="mobile-pad">
-        <h1 className="heading-xlarge">Offender summary</h1>
+      <div className="space-top fade-in">
+        <div className="panel header align-left">
+          <table role="presentation">
+            <tbody>
+              <tr>
+                <td>
+                  <div className="photo-holder" />
+                </td>
+                <td className="padding">
+                  <h1 className="font-large">
+                    {restricted
+                      ? 'Restricted access'
+                      : offender.SURNAME +
+                        ', ' +
+                        offender.FIRST_NAME +
+                        ' - ' +
+                        Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
+                  </h1>
 
-        <h2 className="font-large">
-          {restricted
-            ? 'Restricted access'
-            : offender.SURNAME +
-              ', ' +
-              offender.FIRST_NAME +
-              ' - ' +
-              Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
-        </h2>
-        <p className="margin-top no-margin-bottom">
-          <span className="bold">CRN: {offender.CRN}</span>
-          {offender.CURRENT_HIGHEST_RISK_COLOUR !== null && (
-            <span id="risk">
-              {' '}
-              | Risk{' '}
-              <span
-                className={
-                  'risk-icon risk-' +
-                  offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
-                }
-              />
-            </span>
-          )}
-          {!restricted && (
-            <span>
-              {offender.CURRENT_DISPOSAL > 0 && (
-                <span> | Current offender</span>
-              )}
-              {' | ' +
-                Utils.pipeGender(offender.GENDER_ID) +
-                ', ' +
-                Utils.pipeAge(offender.DATE_OF_BIRTH_DATE)}
-            </span>
-          )}
-        </p>
+                  <p className="margin-top no-margin-bottom">
+                    <span className="bold">CRN: {offender.CRN}</span>
+                    {offender.CURRENT_HIGHEST_RISK_COLOUR !== null && (
+                      <span id="risk">
+                        {' '}
+                        | Risk{' '}
+                        <span
+                          className={
+                            'risk-icon risk-' +
+                            offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+                          }
+                        />
+                      </span>
+                    )}
+                    {!restricted && (
+                      <span>
+                        {offender.CURRENT_DISPOSAL > 0 && (
+                          <span> | Current offender</span>
+                        )}
+                        {' | ' +
+                          Utils.pipeGender(offender.GENDER_ID) +
+                          ', ' +
+                          Utils.pipeAge(offender.DATE_OF_BIRTH_DATE)}
+                      </span>
+                    )}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         {restricted === 1 && (
           <div>
-            <hr />
             <p>
               {offender.CURRENT_RESTRICTION
                 ? offender.RESTRICTION_MESSAGE
@@ -102,44 +113,47 @@ export default class OffenderSummary extends Component<Props, State> {
         )}
 
         {restricted !== 1 && (
-          <div className="margin-top">
-            <hr />
-
-            <h3 className="bold margin-bottom">Offender details</h3>
+          <div>
+            <h3 className="text-bold">Offender details</h3>
 
             <p>{offender.OFFENDER_DETAILS}</p>
 
-            <p className="no-margin-bottom">
-              <strong>Previous surname:</strong> {offender.PREVIOUS_SURNAME}
+            <p>
+              <span className="text-bold">Previous surname:</span>{' '}
+              {offender.PREVIOUS_SURNAME}
             </p>
-            <p className="no-margin-bottom">
-              <strong>Other names:</strong>{' '}
+            <p>
+              <span className="text-bold">Other names:</span>{' '}
               {offender.SECOND_NAME + ', ' + offender.THIRD_NAME}
             </p>
-            <p className="no-margin-bottom">
-              <strong>NI Number:</strong> {offender.NI_NUMBER}
+            <p>
+              <span className="text-bold">NI Number:</span> {offender.NI_NUMBER}
             </p>
             {offender.CURRENT_REMAND_STATUS !== null && (
-              <p className="no-margin-bottom">
-                <strong>Status:</strong> {offender.CURRENT_REMAND_STATUS}
+              <p>
+                <span className="text-bold">Status:</span>{' '}
+                {offender.CURRENT_REMAND_STATUS}
               </p>
             )}
 
             <hr />
 
-            <h3 className="bold margin-bottom">Contact details</h3>
+            <h3 className="text-bold">Contact details</h3>
 
-            <p className="no-margin-bottom">
-              <strong>Telephone:</strong> {offender.TELEPHONE_NUMBER}
+            <p>
+              <span className="text-bold">Telephone:</span>{' '}
+              {offender.TELEPHONE_NUMBER}
             </p>
-            <p className="no-margin-bottom">
-              <strong>Mobile:</strong> {offender.MOBILE_NUMBER}
+            <p>
+              <span className="text-bold">Mobile:</span>{' '}
+              {offender.MOBILE_NUMBER}
             </p>
-            <p className="no-margin-bottom">
-              <strong>Email:</strong> {offender.E_MAIL_ADDRESS}
+            <p>
+              <span className="text-bold">Email:</span>{' '}
+              {offender.E_MAIL_ADDRESS}
             </p>
-            <p className="no-margin-bottom">
-              <strong>Interpreter required:</strong>{' '}
+            <p>
+              <span className="text-bold">Interpreter required:</span>{' '}
               {offender.INTERPRETER_REQUIRED ? 'Yes' : 'No'}
             </p>
 
@@ -147,15 +161,15 @@ export default class OffenderSummary extends Component<Props, State> {
               <div>
                 <hr />
 
-                <h3 className="bold margin-bottom">Address history</h3>
+                <h3 className="text-bold">Address history</h3>
 
                 {offender.ADDRESSES.map((address, i) => (
                   <div key={i}>
                     <a
                       className={
                         this.state.addressOpen === i
-                          ? 'expand-content clickable no-margin-bottom active'
-                          : 'expand-content clickable no-margin-bottom'
+                          ? 'expand-content clickable blue active'
+                          : 'expand-content clickable blue'
                       }
                       id={i}
                       onClick={this.handleAddressClick}>
@@ -178,20 +192,20 @@ export default class OffenderSummary extends Component<Props, State> {
                           ? 'panel panel-border-narrow'
                           : 'js-hidden'
                       }>
-                      <p className="no-margin-bottom">
-                        <span className="bold">Start date:</span>{' '}
+                      <p>
+                        <span className="text-bold">Start date:</span>{' '}
                         {Utils.pipeDate(address.START_DATE)}
                       </p>
-                      <p className="no-margin-bottom">
-                        <span className="bold">End date:</span>{' '}
+                      <p>
+                        <span className="text-bold">End date:</span>{' '}
                         {address.END_DATE}
                       </p>
                       <p>
-                        <span className="bold">Telephone:</span>{' '}
+                        <span className="text-bold">Telephone:</span>{' '}
                         {address.TELEPHONE_NUMBER}
                       </p>
 
-                      <h3 className="bold">Notes</h3>
+                      <h3 className="text-bold">Notes</h3>
                       <p>{address.NOTES}</p>
                     </div>
                   </div>
@@ -200,10 +214,10 @@ export default class OffenderSummary extends Component<Props, State> {
             )}
 
             {offender.ALIASES.length > 0 && (
-              <div>
+              <div className="space-top">
                 <hr />
 
-                <h3 className="bold margin-bottom">Known aliases</h3>
+                <h3 className="text-bold">Known aliases</h3>
 
                 {offender.ALIASES.map((alias, i) => (
                   <p key={i} className="no-margin-bottom">
@@ -219,21 +233,21 @@ export default class OffenderSummary extends Component<Props, State> {
 
             <hr />
 
-            <h3 className="bold margin-bottom">Other records</h3>
+            <h3 className="text-bold">Other records</h3>
 
             <p className="no-margin-bottom">
-              <strong>PNC:</strong> {offender.PNC_NUMBER}
+              <span className="text-bold">PNC:</span> {offender.PNC_NUMBER}
             </p>
             <p className="no-margin-bottom">
-              <strong>CRO:</strong> {offender.CRO_NUMBER}
+              <span className="text-bold">CRO:</span> {offender.CRO_NUMBER}
             </p>
             <p className="no-margin-bottom">
-              <strong>NOMS:</strong> {offender.NOMS_NUMBER}
+              <span className="text-bold">NOMS:</span> {offender.NOMS_NUMBER}
             </p>
 
             <hr />
 
-            <h3 className="bold margin-bottom">Notes</h3>
+            <h3 className="text-bold">Notes</h3>
 
             <p>{offender.NOTES}</p>
           </div>
