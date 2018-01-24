@@ -151,27 +151,35 @@ export default class Result extends Component<Props> {
 
     return (
       <div>
-        <div className="panel panel-border-narrow">
-          <a
-            className="clickable text-large blue underline"
-            onClick={() => {
-              this.props.click(this.props.id);
-            }}>
-            <Highlighter
-              highlightClassName="highlight"
-              searchWords={searched}
-              autoEscape={true}
-              textToHighlight={
-                restricted
-                  ? 'Restricted access'
-                  : data.SURNAME +
-                    ', ' +
-                    data.FIRST_NAME +
-                    ' - ' +
-                    Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
-              }
-            />
-          </a>
+        <div className="panel border-left">
+          {!restricted && (
+            <a
+              className="clickable text-large blue underline"
+              onClick={() => {
+                this.props.click(this.props.id);
+              }}>
+              <Highlighter
+                highlightClassName="highlight"
+                searchWords={searched}
+                autoEscape={true}
+                textToHighlight={
+                  data.SURNAME +
+                  ', ' +
+                  data.FIRST_NAME +
+                  ' - ' +
+                  Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
+                }
+              />
+            </a>
+          )}
+
+          {!!restricted && (
+            <span className="text-large">
+              {data.CURRENT_RESTRICTION
+                ? 'Restricted information'
+                : 'Excluded information'}
+            </span>
+          )}
 
           <p className="no-margin bottom">
             <span className="text-extra-bold">
@@ -230,12 +238,21 @@ export default class Result extends Component<Props> {
           ))}
 
           <p>
-            <a
-              id={'contact-' + this.props.id}
-              className="clickable blue underline"
-              onClick={this.props.contact}>
-              Add contact
-            </a>
+            {!restricted && (
+              <a
+                id={'contact-' + this.props.id}
+                className="clickable blue underline"
+                onClick={this.props.contact}>
+                Add contact
+              </a>
+            )}
+            {!!restricted && (
+              <span>
+                {data.CURRENT_RESTRICTION
+                  ? data.RESTRICTION_MESSAGE
+                  : data.EXCLUSION_MESSAGE}
+              </span>
+            )}
           </p>
         </div>
         <div> </div>

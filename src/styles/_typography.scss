@@ -10,6 +10,9 @@ a {
   &.blue {
     color: $link-blue;
   }
+  &.grey {
+    color: $sub-nav-bg;
+  }
   &.underline {
     text-decoration: underline;
   }

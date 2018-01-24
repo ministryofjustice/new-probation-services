@@ -164,7 +164,7 @@ export default class OffenderSummary extends Component<Props, State> {
                 <h3 className="text-bold">Address history</h3>
 
                 {offender.ADDRESSES.map((address, i) => (
-                  <div key={i}>
+                  <div key={i} className="margin-top">
                     <a
                       className={
                         this.state.addressOpen === i
@@ -189,10 +189,10 @@ export default class OffenderSummary extends Component<Props, State> {
                     <div
                       className={
                         this.state.addressOpen === i
-                          ? 'panel panel-border-narrow'
+                          ? 'panel border-left'
                           : 'js-hidden'
                       }>
-                      <p>
+                      <p className="no-margin-top">
                         <span className="text-bold">Start date:</span>{' '}
                         {Utils.pipeDate(address.START_DATE)}
                       </p>
@@ -252,6 +252,8 @@ export default class OffenderSummary extends Component<Props, State> {
             <p>{offender.NOTES}</p>
           </div>
         )}
+
+        <p>&nbsp;</p>
       </div>
     );
   }

@@ -333,6 +333,8 @@ export default class Search extends Component<Props, State> {
             />
           )}
         </div>
+
+        <p>&nbsp;</p>
       </div>
     );
   }

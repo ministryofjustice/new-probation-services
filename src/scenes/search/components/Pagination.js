@@ -86,19 +86,25 @@ export default class Pagination extends Component<Props, State> {
   render() {
     return (
       <div>
-        <a
-          id="prev-button"
-          className={this.state.currentPage !== 1 ? 'clickable' : ''}
-          onClick={this.previousPage}>
-          &lt; Previous
-        </a>{' '}
-        -{' '}
+        {this.state.currentPage !== 1 && (
+          <span>
+            <a
+              id="prev-button"
+              className="clickable"
+              onClick={this.previousPage}>
+              &lt; Previous
+            </a>{' '}
+            -{' '}
+          </span>
+        )}
         {this.totalPages <= this.maxPages &&
           this.pagesArray.map((item, i) => (
             <span key={i}>
               <a
                 id={'page-' + item}
-                className={item !== this.state.currentPage ? 'clickable' : ''}
+                className={
+                  item !== this.state.currentPage ? 'clickable' : 'grey'
+                }
                 onClick={this.changePage}>
                 {item}
               </a>{' '}
@@ -108,16 +114,18 @@ export default class Pagination extends Component<Props, State> {
           <span id="pages">
             {this.state.currentPage} / {this.totalPages}
           </span>
-        )}{' '}
-        -{' '}
-        <a
-          id="next-button"
-          className={
-            this.state.currentPage !== this.totalPages ? 'clickable' : ''
-          }
-          onClick={this.nextPage}>
-          Next &gt;
-        </a>
+        )}
+
+        {this.totalPages > 1 &&
+          this.state.currentPage < this.totalPages && (
+            <span>
+              {' '}
+              -{' '}
+              <a id="next-button" className="clickable" onClick={this.nextPage}>
+                Next &gt;
+              </a>
+            </span>
+          )}
       </div>
     );
   }
