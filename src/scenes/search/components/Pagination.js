@@ -18,6 +18,7 @@ export default class Pagination extends Component<Props, State> {
 
   /**
    * @constructor
+   * @param props {Props} arbitrary inputs
    */
   constructor(props: Props) {
     super(props);

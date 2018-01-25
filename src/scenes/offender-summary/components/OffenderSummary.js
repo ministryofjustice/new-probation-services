@@ -1,45 +1,52 @@
 // @flow
 import React, { Component } from 'react';
+
 import Utils from '../../../utils/Utils';
+
+import OffenderSummaryDetails from './OffenderSummaryDetails';
+import OffenderSummaryEvents from './OffenderSummaryEvents';
+import OffenderSummaryAssessments from './OffenderSummaryAssessments';
+import OffenderSummaryContact from './OffenderSummaryContact';
 
 type Props = {
   location: Object
 };
 type State = {
-  offender: Object,
-  addressOpen: any
+  currentSection: string
 };
 
 export default class OffenderSummary extends Component<Props, State> {
   /**
-   *
-   * @param props
+   * @constructor
+   * @param props {Props} arbitrary inputs
    */
   constructor(props: Props) {
     super(props);
-    this.state = { offender: props.location.state.offender, addressOpen: -1 };
-    console.info(this.state.offender);
 
-    (this: any).handleAddressClick = this.handleAddressClick.bind(this);
+    this.state = {
+      currentSection: 'details'
+    };
+  }
+
+  /**
+   *
+   * @param nextProps {Props} arbitrary inputs
+   */
+  componentWillReceiveProps(nextProps: Props) {
+    if (
+      nextProps.location.state.offender.OFFENDER_ID !==
+      this.props.location.state.offender.OFFENDER_ID
+    ) {
+      this.setState({ currentSection: 'details' });
+      window.scrollTo(0, 0);
+    }
   }
 
   /**
    *
    */
-  componentWillMount() {
+  componentDidMount() {
     window.scrollTo(0, 0);
-  }
-
-  /**
-   *
-   * @param event
-   */
-  handleAddressClick(event: any) {
-    const clickId = parseInt(event.target.id, 10);
-
-    this.setState(prevState => {
-      return { addressOpen: clickId === prevState.addressOpen ? -1 : clickId };
-    });
   }
 
   /**
@@ -47,7 +54,7 @@ export default class OffenderSummary extends Component<Props, State> {
    * @returns {*}
    */
   render() {
-    const offender = this.state.offender,
+    const offender = this.props.location.state.offender,
       restricted = offender.CURRENT_RESTRICTION || offender.CURRENT_EXCLUSION;
 
     return (
@@ -57,7 +64,21 @@ export default class OffenderSummary extends Component<Props, State> {
             <tbody>
               <tr>
                 <td>
-                  <div className="photo-holder" />
+                  <div className="photo-holder">
+                    <img
+                      alt={
+                        'Photograph of ' +
+                        offender.SURNAME +
+                        ', ' +
+                        offender.FIRST_NAME
+                      }
+                      src={
+                        offender.GENDER_ID === 545
+                          ? '/images/placeholder_m.jpg'
+                          : '/images/placeholder_f.jpg'
+                      }
+                    />
+                  </div>
                 </td>
                 <td className="padding">
                   <h1 className="font-large">
@@ -112,144 +133,98 @@ export default class OffenderSummary extends Component<Props, State> {
           </div>
         )}
 
-        {restricted !== 1 && (
-          <div>
-            <h3 className="text-bold">Offender details</h3>
+        <p>&nbsp;</p>
 
-            <p>{offender.OFFENDER_DETAILS}</p>
+        <div className="grid-row nested margin-top">
+          <div className="grid-col center">
+            <a
+              className={
+                this.state.currentSection === 'details'
+                  ? 'active-nav'
+                  : 'clickable'
+              }
+              onClick={() => {
+                this.setState({ currentSection: 'details' });
+              }}>
+              Offender details
+            </a>
+          </div>
+          <div className="grid-col center">
+            <a
+              className={
+                this.state.currentSection === 'events'
+                  ? 'active-nav'
+                  : 'clickable'
+              }
+              onClick={() => {
+                this.setState({ currentSection: 'events' });
+              }}>
+              Events
+            </a>
+          </div>
+          <div className="grid-col center">
+            <a
+              className={
+                this.state.currentSection === 'assessments'
+                  ? 'active-nav'
+                  : 'clickable'
+              }
+              onClick={() => {
+                this.setState({ currentSection: 'assessments' });
+              }}>
+              Assessments
+            </a>
+          </div>
+          <div className="grid-col center">
+            <a
+              className={
+                this.state.currentSection === 'contact-list'
+                  ? 'active-nav'
+                  : 'clickable'
+              }
+              onClick={() => {
+                this.setState({ currentSection: 'contact-list' });
+              }}>
+              Contact list
+            </a>
+          </div>
+        </div>
 
-            <p>
-              <span className="text-bold">Previous surname:</span>{' '}
-              {offender.PREVIOUS_SURNAME}
-            </p>
-            <p>
-              <span className="text-bold">Other names:</span>{' '}
-              {offender.SECOND_NAME + ', ' + offender.THIRD_NAME}
-            </p>
-            <p>
-              <span className="text-bold">NI Number:</span> {offender.NI_NUMBER}
-            </p>
-            {offender.CURRENT_REMAND_STATUS !== null && (
-              <p>
-                <span className="text-bold">Status:</span>{' '}
-                {offender.CURRENT_REMAND_STATUS}
-              </p>
-            )}
+        <p>&nbsp;</p>
 
-            <hr />
+        {this.state.currentSection === 'details' && (
+          <div className="fade-in">
+            <OffenderSummaryDetails
+              restricted={restricted}
+              offender={offender}
+            />
+          </div>
+        )}
 
-            <h3 className="text-bold">Contact details</h3>
+        {this.state.currentSection === 'events' && (
+          <div className="fade-in">
+            <OffenderSummaryEvents
+              restricted={restricted}
+              offender={offender}
+            />
+          </div>
+        )}
 
-            <p>
-              <span className="text-bold">Telephone:</span>{' '}
-              {offender.TELEPHONE_NUMBER}
-            </p>
-            <p>
-              <span className="text-bold">Mobile:</span>{' '}
-              {offender.MOBILE_NUMBER}
-            </p>
-            <p>
-              <span className="text-bold">Email:</span>{' '}
-              {offender.E_MAIL_ADDRESS}
-            </p>
-            <p>
-              <span className="text-bold">Interpreter required:</span>{' '}
-              {offender.INTERPRETER_REQUIRED ? 'Yes' : 'No'}
-            </p>
+        {this.state.currentSection === 'assessments' && (
+          <div className="fade-in">
+            <OffenderSummaryAssessments
+              restricted={restricted}
+              offender={offender}
+            />
+          </div>
+        )}
 
-            {offender.ADDRESSES.length > 0 && (
-              <div>
-                <hr />
-
-                <h3 className="text-bold">Address history</h3>
-
-                {offender.ADDRESSES.map((address, i) => (
-                  <div key={i} className="margin-top">
-                    <a
-                      className={
-                        this.state.addressOpen === i
-                          ? 'expand-content clickable blue active'
-                          : 'expand-content clickable blue'
-                      }
-                      id={i}
-                      onClick={this.handleAddressClick}>
-                      {address.NO_FIXED_ABODE === 'Y'
-                        ? 'No fixed abode'
-                        : address.ADDRESS_NUMBER +
-                          ' ' +
-                          address.STREET_NAME +
-                          ', ' +
-                          address.TOWN_CITY +
-                          ', ' +
-                          address.COUNTY +
-                          '. ' +
-                          address.POSTCODE}
-                    </a>
-
-                    <div
-                      className={
-                        this.state.addressOpen === i
-                          ? 'panel border-left'
-                          : 'js-hidden'
-                      }>
-                      <p className="no-margin-top">
-                        <span className="text-bold">Start date:</span>{' '}
-                        {Utils.pipeDate(address.START_DATE)}
-                      </p>
-                      <p>
-                        <span className="text-bold">End date:</span>{' '}
-                        {address.END_DATE}
-                      </p>
-                      <p>
-                        <span className="text-bold">Telephone:</span>{' '}
-                        {address.TELEPHONE_NUMBER}
-                      </p>
-
-                      <h3 className="text-bold">Notes</h3>
-                      <p>{address.NOTES}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {offender.ALIASES.length > 0 && (
-              <div className="space-top">
-                <hr />
-
-                <h3 className="text-bold">Known aliases</h3>
-
-                {offender.ALIASES.map((alias, i) => (
-                  <p key={i} className="no-margin-bottom">
-                    {alias.SURNAME +
-                      ', ' +
-                      alias.FIRST_NAME +
-                      ' - ' +
-                      Utils.pipeDate(alias.DATE_OF_BIRTH_DATE)}
-                  </p>
-                ))}
-              </div>
-            )}
-
-            <hr />
-
-            <h3 className="text-bold">Other records</h3>
-
-            <p className="no-margin-bottom">
-              <span className="text-bold">PNC:</span> {offender.PNC_NUMBER}
-            </p>
-            <p className="no-margin-bottom">
-              <span className="text-bold">CRO:</span> {offender.CRO_NUMBER}
-            </p>
-            <p className="no-margin-bottom">
-              <span className="text-bold">NOMS:</span> {offender.NOMS_NUMBER}
-            </p>
-
-            <hr />
-
-            <h3 className="text-bold">Notes</h3>
-
-            <p>{offender.NOTES}</p>
+        {this.state.currentSection === 'contact-list' && (
+          <div className="fade-in">
+            <OffenderSummaryContact
+              restricted={restricted}
+              offender={offender}
+            />
           </div>
         )}
 

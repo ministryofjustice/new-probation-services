@@ -31,8 +31,8 @@ export default class Search extends Component<Props, State> {
   });
 
   /**
-   *
-   * @param props
+   * @constructor
+   * @param props {Props} arbitrary inputs
    */
   constructor(props: Props) {
     super(props);

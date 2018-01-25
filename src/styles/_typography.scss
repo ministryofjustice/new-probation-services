@@ -16,6 +16,10 @@ a {
   &.underline {
     text-decoration: underline;
   }
+  &.active-nav {
+    padding-bottom: 3px;
+    border-bottom: 5px solid $link-blue;
+  }
 }
 
 hr {
@@ -41,6 +45,10 @@ mark {
 
 .text-large {
   font-size: 24px;
+}
+
+.text-medium {
+  font-size: 20px;
 }
 
 .text-bold {

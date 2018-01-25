@@ -13,8 +13,8 @@ type Props = {
 
 export default class Result extends Component<Props> {
   /**
-   *
-   * @param {Props} props
+   * @constructor
+   * @param {Props} arbitrary inputs
    */
   constructor(props: Props) {
     super(props);

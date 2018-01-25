@@ -11,8 +11,8 @@ type State = {};
  */
 export default class OffenceAnalysis extends Component<Props, State> {
   /**
-   *
-   * @param props
+   * @constructor
+   * @param props {Props} arbitrary inputs
    */
   constructor(props: Props) {
     super(props);
