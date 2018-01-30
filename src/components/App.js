@@ -25,9 +25,7 @@ import OffenderSummary from '../scenes/offender-summary/components/OffenderSumma
 const App = () => (
   <div className="App">
     <div className="grid-row">
-      <div className="grid-col nav omit-mobile">
-        <Navigation />
-      </div>
+      <Navigation />
       <Switch>
         <Route path="/sfpsr" component={SfpsrNavigation} />
       </Switch>

@@ -45,111 +45,116 @@ export default class Navigation extends Component<Props, State> {
    */
   render() {
     return (
-      <nav className="fixed fade-in">
-        <table role="presentation">
-          <tbody>
-            <tr>
-              <td>
-                <Link to="/">
-                  <img src={logo} className="logo" alt="logo" />
-                </Link>
-              </td>
-              <td className="middle">
-                <Link to="/feedback">
-                  <span className="phase-tag prototype">PROTOTYPE</span>
-                </Link>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
+      <div
+        className={
+          window.location.pathname.indexOf('/sfpsr') !== -1
+            ? 'grid-col nav collapsed omit-mobile'
+            : 'grid-col nav omit-mobile'
+        }>
+        <nav className="fixed fade-in">
+          <table role="presentation">
+            <tbody>
+              <tr>
+                <td>
+                  <Link to="/">
+                    <img src={logo} className="logo" alt="logo" />
+                  </Link>
+                </td>
+                <td className="middle">
+                  <Link to="/feedback">
+                    <span className="phase-tag prototype">PROTOTYPE</span>
+                  </Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-        {this.state.currentOffenders.length > 0 && (
-          <div>
-            <ul>
-              <li>Current Offender List</li>
-            </ul>
-            <ul>
-              <Link
-                to={{
-                  pathname: '/offender-summary',
-                  state: { offender: this.state.currentOffenders[0]._source }
-                }}>
-                <li>
-                  <span className="far fa-user-o" />{' '}
-                  {this.state.currentOffenders[0]._source.SURNAME +
-                    ', ' +
-                    this.state.currentOffenders[0]._source.FIRST_NAME}
-                </li>
-              </Link>
-              <Link
-                to={{
-                  pathname: '/offender-summary',
-                  state: { offender: this.state.currentOffenders[4]._source }
-                }}>
-                <li>
-                  <span className="far fa-user-o" />{' '}
-                  {this.state.currentOffenders[4]._source.SURNAME +
-                    ', ' +
-                    this.state.currentOffenders[4]._source.FIRST_NAME}
-                </li>
-              </Link>
-              <Link
-                to={{
-                  pathname: '/offender-summary',
-                  state: { offender: this.state.currentOffenders[5]._source }
-                }}>
-                <li>
-                  <span className="far fa-user-o" />{' '}
-                  {this.state.currentOffenders[5]._source.SURNAME +
-                    ', ' +
-                    this.state.currentOffenders[5]._source.FIRST_NAME}
-                </li>
-              </Link>
-              <Link
-                to={{
-                  pathname: '/offender-summary',
-                  state: { offender: this.state.currentOffenders[3]._source }
-                }}>
-                <li>
-                  <span className="far fa-user-o" />{' '}
-                  {this.state.currentOffenders[3]._source.SURNAME +
-                    ', ' +
-                    this.state.currentOffenders[3]._source.FIRST_NAME}
-                </li>
-              </Link>
-            </ul>
-          </div>
-        )}
+          {this.state.currentOffenders.length > 0 && (
+            <div className="omit-report">
+              <hr />
+              <ul>
+                <li>Current Offender List</li>
+              </ul>
+              <ul>
+                <Link
+                  to={{
+                    pathname: '/offender-summary',
+                    state: { offender: this.state.currentOffenders[0]._source }
+                  }}>
+                  <li>
+                    <span className="far fa-user-o" />{' '}
+                    {this.state.currentOffenders[0]._source.SURNAME +
+                      ', ' +
+                      this.state.currentOffenders[0]._source.FIRST_NAME}
+                  </li>
+                </Link>
+                <Link
+                  to={{
+                    pathname: '/offender-summary',
+                    state: { offender: this.state.currentOffenders[4]._source }
+                  }}>
+                  <li>
+                    <span className="far fa-user-o" />{' '}
+                    {this.state.currentOffenders[4]._source.SURNAME +
+                      ', ' +
+                      this.state.currentOffenders[4]._source.FIRST_NAME}
+                  </li>
+                </Link>
+                <Link
+                  to={{
+                    pathname: '/offender-summary',
+                    state: { offender: this.state.currentOffenders[5]._source }
+                  }}>
+                  <li>
+                    <span className="far fa-user-o" />{' '}
+                    {this.state.currentOffenders[5]._source.SURNAME +
+                      ', ' +
+                      this.state.currentOffenders[5]._source.FIRST_NAME}
+                  </li>
+                </Link>
+                <Link
+                  to={{
+                    pathname: '/offender-summary',
+                    state: { offender: this.state.currentOffenders[3]._source }
+                  }}>
+                  <li>
+                    <span className="far fa-user-o" />{' '}
+                    {this.state.currentOffenders[3]._source.SURNAME +
+                      ', ' +
+                      this.state.currentOffenders[3]._source.FIRST_NAME}
+                  </li>
+                </Link>
+              </ul>
+            </div>
+          )}
 
-        <hr />
-        <ul>
-          <li>
-            <Link to="/search">
-              <span className="far fa-search" /> Search
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <span className="far fa-clipboard" /> Cases
-            </Link>
-          </li>
-          <li>
-            <Link to="/sfpsr">
+          <hr />
+          <ul>
+            <li>
+              <Link to="/search">
+                <span className="far fa-search" /> Search
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
+                <span className="far fa-clipboard" /> Cases
+              </Link>
+            </li>
+            <li>
               <span className="far fa-file-text-o" /> Documents
-            </Link>
-          </li>
-          <li>
-            <span className="far fa-tags" /> Tags
-          </li>
-        </ul>
-        <hr />
-        <ul>
-          <li>
-            <span className="far fa-bell-o" /> Alerts &amp; notifications
-          </li>
-        </ul>
-      </nav>
+            </li>
+            <li>
+              <span className="far fa-tags" /> Tags
+            </li>
+          </ul>
+          <hr />
+          <ul>
+            <li>
+              <span className="far fa-bell-o" /> Alerts &amp; notifications
+            </li>
+          </ul>
+        </nav>
+      </div>
     );
   }
 }

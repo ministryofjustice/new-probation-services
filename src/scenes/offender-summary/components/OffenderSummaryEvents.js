@@ -62,8 +62,24 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                   </td>
                   <td>
                     <div className="timeline-item">
-                      <p className="text-large no-margin-top">Some heading</p>
-                      <p className="no-margin-bottom">Some text</p>
+                      <p className="text-large no-margin-top">
+                        Mansfield Magistrates Court
+                      </p>
+                      <p>Weights and measures act</p>
+                      <p className="no-margin-bottom">
+                        Adjourned pre sentence report
+                      </p>
+                      <p>
+                        <button
+                          className="green tiny"
+                          onClick={() => {
+                            this.props.viewClick();
+                          }}>
+                          View
+                        </button>{' '}
+                        <button className="tiny">Update</button>{' '}
+                        <button className="tiny">Delete</button>
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -73,8 +89,18 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                   </td>
                   <td>
                     <div className="timeline-item">
-                      <p className="text-large no-margin-top">Some heading</p>
-                      <p className="no-margin-bottom">Some text</p>
+                      <p className="text-large no-margin-top">
+                        Mansfield Magistrates Court
+                      </p>
+                      <p>Weights and measures act</p>
+                      <p className="no-margin-bottom">
+                        Adjourned pre sentence report
+                      </p>
+                      <p>
+                        <button className="green tiny">View</button>{' '}
+                        <button className="tiny">Update</button>{' '}
+                        <button className="tiny">Delete</button>
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -84,8 +110,18 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                   </td>
                   <td>
                     <div className="timeline-item last">
-                      <p className="text-large no-margin-top">Some heading</p>
-                      <p className="no-margin-bottom">Some text</p>
+                      <p className="text-large no-margin-top">
+                        Mansfield Magistrates Court
+                      </p>
+                      <p>Weights and measures act</p>
+                      <p className="no-margin-bottom">
+                        Adjourned pre sentence report
+                      </p>
+                      <p>
+                        <button className="green tiny">View</button>{' '}
+                        <button className="tiny">Update</button>{' '}
+                        <button className="tiny">Delete</button>
+                      </p>
                     </div>
                   </td>
                 </tr>

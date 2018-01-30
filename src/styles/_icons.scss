@@ -26,6 +26,15 @@
     position: relative;
     bottom: -10px;
   }
+
+  &.align-left {
+    margin: 0 15px 15px 15px;
+  }
+
+  &.small {
+    width: 50px;
+    height: 60px;
+  }
 }
 
 .risk-icon {

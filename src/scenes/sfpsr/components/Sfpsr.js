@@ -14,6 +14,10 @@ export default class Sfpsr extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
+    this.state = {
+      offender: this.props.location.state.offender
+    };
+
     (this: any).startClick = this.startClick.bind(this);
   }
 
@@ -21,7 +25,10 @@ export default class Sfpsr extends Component<Props, State> {
    *
    */
   startClick() {
-    this.props.history.push('/sfpsr/offender-details');
+    this.props.history.push({
+      pathname: '/sfpsr/offender-details',
+      state: { offender: this.state.offender }
+    });
   }
 
   /**

@@ -37,6 +37,7 @@ mark {
   font-size: 14px;
   font-weight: 400;
   color: white;
+  @include fade-in;
 
   &.prototype {
     background: $phase-banner-prototype;

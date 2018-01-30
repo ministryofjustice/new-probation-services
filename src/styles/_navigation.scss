@@ -1,4 +1,5 @@
 $nav-width: 250px;
+$nav-width-collapsed: 65px;
 
 nav {
   color: white;
@@ -47,15 +48,23 @@ nav {
 .grid-col {
   &.nav,
   &.sub-nav {
-    flex: 0 0 $nav-width;
+    overflow: hidden;
   }
   &.nav {
+    z-index: 2;
     background: $nav-bg;
+    flex: 0 0 $nav-width-collapsed;
+    animation: flexGrow 500ms ease-out forwards;
+
+    &.collapsed {
+      flex: 0 0 $nav-width;
+      animation: flexShrink 500ms ease-out forwards;
+    }
   }
   &.sub-nav {
+    z-index: 3;
     background: $sub-nav-bg;
     flex: 0.00001;
-    overflow: hidden;
     animation: flexGrow 500ms ease-out forwards;
 
     nav {
@@ -72,5 +81,39 @@ nav {
 @keyframes flexGrow {
   to {
     flex: 0 0 $nav-width;
+  }
+}
+
+@keyframes flexShrink {
+  to {
+    flex: 0 0 $nav-width-collapsed;
+  }
+}
+
+.collapsed {
+  .logo {
+    width: 35px;
+    height: 35px;
+    margin-left: 12px;
+    margin-bottom: 0;
+  }
+
+  .phase-tag,
+  .omit-report {
+    display: none;
+  }
+
+  li {
+    color: $nav-bg;
+  }
+
+  .far {
+    color: $sub-nav-bg;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  hr {
+    width: 35px;
   }
 }

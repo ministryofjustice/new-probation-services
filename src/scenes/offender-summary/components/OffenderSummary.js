@@ -9,7 +9,8 @@ import OffenderSummaryAssessments from './OffenderSummaryAssessments';
 import OffenderSummaryContact from './OffenderSummaryContact';
 
 type Props = {
-  location: Object
+  location: Object,
+  history: any
 };
 type State = {
   currentSection: string
@@ -26,6 +27,19 @@ export default class OffenderSummary extends Component<Props, State> {
     this.state = {
       currentSection: 'details'
     };
+
+    (this: any).handleViewClick = this.handleViewClick.bind(this);
+  }
+
+  /**
+   *
+   * @param event
+   */
+  handleViewClick(event: any) {
+    this.props.history.push({
+      pathname: '/sfpsr',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**
@@ -206,6 +220,7 @@ export default class OffenderSummary extends Component<Props, State> {
             <OffenderSummaryEvents
               restricted={restricted}
               offender={offender}
+              viewClick={this.handleViewClick}
             />
           </div>
         )}

@@ -55,11 +55,21 @@ button {
   &.primary {
     background: $button-color-primary;
     color: white;
+  }
 
-    &.small {
-      padding: 5px 10px;
-      font-size: 18px;
-    }
+  &.green {
+    background: $button-color-green;
+    color: white;
+  }
+
+  &.small {
+    padding: 5px 10px;
+    font-size: 18px;
+  }
+
+  &.tiny {
+    padding: 5px 10px;
+    font-size: 14px;
   }
 
   &.input-bumper {
