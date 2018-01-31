@@ -26,7 +26,7 @@ export default class Conclusion extends Component<Props, State> {
    */
   continueClick() {
     this.props.history.push({
-      pathname: '/sfpsr/check-your-report',
+      pathname: '/sfpsr/sign-your-report',
       state: { offender: this.props.location.state.offender }
     });
   }
@@ -39,6 +39,15 @@ export default class Conclusion extends Component<Props, State> {
       <div className="space-top fade-in">
         <h1>Conclusion</h1>
         <p>&nbsp;</p>
+
+        <div className="form-group">
+          <label htmlFor="sentence">Enter a proposed sentence</label>
+          <textarea
+            name="sentence"
+            className="form-control no-border"
+            placeholder="Start typing here..."
+          />
+        </div>
 
         <button className="primary" onClick={this.continueClick}>
           Save &amp; continue

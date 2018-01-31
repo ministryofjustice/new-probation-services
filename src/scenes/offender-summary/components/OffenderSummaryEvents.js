@@ -63,7 +63,7 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                   <td>
                     <div className="timeline-item">
                       <p className="text-large no-margin-top">
-                        Mansfield Magistrates Court
+                        Manchester and Salford Magistrates Court
                       </p>
                       <p>Weights and measures act</p>
                       <p className="no-margin-bottom">
@@ -90,7 +90,7 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                   <td>
                     <div className="timeline-item">
                       <p className="text-large no-margin-top">
-                        Mansfield Magistrates Court
+                        Manchester and Salford Magistrates Court
                       </p>
                       <p>Weights and measures act</p>
                       <p className="no-margin-bottom">
@@ -111,7 +111,7 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                   <td>
                     <div className="timeline-item last">
                       <p className="text-large no-margin-top">
-                        Mansfield Magistrates Court
+                        Manchester and Salford Magistrates Court
                       </p>
                       <p>Weights and measures act</p>
                       <p className="no-margin-bottom">

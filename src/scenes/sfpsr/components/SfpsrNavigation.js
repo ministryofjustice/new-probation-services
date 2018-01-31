@@ -11,7 +11,7 @@ export default class SfpsrNavigation extends Component<Props> {
     const offender = this.props.location.state.offender;
 
     return (
-      <div className="grid-col sub-nav omit-tablet">
+      <div className="grid-col sub-nav omit-mobile">
         <nav className="space-top">
           <table role="presentation">
             <tbody>
@@ -111,13 +111,6 @@ export default class SfpsrNavigation extends Component<Props> {
                 state: { offender: offender }
               }}>
               <li>Conclusion</li>
-            </NavLink>
-            <NavLink
-              to={{
-                pathname: '/sfpsr/check-your-report',
-                state: { offender: offender }
-              }}>
-              <li>Check your report</li>
             </NavLink>
             <NavLink
               to={{

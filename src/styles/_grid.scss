@@ -3,7 +3,7 @@
   flex-direction: row;
   min-height: 100vh;
   flex-wrap: wrap;
-  max-width: 1450px;
+  max-width: 1750px;
 
   &.nested {
     min-height: 0;
@@ -17,4 +17,17 @@
 
 .grid-col {
   flex: 1;
+
+  &.side {
+    flex: 0.00001;
+    animation: flexSidebar 500ms ease-out forwards;
+    background: $panel-sidebar;
+    padding: 15px;
+  }
+}
+
+@keyframes flexSidebar {
+  to {
+    flex: 0 0 450px;
+  }
 }

@@ -42,12 +42,22 @@ export default class CourtDetails extends Component<Props, State> {
 
         <div className="form-group">
           <label htmlFor="court">Court</label>
-          <input type="text" name="court" className="form-control" />
+          <input
+            type="text"
+            name="court"
+            className="form-control"
+            defaultValue="Manchester and Salford Magistrates Court"
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="justiceArea">Local justice area</label>
-          <input type="text" name="justiceArea" className="form-control" />
+          <input
+            type="text"
+            name="justiceArea"
+            className="form-control"
+            defaultValue="Greater Manchester"
+          />
         </div>
 
         <div className="form-group">
@@ -55,7 +65,12 @@ export default class CourtDetails extends Component<Props, State> {
           <p className="form-hint">
             For example: 28/06/{new Date().getFullYear()}
           </p>
-          <textarea name="date" className="form-control" />
+          <input
+            type="text"
+            name="date"
+            className="form-control"
+            defaultValue={new Date().toLocaleDateString('en-GB')}
+          />
         </div>
 
         <button className="primary" onClick={this.continueClick}>

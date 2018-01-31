@@ -16,11 +16,11 @@ import OffenceAnalysis from '../scenes/sfpsr/components/OffenceAnalysis';
 import OffenderAssessment from '../scenes/sfpsr/components/OffenderAssessment';
 import RiskAssessment from '../scenes/sfpsr/components/RiskAssessment';
 import Conclusion from '../scenes/sfpsr/components/Conclusion';
-import CheckYourReport from '../scenes/sfpsr/components/CheckYourReport';
 import SignYourReport from '../scenes/sfpsr/components/SignYourReport';
 import ReportComplete from '../scenes/sfpsr/components/ReportComplete';
 import OffenceDetails from '../scenes/sfpsr/components/OffenceDetails';
 import OffenderSummary from '../scenes/offender-summary/components/OffenderSummary';
+import OffenderSummarySidebar from '../scenes/offender-summary/components/OffenderSummarySidebar';
 
 const App = () => (
   <div className="App">
@@ -72,11 +72,6 @@ const App = () => (
             <Route exact path="/sfpsr/conclusion" component={Conclusion} />
             <Route
               exact
-              path="/sfpsr/check-your-report"
-              component={CheckYourReport}
-            />
-            <Route
-              exact
               path="/sfpsr/sign-your-report"
               component={SignYourReport}
             />
@@ -89,6 +84,9 @@ const App = () => (
           </Switch>
         </main>
       </div>
+      <Switch>
+        <Route path="/offender-summary" component={OffenderSummarySidebar} />
+      </Switch>
     </div>
   </div>
 );
