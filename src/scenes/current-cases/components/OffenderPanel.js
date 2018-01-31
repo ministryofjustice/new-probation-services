@@ -9,7 +9,8 @@ type Props = {
     SURNAME: string,
     DATE_OF_BIRTH_DATE: string,
     CRN: string,
-    GENDER_ID: number
+    GENDER_ID: number,
+    CURRENT_HIGHEST_RISK_COLOUR: string
   },
   click: Function
 };
@@ -39,16 +40,30 @@ export default class OffenderPanel extends Component<Props, State> {
             {offender.SURNAME + ', ' + offender.FIRST_NAME} -{' '}
             {Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
           </p>
-          <p className="text-extra-bold margin-top small">
-            CRN: {offender.CRN}
+          <p className="margin-top small">
+            <span className="text-extra-bold">CRN: {offender.CRN}</span>
+
+            {offender.CURRENT_HIGHEST_RISK_COLOUR !== null && (
+              <span id="risk">
+                {' '}
+                | Risk{' '}
+                <span
+                  className={
+                    'risk-icon risk-' +
+                    offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+                  }
+                />
+              </span>
+            )}
           </p>
           <button
-            className="primary small"
+            className="tiny green"
             onClick={() => {
               this.props.click(offender);
             }}>
             View
-          </button>
+          </button>{' '}
+          <button className="tiny">Add contact</button>
         </div>
       </div>
     );

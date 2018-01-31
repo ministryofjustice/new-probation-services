@@ -66,19 +66,15 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                         Manchester and Salford Magistrates Court
                       </p>
                       <p>Weights and measures act</p>
-                      <p className="no-margin-bottom">
-                        Adjourned pre sentence report
-                      </p>
+                      <p className="no-margin-bottom">Pre-sentence report</p>
                       <p>
                         <button
                           className="green tiny"
                           onClick={() => {
                             this.props.viewClick();
                           }}>
-                          View
-                        </button>{' '}
-                        <button className="tiny">Update</button>{' '}
-                        <button className="tiny">Delete</button>
+                          New
+                        </button>
                       </p>
                     </div>
                   </td>
@@ -94,12 +90,12 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                       </p>
                       <p>Weights and measures act</p>
                       <p className="no-margin-bottom">
-                        Adjourned pre sentence report
+                        Adjourned pre-sentence report
                       </p>
                       <p>
-                        <button className="green tiny">View</button>{' '}
+                        <button className="tiny">View</button>{' '}
                         <button className="tiny">Update</button>{' '}
-                        <button className="tiny">Delete</button>
+                        <button className="tiny warn">Delete</button>
                       </p>
                     </div>
                   </td>
@@ -115,12 +111,12 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                       </p>
                       <p>Weights and measures act</p>
                       <p className="no-margin-bottom">
-                        Adjourned pre sentence report
+                        Adjourned pre-sentence report
                       </p>
                       <p>
-                        <button className="green tiny">View</button>{' '}
+                        <button className="tiny">View</button>{' '}
                         <button className="tiny">Update</button>{' '}
-                        <button className="tiny">Delete</button>
+                        <button className="tiny warn">Delete</button>
                       </p>
                     </div>
                   </td>

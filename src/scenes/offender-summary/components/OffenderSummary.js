@@ -28,6 +28,8 @@ export default class OffenderSummary extends Component<Props, State> {
       currentSection: 'details'
     };
 
+    console.info(this.props.location.state.offender);
+
     (this: any).handleViewClick = this.handleViewClick.bind(this);
   }
 
@@ -95,7 +97,7 @@ export default class OffenderSummary extends Component<Props, State> {
                   </div>
                 </td>
                 <td className="padding">
-                  <h1 className="font-large">
+                  <h1 className="font-large no-margin-top">
                     {restricted
                       ? 'Restricted access'
                       : offender.SURNAME +
@@ -130,6 +132,12 @@ export default class OffenderSummary extends Component<Props, State> {
                           Utils.pipeAge(offender.DATE_OF_BIRTH_DATE)}
                       </span>
                     )}
+                  </p>
+
+                  <p className="margin-top no-margin-bottom">
+                    Offender manager: Unallocated Team (N07) | Remand status:{' '}
+                    {offender.CURRENT_REMAND_STATUS} | Tier:{' '}
+                    {offender.CURRENT_TIER}
                   </p>
                 </td>
               </tr>
