@@ -1,0 +1,55 @@
+{
+  "name": "new-probation-services",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "precommit": "lint-staged",
+    "flow": "flow",
+    "flow-check": "flow check",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "REACT_APP_HOST_ENV=dev npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ministryofjustice/new-probation-services.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ministryofjustice/new-probation-services/issues"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=8.9.4 <9.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,css,scss}": [
+      "prettier --single-quote --jsx-bracket-same-line --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "babel-polyfill": "6.26.0",
+    "elasticsearch": "14.0.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-highlight-words": "0.10.0",
+    "react-router-dom": "4.2.2",
+    "react-scripts": "1.1.0"
+  },
+  "devDependencies": {
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "flow-bin": "0.64.0",
+    "husky": "0.14.3",
+    "lint-staged": "6.1.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "4.1.2",
+    "prettier": "1.10.2",
+    "react-test-renderer": "16.2.0",
+    "sinon": "4.2.2"
+  }
+}

@@ -1,0 +1,23 @@
+.timeline-item {
+  position: relative;
+  margin-left: 30px;
+  padding: 15px 30px 50px 30px;
+  border-left: 5px solid $panel-header;
+
+  &.last {
+    border-color: white;
+  }
+
+  &::before {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    width: 35px;
+    height: 35px;
+    border: 5px solid $panel-header;
+    background: white;
+    border-radius: 50%;
+  }
+}

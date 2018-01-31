@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$fa-font-path}/fontawesome-webfont.eot');
+  src: url('#{$fa-font-path}/fontawesome-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$fa-font-path}/fontawesome-webfont.woff2') format('woff2'),
+    url('#{$fa-font-path}/fontawesome-webfont.woff') format('woff'),
+    url('#{$fa-font-path}/fontawesome-webfont.ttf') format('truetype'),
+    url('#{$fa-font-path}/fontawesome-webfont.svg#fontawesome') format('svg');
+}
+
+.far {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+}
+
+.photo-holder {
+  width: 100px;
+  height: 120px;
+  background: $photo-holder;
+  margin: 0 auto;
+
+  &.inline {
+    position: relative;
+    bottom: -10px;
+  }
+
+  &.align-left {
+    margin: 0 15px 15px 15px;
+  }
+
+  &.small {
+    width: 50px;
+    height: 60px;
+  }
+}
+
+.risk-icon {
+  display: inline-block;
+  position: relative;
+  bottom: -2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0;
+
+  &.risk-green {
+    background: $risk-green;
+  }
+  &.risk-amber {
+    background: $risk-yellow;
+  }
+  &.risk-red {
+    background: $risk-red;
+  }
+}

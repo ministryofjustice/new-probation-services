@@ -1,0 +1,64 @@
+h1 {
+  font-size: 24px;
+
+  &.text-large {
+    font-size: 32px;
+  }
+}
+
+a {
+  &.blue {
+    color: $link-blue;
+  }
+  &.grey {
+    color: $sub-nav-bg;
+  }
+  &.underline {
+    text-decoration: underline;
+  }
+  &.active-nav {
+    padding-bottom: 3px;
+    border-bottom: 5px solid $link-blue;
+  }
+}
+
+hr {
+  border: 1px solid $panel-header;
+  margin: 0 15px;
+}
+
+mark {
+  background-color: $highlight;
+}
+
+.phase-tag {
+  background: $phase-banner;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  @include fade-in;
+
+  &.prototype {
+    background: $phase-banner-prototype;
+  }
+}
+
+.text-large {
+  font-size: 24px;
+}
+
+.text-medium {
+  font-size: 20px;
+}
+
+.text-bold {
+  font-weight: 400;
+}
+
+.text-extra-bold {
+  font-weight: 600;
+}
+
+.highlight {
+}
