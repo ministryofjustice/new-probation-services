@@ -40,8 +40,49 @@ export default class SignYourReport extends Component<Props, State> {
         <h1>Sign your report</h1>
         <p>&nbsp;</p>
 
+        <div className="form-group">
+          <label htmlFor="author">Report author</label>
+          <input type="text" name="author" className="form-control" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="office">Office</label>
+          <input type="text" name="office" className="form-control" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone">Court office phone number</label>
+          <input type="text" name="phone" className="form-control" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="signature">Counter signature (if applicable)</label>
+          <input type="text" name="signature" className="form-control" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="start">Start date</label>
+          <input
+            type="text"
+            readOnly="true"
+            name="start"
+            className="form-control read-only"
+            defaultValue={new Date().toLocaleDateString('en-GB')}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="completion">Completion date</label>
+          <input
+            type="text"
+            name="completion"
+            className="form-control"
+            defaultValue={new Date().toLocaleDateString('en-GB')}
+          />
+        </div>
+
         <button className="primary" onClick={this.continueClick}>
-          Save &amp; continue
+          Submit &amp; view your reoport
         </button>
       </div>
     );

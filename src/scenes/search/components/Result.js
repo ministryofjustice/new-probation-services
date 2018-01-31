@@ -153,11 +153,7 @@ export default class Result extends Component<Props> {
       <div>
         <div className="panel border-left">
           {!restricted && (
-            <a
-              className="clickable text-large blue underline"
-              onClick={() => {
-                this.props.click(this.props.id);
-              }}>
+            <span className="text-large">
               <Highlighter
                 highlightClassName="highlight"
                 searchWords={searched}
@@ -170,7 +166,7 @@ export default class Result extends Component<Props> {
                   Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
                 }
               />
-            </a>
+            </span>
           )}
 
           {!!restricted && (
@@ -239,12 +235,21 @@ export default class Result extends Component<Props> {
 
           <p>
             {!restricted && (
-              <a
-                id={'contact-' + this.props.id}
-                className="clickable blue underline"
-                onClick={this.props.contact}>
-                Add contact
-              </a>
+              <span>
+                <button
+                  className="tiny green"
+                  onClick={() => {
+                    this.props.click(this.props.id);
+                  }}>
+                  View
+                </button>{' '}
+                <button
+                  id={'contact-' + this.props.id}
+                  className="tiny"
+                  onClick={this.props.contact}>
+                  Add contact
+                </button>
+              </span>
             )}
             {!!restricted && (
               <span>

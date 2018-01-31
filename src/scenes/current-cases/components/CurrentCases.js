@@ -86,7 +86,7 @@ export default class CurrentCases extends Component<Props, State> {
           <h1 className="text-large">
             {new Date().toLocaleDateString('en-GB')}
           </h1>
-          <p className="text-large">Westminster Crown Court</p>
+          <p className="text-large">Manchester and Salford Magistrates Court</p>
         </div>
 
         <p>&nbsp;</p>
