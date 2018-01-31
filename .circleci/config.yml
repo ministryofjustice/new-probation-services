@@ -42,7 +42,7 @@ jobs:
             at: ~/new-probation-services
         - run:
             name: Deploy to AWS
-            command: ERROR
+            command: aws s3 sync ~/new-probation-services/dist/ s3://moj-studio.dnt.prototype2 --acl public-read --sse AES256 --delete
 
 workflows:
   version: 2
