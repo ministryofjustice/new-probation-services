@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import Utils from '../../../utils/Utils';
 
 type Props = {
-  history: Array<any>
+  history: Array<any>,
+  location: Object
 };
 type State = {};
 

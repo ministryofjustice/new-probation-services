@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 
 type Props = {
-  history: Array<any>
+  history: Array<any>,
+  location: Object
 };
 type State = {};
 

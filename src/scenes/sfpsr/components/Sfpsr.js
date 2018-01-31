@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 
 type Props = {
-  history: Array<any>
+  history: Array<any>,
+  location: Object
 };
 type State = {};
 
@@ -14,10 +15,6 @@ export default class Sfpsr extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.state = {
-      offender: this.props.location.state.offender
-    };
-
     (this: any).startClick = this.startClick.bind(this);
   }
 
@@ -27,7 +24,7 @@ export default class Sfpsr extends Component<Props, State> {
   startClick() {
     this.props.history.push({
       pathname: '/sfpsr/offender-details',
-      state: { offender: this.state.offender }
+      state: { offender: this.props.location.state.offender }
     });
   }
 

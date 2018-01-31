@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-type Props = {};
+type Props = {
+  location: Object
+};
 
 export default class SfpsrNavigation extends Component<Props> {
   render() {
