@@ -24,7 +24,10 @@ export default class CourtDetails extends Component<Props, State> {
    *
    */
   continueClick() {
-    this.props.history.push('/sfpsr/sources-of-information');
+    this.props.history.push({
+      pathname: '/sfpsr/sources-of-information',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**

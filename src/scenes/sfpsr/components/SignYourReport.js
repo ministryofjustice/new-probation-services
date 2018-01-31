@@ -24,7 +24,10 @@ export default class SignYourReport extends Component<Props, State> {
    *
    */
   continueClick() {
-    this.props.history.push('/sfpsr/report-complete');
+    this.props.history.push({
+      pathname: '/sfpsr/report-complete',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**

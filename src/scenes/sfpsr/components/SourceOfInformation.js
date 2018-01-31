@@ -20,7 +20,10 @@ export default class SourceOfInformation extends Component<Props, State> {
    *
    */
   continueClick() {
-    this.props.history.push('/sfpsr/offence-details');
+    this.props.history.push({
+      pathname: '/sfpsr/offence-details',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**

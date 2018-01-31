@@ -5,10 +5,6 @@ import { NavLink } from 'react-router-dom';
 type Props = {};
 
 export default class SfpsrNavigation extends Component<Props> {
-  constructor(props: Props) {
-    super(props);
-  }
-
   render() {
     const offender = this.props.location.state.offender;
 
@@ -46,7 +42,11 @@ export default class SfpsrNavigation extends Component<Props> {
           </table>
 
           <ul>
-            <NavLink to="/sfpsr/save-draft">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/save-draft',
+                state: { offender: offender }
+              }}>
               <li>
                 <span className="far fa-files-o" /> Save a draft of this report
               </li>
@@ -54,34 +54,74 @@ export default class SfpsrNavigation extends Component<Props> {
           </ul>
           <hr />
           <ul>
-            <NavLink to="/sfpsr/offender-details">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/offender-details',
+                state: { offender: offender }
+              }}>
               <li>Offender details</li>
             </NavLink>
-            <NavLink to="/sfpsr/court-details">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/court-details',
+                state: { offender: offender }
+              }}>
               <li>Sentencing court details</li>
             </NavLink>
-            <NavLink to="/sfpsr/sources-of-information">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/sources-of-information',
+                state: { offender: offender }
+              }}>
               <li>Sources of information</li>
             </NavLink>
-            <NavLink to="/sfpsr/offence-details">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/offence-details',
+                state: { offender: offender }
+              }}>
               <li>Offence details</li>
             </NavLink>
-            <NavLink to="/sfpsr/offence-analysis">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/offence-analysis',
+                state: { offender: offender }
+              }}>
               <li>Offence analysis</li>
             </NavLink>
-            <NavLink to="/sfpsr/offender-assessment">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/offender-assessment',
+                state: { offender: offender }
+              }}>
               <li>Offender assessment</li>
             </NavLink>
-            <NavLink to="/sfpsr/risk-assessment">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/risk-assessment',
+                state: { offender: offender }
+              }}>
               <li>Risk assessment</li>
             </NavLink>
-            <NavLink to="/sfpsr/conclusion">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/conclusion',
+                state: { offender: offender }
+              }}>
               <li>Conclusion</li>
             </NavLink>
-            <NavLink to="/sfpsr/check-your-report">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/check-your-report',
+                state: { offender: offender }
+              }}>
               <li>Check your report</li>
             </NavLink>
-            <NavLink to="/sfpsr/sign-your-report">
+            <NavLink
+              to={{
+                pathname: '/sfpsr/sign-your-report',
+                state: { offender: offender }
+              }}>
               <li>Sign your report</li>
             </NavLink>
           </ul>

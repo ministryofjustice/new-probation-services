@@ -26,7 +26,10 @@ export default class OffenderDetails extends Component<Props, State> {
    *
    */
   continueClick() {
-    this.props.history.push('/sfpsr/court-details');
+    this.props.history.push({
+      pathname: '/sfpsr/court-details',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**

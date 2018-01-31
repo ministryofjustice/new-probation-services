@@ -24,7 +24,10 @@ export default class RiskAssessment extends Component<Props, State> {
    *
    */
   continueClick() {
-    this.props.history.push('/sfpsr/conclusion');
+    this.props.history.push({
+      pathname: '/sfpsr/conclusion',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**

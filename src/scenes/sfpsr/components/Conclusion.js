@@ -24,7 +24,10 @@ export default class Conclusion extends Component<Props, State> {
    *
    */
   continueClick() {
-    this.props.history.push('/sfpsr/check-your-report');
+    this.props.history.push({
+      pathname: '/sfpsr/check-your-report',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**

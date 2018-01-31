@@ -24,7 +24,10 @@ export default class CheckYourReport extends Component<Props, State> {
    *
    */
   continueClick() {
-    this.props.history.push('/sfpsr/sign-your-report');
+    this.props.history.push({
+      pathname: '/sfpsr/sign-your-report',
+      state: { offender: this.props.location.state.offender }
+    });
   }
 
   /**
