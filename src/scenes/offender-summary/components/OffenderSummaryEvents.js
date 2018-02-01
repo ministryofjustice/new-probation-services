@@ -69,7 +69,7 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                       <p className="no-margin-bottom">Pre-sentence report</p>
                       <p>
                         <button
-                          className="green tiny"
+                          className="tiny inline-primary"
                           onClick={() => {
                             this.props.viewClick();
                           }}>
@@ -93,9 +93,11 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                         Adjourned pre-sentence report
                       </p>
                       <p>
-                        <button className="tiny">View</button>{' '}
-                        <button className="tiny">Update</button>{' '}
-                        <button className="tiny warn">Delete</button>
+                        <button className="tiny inline-primary">View</button>{' '}
+                        <button className="tiny inline-secondary">
+                          Update
+                        </button>{' '}
+                        <button className="tiny inline-warn">Delete</button>
                       </p>
                     </div>
                   </td>
@@ -114,9 +116,11 @@ export default class OffenderSummaryEvents extends Component<Props, State> {
                         Adjourned pre-sentence report
                       </p>
                       <p>
-                        <button className="tiny">View</button>{' '}
-                        <button className="tiny">Update</button>{' '}
-                        <button className="tiny warn">Delete</button>
+                        <button className="tiny inline-primary">View</button>{' '}
+                        <button className="tiny inline-secondary">
+                          Update
+                        </button>{' '}
+                        <button className="tiny inline-warn">Delete</button>
                       </p>
                     </div>
                   </td>
