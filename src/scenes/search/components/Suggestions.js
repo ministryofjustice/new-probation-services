@@ -20,7 +20,7 @@ export default class Suggestions extends Component<Props> {
         {filteredSuggestions.map((suggestion, i) => (
           <span key={i}>
             <a
-              className="pad-right blue"
+              className="pad-right blue clickable"
               onClick={() =>
                 this.props.click(suggestion.text, suggestion.option)
               }>
