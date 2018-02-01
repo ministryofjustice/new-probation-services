@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
-    "elasticsearch": "14.0.0",
+    "elasticsearch": "14.1.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-highlight-words": "0.10.0",
