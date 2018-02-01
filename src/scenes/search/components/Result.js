@@ -150,117 +150,133 @@ export default class Result extends Component<Props> {
       restricted = data.CURRENT_RESTRICTION || data.CURRENT_EXCLUSION;
 
     return (
-      <div>
-        <div className="panel border-left">
-          {!restricted && (
-            <span className="text-large">
-              <Highlighter
-                highlightClassName="highlight"
-                searchWords={searched}
-                autoEscape={true}
-                textToHighlight={
-                  data.SURNAME +
-                  ', ' +
-                  data.FIRST_NAME +
-                  ' - ' +
-                  Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
-                }
-              />
-            </span>
-          )}
-
-          {!!restricted && (
-            <span className="text-large">
-              {data.CURRENT_RESTRICTION
-                ? 'Restricted information'
-                : 'Excluded information'}
-            </span>
-          )}
-
-          <p className="no-margin bottom">
-            <span className="text-extra-bold">
-              CRN:{' '}
-              <Highlighter
-                highlightClassName="highlight"
-                searchWords={searched}
-                autoEscape={true}
-                textToHighlight={data.CRN}
-              />
-            </span>
-            {data.CURRENT_HIGHEST_RISK_COLOUR !== null && (
-              <span id="risk">
-                {' '}
-                | Risk{' '}
-                <span
-                  className={
-                    'risk-icon risk-' +
-                    data.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+      <div className="panel">
+        <table role="presentation">
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  className="photo-holder align-left"
+                  alt={'Photograph of ' + data.SURNAME + ', ' + data.FIRST_NAME}
+                  src={
+                    data.GENDER_ID === 545
+                      ? '/images/placeholder_m.jpg'
+                      : '/images/placeholder_f.jpg'
                   }
                 />
-              </span>
-            )}
-            {!restricted && (
-              <span>
-                {data.CURRENT_DISPOSAL > 0 && (
-                  <span>
-                    {' '}
-                    | <span id="currentDisposal">Current offender</span>
+              </td>
+              <td>
+                {!restricted && (
+                  <span className="text-large">
+                    <Highlighter
+                      highlightClassName="highlight"
+                      searchWords={searched}
+                      autoEscape={true}
+                      textToHighlight={
+                        data.SURNAME +
+                        ', ' +
+                        data.FIRST_NAME +
+                        ' - ' +
+                        Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
+                      }
+                    />
                   </span>
                 )}
-                <Highlighter
-                  highlightClassName="highlight"
-                  searchWords={searched}
-                  autoEscape={true}
-                  textToHighlight={
-                    ' | ' +
-                    Utils.pipeGender(data.GENDER_ID) +
-                    ', ' +
-                    Utils.pipeAge(data.DATE_OF_BIRTH_DATE)
-                  }
-                />
-              </span>
-            )}
-          </p>
 
-          {this.additionalResults().map((item, i) => (
-            <div key={i}>
-              <Highlighter
-                highlightClassName="highlight"
-                searchWords={searched}
-                autoEscape={true}
-                textToHighlight={item}
-              />
-            </div>
-          ))}
+                {!!restricted && (
+                  <span className="text-large">
+                    {data.CURRENT_RESTRICTION
+                      ? 'Restricted information'
+                      : 'Excluded information'}
+                  </span>
+                )}
 
-          <p>
-            {!restricted && (
-              <span>
-                <button
-                  className="tiny green"
-                  onClick={() => {
-                    this.props.click(this.props.id);
-                  }}>
-                  View
-                </button>{' '}
-                <button
-                  id={'contact-' + this.props.id}
-                  className="tiny"
-                  onClick={this.props.contact}>
-                  Add contact
-                </button>
-              </span>
-            )}
-            {!!restricted && (
-              <span>
-                {data.CURRENT_RESTRICTION
-                  ? data.RESTRICTION_MESSAGE
-                  : data.EXCLUSION_MESSAGE}
-              </span>
-            )}
-          </p>
-        </div>
-        <div> </div>
+                <p className="no-margin bottom">
+                  <span className="text-extra-bold">
+                    CRN:{' '}
+                    <Highlighter
+                      highlightClassName="highlight"
+                      searchWords={searched}
+                      autoEscape={true}
+                      textToHighlight={data.CRN}
+                    />
+                  </span>
+                  {data.CURRENT_HIGHEST_RISK_COLOUR !== null && (
+                    <span id="risk">
+                      {' '}
+                      | Risk{' '}
+                      <span
+                        className={
+                          'risk-icon risk-' +
+                          data.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+                        }
+                      />
+                    </span>
+                  )}
+                  {!restricted && (
+                    <span>
+                      {data.CURRENT_DISPOSAL > 0 && (
+                        <span>
+                          {' '}
+                          | <span id="currentDisposal">Current offender</span>
+                        </span>
+                      )}
+                      <Highlighter
+                        highlightClassName="highlight"
+                        searchWords={searched}
+                        autoEscape={true}
+                        textToHighlight={
+                          ' | ' +
+                          Utils.pipeGender(data.GENDER_ID) +
+                          ', ' +
+                          Utils.pipeAge(data.DATE_OF_BIRTH_DATE)
+                        }
+                      />
+                    </span>
+                  )}
+                </p>
+
+                {this.additionalResults().map((item, i) => (
+                  <div key={i}>
+                    <Highlighter
+                      highlightClassName="highlight"
+                      searchWords={searched}
+                      autoEscape={true}
+                      textToHighlight={item}
+                    />
+                  </div>
+                ))}
+
+                <p>
+                  {!restricted && (
+                    <span>
+                      <button
+                        className="tiny green"
+                        onClick={() => {
+                          this.props.click(this.props.id);
+                        }}>
+                        View
+                      </button>{' '}
+                      <button
+                        id={'contact-' + this.props.id}
+                        className="tiny"
+                        onClick={this.props.contact}>
+                        Add contact
+                      </button>
+                    </span>
+                  )}
+                  {!!restricted && (
+                    <span>
+                      {data.CURRENT_RESTRICTION
+                        ? data.RESTRICTION_MESSAGE
+                        : data.EXCLUSION_MESSAGE}
+                    </span>
+                  )}
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }
