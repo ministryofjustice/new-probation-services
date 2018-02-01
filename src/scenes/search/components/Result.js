@@ -159,9 +159,11 @@ export default class Result extends Component<Props> {
                   className="photo-holder align-left"
                   alt={'Photograph of ' + data.SURNAME + ', ' + data.FIRST_NAME}
                   src={
-                    data.GENDER_ID === 545
-                      ? '/images/placeholder_m.jpg'
-                      : '/images/placeholder_f.jpg'
+                    restricted
+                      ? '/images/placeholder_r.jpg'
+                      : data.GENDER_ID === 545
+                        ? '/images/placeholder_m.jpg'
+                        : '/images/placeholder_f.jpg'
                   }
                 />
               </td>
