@@ -14,7 +14,7 @@ type Props = {
 export default class Result extends Component<Props> {
   /**
    * @constructor
-   * @param {Props} arbitrary inputs
+   * @param props {Props} arbitrary inputs
    */
   constructor(props: Props) {
     super(props);
@@ -253,11 +253,16 @@ export default class Result extends Component<Props> {
                   {!restricted && (
                     <span>
                       <button
-                        className="tiny green"
+                        className="tiny inline-primary"
                         onClick={() => {
                           this.props.click(this.props.id);
                         }}>
                         View
+                      </button>{' '}
+                      <button
+                        id={'contact-' + this.props.id}
+                        className="tiny inline-secondary">
+                        Manage
                       </button>{' '}
                       <button
                         id={'contact-' + this.props.id}

@@ -57,12 +57,13 @@ export default class OffenderPanel extends Component<Props, State> {
             )}
           </p>
           <button
-            className="tiny green"
+            className="tiny inline-primary"
             onClick={() => {
               this.props.click(offender);
             }}>
             View
           </button>{' '}
+          <button className="tiny inline-secondary">Manage</button>{' '}
           <button className="tiny">Add contact</button>
         </div>
       </div>
