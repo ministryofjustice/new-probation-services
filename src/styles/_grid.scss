@@ -23,6 +23,10 @@
     animation: flexSidebar 500ms ease-out forwards;
     background: $panel-sidebar;
     padding: 15px;
+
+    @include ie() {
+      flex: 0 0 450px;
+    }
   }
 }
 

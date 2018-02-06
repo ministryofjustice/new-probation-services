@@ -20,13 +20,7 @@ import SignYourReport from '../scenes/sfpsr/components/SignYourReport';
 import ReportComplete from '../scenes/sfpsr/components/ReportComplete';
 import OffenceDetails from '../scenes/sfpsr/components/OffenceDetails';
 import OffenderSummary from '../scenes/offender-summary/components/OffenderSummary';
-// import OffenderSummarySidebar from '../scenes/offender-summary/components/OffenderSummarySidebar';
-
-/*
-<Switch>
-  <Route path="/offender-summary" component={OffenderSummarySidebar} />
-</Switch>
- */
+import OffenderSummarySidebar from '../scenes/offender-summary/components/OffenderSummarySidebar';
 
 const App = () => (
   <div className="App">
@@ -90,6 +84,9 @@ const App = () => (
           </Switch>
         </main>
       </div>
+      <Switch>
+        <Route path="/offender-summary" component={OffenderSummarySidebar} />
+      </Switch>
     </div>
   </div>
 );
