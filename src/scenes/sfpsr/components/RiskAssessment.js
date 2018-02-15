@@ -1,19 +1,20 @@
 // @flow
 import React, { Component } from 'react';
 
+import SfpsrContext from '../data/SfpsrContext';
+import type { Offender } from '../../_shared/model/Offender.type';
+
 type Props = {
-  history: Array<any>,
-  location: Object
+  history: Array<any>
 };
-type State = {};
 
 /**
  *
  */
-export default class RiskAssessment extends Component<Props, State> {
+export default class RiskAssessment extends Component<Props> {
   /**
    *
-   * @param props
+   * @param props {Props} arbitrary inputs
    */
   constructor(props: Props) {
     super(props);
@@ -23,11 +24,12 @@ export default class RiskAssessment extends Component<Props, State> {
 
   /**
    *
+   * @param data {Offender} Offender data
    */
-  continueClick() {
+  continueClick(data: Offender) {
     this.props.history.push({
       pathname: '/sfpsr/conclusion',
-      state: { offender: this.props.location.state.offender }
+      state: { offender: data }
     });
   }
 
@@ -36,56 +38,64 @@ export default class RiskAssessment extends Component<Props, State> {
    */
   render() {
     return (
-      <div className="space-top fade-in">
-        <h1>Risk assessment</h1>
-        <p>&nbsp;</p>
+      <SfpsrContext.Consumer>
+        {context => {
+          return (
+            <div className="space-top fade-in">
+              <h1>Risk assessment</h1>
+              <p>&nbsp;</p>
 
-        <div className="form-group">
-          <label htmlFor="reoffending">likelihood of reoffending</label>
-          <textarea
-            name="reoffending"
-            className="form-control no-border"
-            placeholder="Start typing here..."
-          />
-        </div>
+              <div className="form-group">
+                <label htmlFor="reoffending">likelihood of reoffending</label>
+                <textarea
+                  name="reoffending"
+                  className="form-control no-border"
+                  placeholder="Start typing here..."
+                />
+              </div>
 
-        <div className="form-group">
-          <label htmlFor="serious_harm">Risk of serious harm</label>
-          <textarea
-            name="serious_harm"
-            className="form-control no-border"
-            placeholder="Start typing here..."
-          />
-        </div>
+              <div className="form-group">
+                <label htmlFor="serious_harm">Risk of serious harm</label>
+                <textarea
+                  name="serious_harm"
+                  className="form-control no-border"
+                  placeholder="Start typing here..."
+                />
+              </div>
 
-        <fieldset className="no-border">
-          <legend>Response to previous supervision</legend>
+              <fieldset className="no-border">
+                <legend>Response to previous supervision</legend>
 
-          <div className="form-group">
-            <input type="radio" name="supervision" />
-            <label htmlFor="supervision">Good</label>
-          </div>
+                <div className="form-group">
+                  <input type="radio" name="supervision" />
+                  <label htmlFor="supervision">Good</label>
+                </div>
 
-          <div className="form-group">
-            <input type="radio" name="supervision" />
-            <label htmlFor="supervision">Satisfactory</label>
-          </div>
+                <div className="form-group">
+                  <input type="radio" name="supervision" />
+                  <label htmlFor="supervision">Satisfactory</label>
+                </div>
 
-          <div className="form-group">
-            <input type="radio" name="supervision" />
-            <label htmlFor="supervision">Poor</label>
-          </div>
+                <div className="form-group">
+                  <input type="radio" name="supervision" />
+                  <label htmlFor="supervision">Poor</label>
+                </div>
 
-          <div className="form-group">
-            <input type="radio" name="supervision" />
-            <label htmlFor="supervision">Not applicable</label>
-          </div>
-        </fieldset>
+                <div className="form-group">
+                  <input type="radio" name="supervision" />
+                  <label htmlFor="supervision">Not applicable</label>
+                </div>
+              </fieldset>
 
-        <button className="primary" onClick={this.continueClick}>
-          Save &amp; continue
-        </button>
-      </div>
+              <button
+                className="primary"
+                onClick={() => this.continueClick(context.offender)}>
+                Save &amp; continue
+              </button>
+            </div>
+          );
+        }}
+      </SfpsrContext.Consumer>
     );
   }
 }

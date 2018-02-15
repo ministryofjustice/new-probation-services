@@ -35,7 +35,7 @@ export default class CurrentCases extends Component<Props, State> {
   /**
    *
    */
-  componentWillMount() {
+  componentDidMount() {
     const reqListener = (e: any) => {
       const data = JSON.parse(e.target.responseText).hits.hits;
       this.setState(() => {
