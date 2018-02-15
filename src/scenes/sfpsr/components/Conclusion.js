@@ -1,16 +1,16 @@
 // @flow
 import React, { Component } from 'react';
 
+import SfpsrContext from '../data/SfpsrContext';
+
 type Props = {
-  history: Array<any>,
-  location: Object
+  history: Array<any>
 };
-type State = {};
 
 /**
  *
  */
-export default class Conclusion extends Component<Props, State> {
+export default class Conclusion extends Component<Props> {
   /**
    * @constructor
    * @param props {Props} arbitrary inputs
@@ -24,10 +24,10 @@ export default class Conclusion extends Component<Props, State> {
   /**
    *
    */
-  continueClick() {
+  continueClick(data: any) {
     this.props.history.push({
       pathname: '/sfpsr/sign-your-report',
-      state: { offender: this.props.location.state.offender }
+      state: { offender: data }
     });
   }
 
@@ -36,23 +36,33 @@ export default class Conclusion extends Component<Props, State> {
    */
   render() {
     return (
-      <div className="space-top fade-in">
-        <h1>Conclusion</h1>
-        <p>&nbsp;</p>
+      <SfpsrContext.Consumer>
+        {context => {
+          const offender = context.offender;
 
-        <div className="form-group">
-          <label htmlFor="sentence">Enter a proposed sentence</label>
-          <textarea
-            name="sentence"
-            className="form-control no-border"
-            placeholder="Start typing here..."
-          />
-        </div>
+          return (
+            <div className="space-top fade-in">
+              <h1>Conclusion</h1>
+              <p>&nbsp;</p>
 
-        <button className="primary" onClick={this.continueClick}>
-          Save &amp; continue
-        </button>
-      </div>
+              <div className="form-group">
+                <label htmlFor="sentence">Enter a proposed sentence</label>
+                <textarea
+                  name="sentence"
+                  className="form-control no-border"
+                  placeholder="Start typing here..."
+                />
+              </div>
+
+              <button
+                className="primary"
+                onClick={() => this.continueClick(offender)}>
+                Save &amp; continue
+              </button>
+            </div>
+          );
+        }}
+      </SfpsrContext.Consumer>
     );
   }
 }

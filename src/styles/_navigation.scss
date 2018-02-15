@@ -56,9 +56,18 @@ nav {
     flex: 0 0 $nav-width-collapsed;
     animation: flexGrow 500ms ease-out forwards;
 
+    @include ie() {
+      z-index: 0;
+      flex: 0 0 $nav-width;
+    }
+
     &.collapsed {
       flex: 0 0 $nav-width;
       animation: flexShrink 500ms ease-out forwards;
+
+      @include ie() {
+        flex: 0 0 $nav-width-collapsed;
+      }
     }
   }
   &.sub-nav {
@@ -66,6 +75,10 @@ nav {
     background: $sub-nav-bg;
     flex: 0.00001;
     animation: flexGrow 500ms ease-out forwards;
+
+    @include ie() {
+      flex: 0 0 $nav-width;
+    }
 
     nav {
       color: $sub-nav-text;

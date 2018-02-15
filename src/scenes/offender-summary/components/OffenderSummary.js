@@ -13,7 +13,8 @@ type Props = {
   history: any
 };
 type State = {
-  currentSection: string
+  currentSection: string,
+  offender: any
 };
 
 export default class OffenderSummary extends Component<Props, State> {
@@ -25,12 +26,29 @@ export default class OffenderSummary extends Component<Props, State> {
     super(props);
 
     this.state = {
-      currentSection: 'details'
+      currentSection: 'details',
+      offender: this.props.location.state.offender
     };
 
-    console.info(this.props.location.state.offender);
+    console.info(this.state.offender);
 
     (this: any).handleViewClick = this.handleViewClick.bind(this);
+  }
+
+  /**
+   *
+   * @param nextProps {Props} arbitrary inputs
+   * @param prevState {State} previous state
+   */
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    window.scrollTo(0, 0);
+    return nextProps.location.state.offender.OFFENDER_ID ===
+      prevState.offender.OFFENDER_ID
+      ? null
+      : {
+          currentSection: 'details',
+          offender: nextProps.location.state.offender
+        };
   }
 
   /**
@@ -42,27 +60,6 @@ export default class OffenderSummary extends Component<Props, State> {
       pathname: '/sfpsr',
       state: { offender: this.props.location.state.offender }
     });
-  }
-
-  /**
-   *
-   * @param nextProps {Props} arbitrary inputs
-   */
-  componentWillReceiveProps(nextProps: Props) {
-    if (
-      nextProps.location.state.offender.OFFENDER_ID !==
-      this.props.location.state.offender.OFFENDER_ID
-    ) {
-      this.setState({ currentSection: 'details' });
-      window.scrollTo(0, 0);
-    }
-  }
-
-  /**
-   *
-   */
-  componentDidMount() {
-    window.scrollTo(0, 0);
   }
 
   /**
