@@ -152,9 +152,7 @@ export default class OffenderSummary extends Component<Props, State> {
           </div>
         )}
 
-        <p>&nbsp;</p>
-
-        <div className="grid-row nested margin-top">
+        <div className="grid-row nested margin-top large">
           <div className="grid-col center">
             <a
               className={

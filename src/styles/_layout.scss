@@ -41,6 +41,10 @@ td {
 .margin-top {
   margin-top: 15px;
 
+  &.large {
+    margin-top: 20px;
+  }
+
   &.small {
     margin-top: 10px;
   }
