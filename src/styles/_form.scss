@@ -45,6 +45,10 @@ input[type='checkbox'] {
   padding: 0;
   border: 0;
 
+  &:checked + label::after {
+    opacity: 1;
+  }
+
   + label {
     position: relative;
     padding-left: 45px;
@@ -77,13 +81,6 @@ input[type='checkbox'] {
       -ms-transform: rotate(-45deg);
       transform: rotate(-45deg);
       opacity: 0;
-    }
-  }
-
-  :checked + label {
-    color: red;
-    &::after {
-      opacity: 1;
     }
   }
 }
