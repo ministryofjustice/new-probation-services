@@ -38,7 +38,6 @@ input[type='checkbox'] {
   position: absolute;
   z-index: -1000;
   left: -1000px;
-  overflow: hidden;
   clip: rect(0 0 0 0);
   height: 1px;
   width: 1px;
@@ -46,13 +45,9 @@ input[type='checkbox'] {
   padding: 0;
   border: 0;
 
-  &:checked + label::after {
-    opacity: 1;
-  }
-
   + label {
     position: relative;
-    padding-left: 40px;
+    padding-left: 45px;
     cursor: pointer;
 
     &::before {
@@ -82,6 +77,13 @@ input[type='checkbox'] {
       -ms-transform: rotate(-45deg);
       transform: rotate(-45deg);
       opacity: 0;
+    }
+  }
+
+  :checked + label {
+    color: red;
+    &::after {
+      opacity: 1;
     }
   }
 }
