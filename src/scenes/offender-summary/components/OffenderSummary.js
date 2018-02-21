@@ -7,6 +7,7 @@ import OffenderSummaryDetails from './OffenderSummaryDetails';
 import OffenderSummaryEvents from './OffenderSummaryEvents';
 import OffenderSummaryAssessments from './OffenderSummaryAssessments';
 import OffenderSummaryContact from './OffenderSummaryContact';
+import type { Offender } from '../../_shared/model/Offender.type';
 
 type Props = {
   location: Object,
@@ -14,7 +15,7 @@ type Props = {
 };
 type State = {
   currentSection: string,
-  offender: any
+  offender: Offender
 };
 
 export default class OffenderSummary extends Component<Props, State> {
@@ -72,75 +73,49 @@ export default class OffenderSummary extends Component<Props, State> {
 
     return (
       <div className="space-top fade-in">
-        <div className="panel header align-left">
-          <table role="presentation">
-            <tbody>
-              <tr>
-                <td>
-                  <div className="photo-holder">
-                    <img
-                      alt={
-                        'Photograph of ' +
-                        offender.SURNAME +
-                        ', ' +
-                        offender.FIRST_NAME
-                      }
-                      src={
-                        offender.GENDER_ID === 545
-                          ? '/images/placeholder_m.jpg'
-                          : '/images/placeholder_f.jpg'
-                      }
-                    />
-                  </div>
-                </td>
-                <td className="padding">
-                  <h1 className="font-large no-margin-top">
-                    {restricted
-                      ? 'Restricted access'
-                      : offender.SURNAME +
-                        ', ' +
-                        offender.FIRST_NAME +
-                        ' - ' +
-                        Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
-                  </h1>
+        <table role="presentation">
+          <tbody>
+            <tr>
+              <td>
+                <div className="photo-holder">
+                  <img
+                    alt={
+                      'Photograph of ' +
+                      offender.SURNAME +
+                      ', ' +
+                      offender.FIRST_NAME
+                    }
+                    src={
+                      offender.GENDER_ID === 545
+                        ? '/images/placeholder_m.jpg'
+                        : '/images/placeholder_f.jpg'
+                    }
+                  />
+                </div>
+              </td>
+              <td className="padding-left">
+                <h1 className="font-large no-margin-top no-margin-bottom">
+                  {restricted
+                    ? 'Restricted access'
+                    : offender.SURNAME + ', ' + offender.FIRST_NAME}
+                </h1>
 
+                <p className="no-margin-top no-margin-bottom">
+                  CRN:<br />
+                  <span className="text-bold">{offender.CRN}</span>
+                </p>
+                {restricted !== 1 && (
                   <p className="margin-top no-margin-bottom">
-                    <span className="bold">CRN: {offender.CRN}</span>
-                    {offender.CURRENT_HIGHEST_RISK_COLOUR !== null && (
-                      <span id="risk">
-                        {' '}
-                        | Risk{' '}
-                        <span
-                          className={
-                            'risk-icon risk-' +
-                            offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
-                          }
-                        />
-                      </span>
-                    )}
-                    {!restricted && (
-                      <span>
-                        {offender.CURRENT_DISPOSAL > 0 && (
-                          <span> | Current offender</span>
-                        )}
-                        {' | ' +
-                          Utils.pipeGender(offender.GENDER_ID) +
-                          ', ' +
-                          Utils.pipeAge(offender.DATE_OF_BIRTH_DATE)}
-                      </span>
-                    )}
+                    Date of birth:<br />
+                    <span className="text-bold">
+                      {Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
+                    </span>
                   </p>
-
-                  <p className="margin-top no-margin-bottom">
-                    Offender manager: Unallocated Team (N07) | Remand status:{' '}
-                    {offender.CURRENT_REMAND_STATUS} | Tier:{' '}
-                    {offender.CURRENT_TIER}
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         {restricted === 1 && (
           <div>
@@ -150,6 +125,34 @@ export default class OffenderSummary extends Component<Props, State> {
                 : offender.EXCLUSION_MESSAGE}
             </p>
           </div>
+        )}
+
+        {restricted !== 1 && (
+          <table
+            role="presentation"
+            className="full-width margin-top border-bottom">
+            <tbody>
+              <tr>
+                <td className="text-bold">Offender manager:</td>
+                <td colSpan="2">Not allocated</td>
+              </tr>
+              <tr>
+                <td className="text-bold">LDU and team:</td>
+                <td>Unallocated team (N07 Division)</td>
+                <td className="align-right">
+                  <button className="tiny">Transfer</button>
+                </td>
+              </tr>
+              <tr>
+                <td className="text-bold">Remand status:</td>
+                <td colSpan="2">{offender.CURRENT_REMAND_STATUS}</td>
+              </tr>
+              <tr>
+                <td className="text-bold">Tier:</td>
+                <td colSpan="2">{offender.CURRENT_TIER}</td>
+              </tr>
+            </tbody>
+          </table>
         )}
 
         <div className="grid-row nested margin-top large">
