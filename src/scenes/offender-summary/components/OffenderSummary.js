@@ -27,7 +27,7 @@ export default class OffenderSummary extends Component<Props, State> {
     super(props);
 
     this.state = {
-      currentSection: 'details',
+      currentSection: 'events',
       offender: this.props.location.state.offender
     };
 
@@ -47,7 +47,7 @@ export default class OffenderSummary extends Component<Props, State> {
       prevState.offender.OFFENDER_ID
       ? null
       : {
-          currentSection: 'details',
+          currentSection: 'events',
           offender: nextProps.location.state.offender
         };
   }
@@ -159,19 +159,6 @@ export default class OffenderSummary extends Component<Props, State> {
           <div className="grid-col center">
             <a
               className={
-                this.state.currentSection === 'details'
-                  ? 'active-nav'
-                  : 'clickable'
-              }
-              onClick={() => {
-                this.setState({ currentSection: 'details' });
-              }}>
-              Offender details
-            </a>
-          </div>
-          <div className="grid-col center">
-            <a
-              className={
                 this.state.currentSection === 'events'
                   ? 'active-nav'
                   : 'clickable'
@@ -208,18 +195,22 @@ export default class OffenderSummary extends Component<Props, State> {
               Contact list
             </a>
           </div>
+          <div className="grid-col center">
+            <a
+              className={
+                this.state.currentSection === 'details'
+                  ? 'active-nav'
+                  : 'clickable'
+              }
+              onClick={() => {
+                this.setState({ currentSection: 'details' });
+              }}>
+              Offender details
+            </a>
+          </div>
         </div>
 
         <p>&nbsp;</p>
-
-        {this.state.currentSection === 'details' && (
-          <div className="fade-in">
-            <OffenderSummaryDetails
-              restricted={restricted}
-              offender={offender}
-            />
-          </div>
-        )}
 
         {this.state.currentSection === 'events' && (
           <div className="fade-in">
@@ -243,6 +234,15 @@ export default class OffenderSummary extends Component<Props, State> {
         {this.state.currentSection === 'contact-list' && (
           <div className="fade-in">
             <OffenderSummaryContact
+              restricted={restricted}
+              offender={offender}
+            />
+          </div>
+        )}
+
+        {this.state.currentSection === 'details' && (
+          <div className="fade-in">
+            <OffenderSummaryDetails
               restricted={restricted}
               offender={offender}
             />
