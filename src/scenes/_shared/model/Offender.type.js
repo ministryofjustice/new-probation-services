@@ -13,6 +13,7 @@ type Alias = {
 };
 
 export type Offender = {
+  OFFENDER_ID: number,
   FIRST_NAME: string,
   SURNAME: string,
   DATE_OF_BIRTH_DATE: string,
@@ -20,5 +21,11 @@ export type Offender = {
   PNC_NUMBER: string,
   CRN: string,
   ADDRESSES: Array<Address>,
-  ALIASES: Array<Alias>
+  ALIASES: Array<Alias>,
+  CURRENT_RESTRICTION: number,
+  CURRENT_EXCLUSION: number,
+  RESTRICTION_MESSAGE: string,
+  EXCLUSION_MESSAGE: string,
+  CURRENT_REMAND_STATUS: string,
+  CURRENT_TIER: string
 };

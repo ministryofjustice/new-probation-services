@@ -1,5 +1,24 @@
 main {
   max-width: 1250px;
+  @include ie() {
+    display: block;
+  }
+}
+
+table {
+  border-spacing: 0;
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.border-bottom {
+    td {
+      vertical-align: middle;
+      height: 40px;
+      border-bottom: 1px solid black;
+    }
+  }
 }
 
 td {
@@ -16,6 +35,10 @@ td {
 
 .padding {
   padding: 15px;
+}
+
+.padding-left {
+  padding-left: 15px;
 }
 
 .center {
@@ -40,6 +63,10 @@ td {
 
 .margin-top {
   margin-top: 15px;
+
+  &.large {
+    margin-top: 20px;
+  }
 
   &.small {
     margin-top: 10px;
@@ -76,6 +103,10 @@ td {
       border-color: $link-blue transparent transparent transparent;
     }
   }
+}
+
+.align-right {
+  text-align: right;
 }
 
 .js-hidden {

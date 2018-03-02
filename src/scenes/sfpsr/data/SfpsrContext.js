@@ -1,6 +1,12 @@
-import { createContext } from 'react';
+import Context, { createContext } from 'react';
 
-const SfpsrContext = createContext({
+import type { Offender } from '../../_shared/model/Offender.type';
+
+type CurrentContext = {
+  offender: Offender
+};
+
+const SfpsrContext: Context<CurrentContext> = createContext({
   offender: void 0
 });
 

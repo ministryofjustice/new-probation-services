@@ -9,6 +9,7 @@ const Query = (
     _source: {},
     from: page === 1 ? 0 : (page - 1) * pageSize,
     size: pageSize,
+    min_score: 10,
     query: {
       bool: {
         should: [

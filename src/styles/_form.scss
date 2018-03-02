@@ -13,6 +13,13 @@
   }
 }
 
+textarea {
+  font-family: inherit;
+  @include ie() {
+    overflow: auto;
+  }
+}
+
 input[type='text'] {
   min-width: 50%;
   border: 1px solid $input-border;
@@ -38,7 +45,6 @@ input[type='checkbox'] {
   position: absolute;
   z-index: -1000;
   left: -1000px;
-  overflow: hidden;
   clip: rect(0 0 0 0);
   height: 1px;
   width: 1px;
@@ -52,7 +58,7 @@ input[type='checkbox'] {
 
   + label {
     position: relative;
-    padding-left: 40px;
+    padding-left: 45px;
     cursor: pointer;
 
     &::before {
