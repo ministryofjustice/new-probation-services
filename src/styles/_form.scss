@@ -15,6 +15,9 @@
 
 textarea {
   font-family: inherit;
+  @include ie() {
+    overflow: auto;
+  }
 }
 
 input[type='text'] {

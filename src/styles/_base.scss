@@ -17,7 +17,6 @@ body {
   font-weight: 200;
 
   @include ie() {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }

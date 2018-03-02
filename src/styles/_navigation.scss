@@ -58,6 +58,7 @@ nav {
     @include ie() {
       z-index: 0;
       flex: 0 0 $nav-width;
+      min-height: 100vh;
     }
 
     &.collapsed {
