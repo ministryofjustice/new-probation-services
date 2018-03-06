@@ -73,86 +73,140 @@ export default class OffenderSummary extends Component<Props, State> {
 
     return (
       <div className="space-top fade-in">
-        <table role="presentation">
-          <tbody>
-            <tr>
-              <td>
-                <div className="photo-holder">
-                  <img
-                    alt={
-                      'Photograph of ' +
-                      offender.SURNAME +
-                      ', ' +
-                      offender.FIRST_NAME
-                    }
-                    src={
-                      offender.GENDER_ID === 545
-                        ? '/images/placeholder_m.jpg'
-                        : '/images/placeholder_f.jpg'
-                    }
-                  />
-                </div>
-              </td>
-              <td className="padding-left">
-                <h1 className="font-large no-margin-top no-margin-bottom">
-                  {restricted
-                    ? 'Restricted access'
-                    : offender.SURNAME + ', ' + offender.FIRST_NAME}
-                </h1>
+        <div className="primary-container">
+          <div className="container-heading">
+            <h1>Offender details</h1>
+          </div>
+          <div className="container-content">
+            <div className="grid-row nested dashed">
+              <div className="grid-col">
+                <table role="presentation" className="full-width">
+                  <tbody>
+                    <tr>
+                      <td width="115">
+                        <div className="photo-holder">
+                          <img
+                            alt={
+                              'Photograph of ' +
+                              offender.SURNAME +
+                              ', ' +
+                              offender.FIRST_NAME
+                            }
+                            src={
+                              offender.GENDER_ID === 545
+                                ? '/images/placeholder_m.jpg'
+                                : '/images/placeholder_f.jpg'
+                            }
+                          />
+                        </div>
+                      </td>
+                      <td className="padding-left">
+                        <p className="no-margin-top">
+                          CRN<br />
+                          <span className="text-bold">{offender.CRN}</span>
+                        </p>
+                        <p>
+                          Full name<br />
+                          <span className="text-bold">
+                            {restricted
+                              ? 'Restricted access'
+                              : offender.SURNAME + ', ' + offender.FIRST_NAME}
+                          </span>
+                        </p>
 
-                <p className="no-margin-top no-margin-bottom">
-                  CRN:<br />
-                  <span className="text-bold">{offender.CRN}</span>
-                </p>
+                        {restricted !== 1 && (
+                          <div>
+                            <p>
+                              Date of birth<br />
+                              <span className="text-bold">
+                                {Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
+                              </span>
+                            </p>
+                            <p>
+                              Remand status<br />
+                              <span className="text-bold">
+                                {offender.CURRENT_REMAND_STATUS}
+                              </span>
+                            </p>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="grid-col">
                 {restricted !== 1 && (
-                  <p className="margin-top no-margin-bottom">
-                    Date of birth:<br />
-                    <span className="text-bold">
-                      {Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
-                    </span>
-                  </p>
+                  <div>
+                    <p className="no-margin-top">
+                      Offender manager<br />
+                      <span className="text-bold">Not allocated</span>
+                    </p>
+                    <p>
+                      LDU and team<br />
+                      <span className="text-bold">
+                        Unallocated team (N07 Division)
+                      </span>
+                    </p>
+                    <p>
+                      Tier<br />
+                      <span className="text-bold">{offender.CURRENT_TIER}</span>
+                    </p>
+                  </div>
                 )}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+              <div className="grid-col">
+                <h4>Risk profile</h4>
+              </div>
+            </div>
 
-        {restricted === 1 && (
-          <div>
-            <p>
-              {offender.CURRENT_RESTRICTION
-                ? offender.RESTRICTION_MESSAGE
-                : offender.EXCLUSION_MESSAGE}
-            </p>
+            {restricted === 1 && (
+              <div>
+                <p>
+                  {offender.CURRENT_RESTRICTION
+                    ? offender.RESTRICTION_MESSAGE
+                    : offender.EXCLUSION_MESSAGE}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {this.state.currentSection === 'events' && (
+          <div className="fade-in margin-top">
+            <OffenderSummaryEvents
+              restricted={restricted}
+              offender={offender}
+              viewClick={this.handleViewClick}
+            />
           </div>
         )}
 
-        {restricted !== 1 && (
-          <table
-            role="presentation"
-            className="full-width margin-top border-bottom">
-            <tbody>
-              <tr>
-                <td className="text-bold">Offender manager:</td>
-                <td colSpan="2">Not allocated</td>
-              </tr>
-              <tr>
-                <td className="text-bold">LDU and team:</td>
-                <td>Unallocated team (N07 Division)</td>
-                <td className="align-right">
-                  <button className="tiny">Transfer</button>
-                </td>
-              </tr>
-              <tr>
-                <td className="text-bold">Remand status:</td>
-                <td colSpan="2">{offender.CURRENT_REMAND_STATUS}</td>
-              </tr>
-              <tr>
-                <td className="text-bold">Tier:</td>
-                <td colSpan="2">{offender.CURRENT_TIER}</td>
-              </tr>
-            </tbody>
-          </table>
+        {this.state.currentSection === 'assessments' && (
+          <div className="fade-in margin-top">
+            <OffenderSummaryAssessments
+              restricted={restricted}
+              offender={offender}
+            />
+          </div>
+        )}
+
+        {this.state.currentSection === 'contact-list' && (
+          <div className="fade-in margin-top">
+            <OffenderSummaryContact
+              restricted={restricted}
+              offender={offender}
+            />
+          </div>
+        )}
+
+        {this.state.currentSection === 'details' && (
+          <div className="fade-in margin-top">
+            <OffenderSummaryDetails
+              restricted={restricted}
+              offender={offender}
+            />
+          </div>
         )}
 
         <div className="grid-row nested margin-top large">
@@ -209,45 +263,6 @@ export default class OffenderSummary extends Component<Props, State> {
             </a>
           </div>
         </div>
-
-        <p>&nbsp;</p>
-
-        {this.state.currentSection === 'events' && (
-          <div className="fade-in">
-            <OffenderSummaryEvents
-              restricted={restricted}
-              offender={offender}
-              viewClick={this.handleViewClick}
-            />
-          </div>
-        )}
-
-        {this.state.currentSection === 'assessments' && (
-          <div className="fade-in">
-            <OffenderSummaryAssessments
-              restricted={restricted}
-              offender={offender}
-            />
-          </div>
-        )}
-
-        {this.state.currentSection === 'contact-list' && (
-          <div className="fade-in">
-            <OffenderSummaryContact
-              restricted={restricted}
-              offender={offender}
-            />
-          </div>
-        )}
-
-        {this.state.currentSection === 'details' && (
-          <div className="fade-in">
-            <OffenderSummaryDetails
-              restricted={restricted}
-              offender={offender}
-            />
-          </div>
-        )}
 
         <p>&nbsp;</p>
       </div>

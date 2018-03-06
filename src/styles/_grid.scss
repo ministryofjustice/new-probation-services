@@ -1,4 +1,5 @@
 @import 'spacing';
+@import 'palette';
 
 .grid-row {
   display: flex;
@@ -12,11 +13,21 @@
 
     .grid-col {
       max-width: 400px;
-      min-width: 100px;
+      min-width: 230px;
       margin-right: $standard-space;
 
       &:last-child {
         margin-right: 0;
+      }
+    }
+
+    &.dashed {
+      .grid-col {
+        border-right: $app-bg 2px dotted;
+
+        &:last-child {
+          border-right: none;
+        }
       }
     }
   }

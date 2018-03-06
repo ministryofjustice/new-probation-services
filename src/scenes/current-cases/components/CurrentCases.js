@@ -111,7 +111,7 @@ export default class CurrentCases extends Component<Props, State> {
                 <h2>Recently viewed</h2>
               </div>
               <div className="container-content">
-                <div className="grid-row nested margin-top margin-bottom">
+                <div className="grid-row nested">
                   <div className="grid-col">
                     <OffenderPanel
                       data={this.state.currentOffenders[0]._source}
@@ -138,7 +138,7 @@ export default class CurrentCases extends Component<Props, State> {
                 <h2>Who is in court today</h2>
               </div>
               <div className="container-content">
-                <div className="grid-row nested margin-top margin-bottom">
+                <div className="grid-row nested">
                   <div className="grid-col">
                     <OffenderPanel
                       data={this.state.currentOffenders[3]._source}
@@ -165,7 +165,7 @@ export default class CurrentCases extends Component<Props, State> {
                 <h2>Due for release</h2>
               </div>
               <div className="container-content">
-                <div className="grid-row nested margin-top margin-bottom">
+                <div className="grid-row nested">
                   <div className="grid-col">
                     <OffenderPanel
                       data={this.state.currentOffenders[6]._source}

@@ -1,3 +1,5 @@
+@import 'palette';
+
 $nav-width: 250px;
 $nav-width-collapsed: 65px;
 
@@ -51,7 +53,7 @@ nav {
     overflow: hidden;
   }
   &.nav {
-    background: $nav-bg;
+    background: $dark-grey;
     flex: 0 0 $nav-width-collapsed;
     animation: flexGrow 500ms ease-out forwards;
 

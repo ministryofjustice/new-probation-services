@@ -4,17 +4,17 @@
 .primary-container,
 .secondary-container {
   background: $primary-card-bg;
-  border: $primary-borders 1px solid;
+  border: $app-bg 1px solid;
 }
 
 .primary-container {
-  .container-heading,
-  .container-content {
+  border-radius: 5px;
+  .container-heading {
+    border-bottom: $app-bg 2px solid;
     padding: 0 $standard-space;
   }
-
-  .container-heading {
-    border-bottom: $primary-borders 1px solid;
+  .container-content {
+    padding: $standard-space;
   }
 }
 
