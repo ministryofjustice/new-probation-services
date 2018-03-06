@@ -22,50 +22,63 @@ export default class OffenderPanel extends Component<Props, State> {
     const offender = this.props.data;
 
     return (
-      <div className="padding">
-        <div className="photo-holder inline">
-          <img
-            alt={
-              'Photograph of ' + offender.SURNAME + ', ' + offender.FIRST_NAME
-            }
-            src={
-              offender.GENDER_ID === 545
-                ? '/images/placeholder_m.jpg'
-                : '/images/placeholder_f.jpg'
-            }
-          />
-        </div>
-        <div className="panel header">
-          <p className="text-medium no-margin-bottom">
-            {offender.SURNAME + ', ' + offender.FIRST_NAME} -{' '}
-            {Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
-          </p>
-          <p className="margin-top small">
-            <span className="text-extra-bold">CRN: {offender.CRN}</span>
-
-            {offender.CURRENT_HIGHEST_RISK_COLOUR !== null && (
-              <span id="risk">
-                {' '}
-                | Risk{' '}
-                <span
-                  className={
-                    'risk-icon risk-' +
-                    offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+      <div className="primary-container space-between">
+        <table role="presentation">
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  className="image-offender"
+                  alt={
+                    'Photograph of ' +
+                    offender.SURNAME +
+                    ', ' +
+                    offender.FIRST_NAME
+                  }
+                  src={
+                    offender.GENDER_ID === 545
+                      ? '/images/placeholder_m.jpg'
+                      : '/images/placeholder_f.jpg'
                   }
                 />
-              </span>
-            )}
-          </p>
-          <button
-            className="tiny inline-primary"
-            onClick={() => {
-              this.props.click(offender);
-            }}>
-            View
-          </button>{' '}
-          <button className="tiny inline-secondary">Manage</button>{' '}
-          <button className="tiny">Add contact</button>
-        </div>
+              </td>
+              <td>
+                <h1>
+                  {offender.SURNAME +
+                    ', ' +
+                    offender.FIRST_NAME +
+                    ' - ' +
+                    Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
+                </h1>
+                <p className="margin-top small">
+                  <span className="text-x-bold">CRN: {offender.CRN}</span>
+
+                  {offender.CURRENT_HIGHEST_RISK_COLOUR !== null && (
+                    <span id="risk">
+                      {' '}
+                      | Risk{' '}
+                      <span
+                        className={
+                          'risk-icon risk-' +
+                          offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+                        }
+                      />
+                    </span>
+                  )}
+                </p>
+                <button
+                  className="tiny inline-primary"
+                  onClick={() => {
+                    this.props.click(offender);
+                  }}>
+                  View
+                </button>{' '}
+                <button className="tiny inline-secondary">Manage</button>{' '}
+                <button className="tiny">Add contact</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }

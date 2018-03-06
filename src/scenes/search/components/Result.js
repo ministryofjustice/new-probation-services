@@ -169,7 +169,7 @@ export default class Result extends Component<Props> {
               </td>
               <td>
                 {!restricted && (
-                  <span className="text-large">
+                  <h1>
                     <Highlighter
                       highlightClassName="highlight"
                       searchWords={searched}
@@ -182,15 +182,15 @@ export default class Result extends Component<Props> {
                         Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
                       }
                     />
-                  </span>
+                  </h1>
                 )}
 
                 {!!restricted && (
-                  <span className="text-large">
+                  <h1>
                     {data.CURRENT_RESTRICTION
                       ? 'Restricted information'
                       : 'Excluded information'}
-                  </span>
+                  </h1>
                 )}
 
                 <p className="no-margin bottom">

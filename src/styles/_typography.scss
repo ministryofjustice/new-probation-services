@@ -1,68 +1,73 @@
+@import 'spacing';
+@import 'palette';
+
+$body-size: 14;
+
+body {
+  font-size: $body-size + px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1;
+}
+
 h1 {
-  font-size: 24px;
-
-  &.text-large {
-    font-size: 32px;
-  }
-}
-
-a {
-  &.blue {
-    color: $link-blue;
-  }
-  &.grey {
-    color: $sub-nav-bg;
-  }
-  &.underline {
-    text-decoration: underline;
-  }
-  &.active-nav {
-    padding-bottom: 3px;
-    border-bottom: 5px solid $link-blue;
-  }
-}
-
-hr {
-  border: 1px solid $panel-header;
-  margin: 0 15px;
-}
-
-mark {
-  background-color: $highlight;
-}
-
-.phase-tag {
-  background: $phase-banner;
-  padding: 5px 10px;
-  font-size: 14px;
+  font-size: ($body-size + 4) + px;
   font-weight: 400;
-  color: white;
-  @include fade-in;
-
-  &.prototype {
-    background: $phase-banner-prototype;
-  }
+  margin: $standard-space 0;
 }
 
-.text-large {
-  font-size: 24px;
-}
-
-.text-medium {
-  font-size: 20px;
-}
-
-.text-small {
-  font-size: 12px;
-}
-
-.text-bold {
-  font-weight: 400;
-}
-
-.text-extra-bold {
+h2,
+h3 {
+  font-size: ($body-size + 1) + px;
   font-weight: 600;
 }
 
-.highlight {
+h4 {
+  font-size: $body-size + px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+h5,
+h6 {
+  font-size: $body-size + px;
+  font-weight: 700;
+}
+
+hr {
+  border: 1px solid $primary-borders;
+  margin: 0 $double-space;
+}
+
+mark {
+  background-color: $light-yellow;
+}
+
+.text-large {
+  font-size: ($body-size + 3) px;
+}
+
+.text-x-large {
+  font-size: ($body-size + 5) px;
+}
+
+.text-xx-large {
+  font-size: ($body-size + 10) px;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-x-bold {
+  font-weight: 800;
 }

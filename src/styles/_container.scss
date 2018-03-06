@@ -1,0 +1,12 @@
+@import 'palette';
+@import 'spacing';
+
+.primary-container {
+  background: $primary-card-bg;
+  border: $primary-borders 1px solid;
+  padding: 0 $standard-space;
+
+  &.space-between {
+    margin-right: $standard-space;
+  }
+}

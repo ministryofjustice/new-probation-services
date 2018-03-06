@@ -286,7 +286,7 @@ export default class Search extends Component<Props, State> {
             this.state.hits <= 0 && <div>&nbsp;</div>}
         </div>
         <div>
-          <h2>
+          <p className="text-grey">
             {this.state.searchParams.length > 0 &&
               this.state.hits !== -1 && (
                 <span>
@@ -305,7 +305,7 @@ export default class Search extends Component<Props, State> {
                   )}
                 </span>
               )}{' '}
-          </h2>
+          </p>
 
           {this.state.serverError && (
             <p className="error-message">
