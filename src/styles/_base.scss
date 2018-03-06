@@ -17,6 +17,11 @@ body {
   background: $app-bg;
   color: $body-text;
   font-weight: 200;
+
+  @include ie() {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 main {

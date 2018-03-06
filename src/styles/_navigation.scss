@@ -51,7 +51,6 @@ nav {
     overflow: hidden;
   }
   &.nav {
-    z-index: 2;
     background: $nav-bg;
     flex: 0 0 $nav-width-collapsed;
     animation: flexGrow 500ms ease-out forwards;
@@ -59,6 +58,7 @@ nav {
     @include ie() {
       z-index: 0;
       flex: 0 0 $nav-width;
+      min-height: 100vh;
     }
 
     &.collapsed {
