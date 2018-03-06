@@ -82,100 +82,109 @@ export default class CurrentCases extends Component<Props, State> {
   render() {
     return (
       <div className="fade-in">
-        <div className="space-top panel header">
-          <h1 className="text-large">
-            {new Date().toLocaleDateString('en-GB')}
-          </h1>
-          <p className="text-large">Manchester and Salford Magistrates Court</p>
-        </div>
-
-        <p>&nbsp;</p>
-
-        <form className="form-group center" onSubmit={this.submitForm}>
-          <label htmlFor="search">Search for an offender</label>
-          <br />
-          <input
-            type="text"
-            name="search"
-            className="form-control inline center"
-            value={this.state.searchParams}
-            onChange={this.handleChange}
-          />
-          <button type="submit" className="input-bumper">
-            <span className="far fa-search" />
-          </button>
+        <form
+          className="primary-container margin-top"
+          onSubmit={this.submitForm}>
+          <div className="container-heading">
+            <h1>
+              <label htmlFor="search">Search for an offender</label>
+            </h1>
+          </div>
+          <div className="container-content">
+            <input
+              type="text"
+              name="search"
+              className="form-control inline center"
+              value={this.state.searchParams}
+              onChange={this.handleChange}
+            />
+            <button type="submit" className="input-bumper">
+              <span className="far fa-search" />
+            </button>
+          </div>
         </form>
 
         {this.state.currentOffenders.length > 0 && (
           <div>
-            <p>&nbsp;</p>
-
-            <h2>Recently viewed</h2>
-
-            <div className="grid-row nested">
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[0]._source}
-                  click={this.handleClick}
-                />
+            <div className="primary-container margin-top">
+              <div className="container-heading">
+                <h2>Recently viewed</h2>
               </div>
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[4]._source}
-                  click={this.handleClick}
-                />
-              </div>
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[5]._source}
-                  click={this.handleClick}
-                />
-              </div>
-            </div>
-
-            <h2>Who is in court today</h2>
-
-            <div className="grid-row nested">
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[3]._source}
-                  click={this.handleClick}
-                />
-              </div>
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[4]._source}
-                  click={this.handleClick}
-                />
-              </div>
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[5]._source}
-                  click={this.handleClick}
-                />
+              <div className="container-content">
+                <div className="grid-row nested margin-top margin-bottom">
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[0]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[4]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[5]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-
-            <h2>Due for release</h2>
-
-            <div className="grid-row nested">
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[6]._source}
-                  click={this.handleClick}
-                />
+            <div className="primary-container margin-top">
+              <div className="container-heading">
+                <h2>Who is in court today</h2>
               </div>
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[1]._source}
-                  click={this.handleClick}
-                />
+              <div className="container-content">
+                <div className="grid-row nested margin-top margin-bottom">
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[3]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[4]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[5]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="grid-col">
-                <OffenderPanel
-                  data={this.state.currentOffenders[2]._source}
-                  click={this.handleClick}
-                />
+            </div>
+            <div className="primary-container margin-top">
+              <div className="container-heading">
+                <h2>Due for release</h2>
+              </div>
+              <div className="container-content">
+                <div className="grid-row nested margin-top margin-bottom">
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[6]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[1]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                  <div className="grid-col">
+                    <OffenderPanel
+                      data={this.state.currentOffenders[2]._source}
+                      click={this.handleClick}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

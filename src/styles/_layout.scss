@@ -1,3 +1,5 @@
+@import 'spacing';
+
 main {
   max-width: 1250px;
   @include ie() {
@@ -62,7 +64,7 @@ td {
 }
 
 .margin-top {
-  margin-top: 15px;
+  margin-top: $standard-space;
 
   &.large {
     margin-top: 20px;
@@ -71,6 +73,10 @@ td {
   &.small {
     margin-top: 10px;
   }
+}
+
+.margin-bottom {
+  margin-bottom: $standard-space;
 }
 
 .no-margin-top {

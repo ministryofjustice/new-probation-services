@@ -1,12 +1,23 @@
 @import 'palette';
 @import 'spacing';
 
-.primary-container {
+.primary-container,
+.secondary-container {
   background: $primary-card-bg;
   border: $primary-borders 1px solid;
-  padding: 0 $standard-space;
+}
 
-  &.space-between {
-    margin-right: $standard-space;
+.primary-container {
+  .container-heading,
+  .container-content {
+    padding: 0 $standard-space;
   }
+
+  .container-heading {
+    border-bottom: $primary-borders 1px solid;
+  }
+}
+
+.secondary-container {
+  padding: 0 $standard-space;
 }

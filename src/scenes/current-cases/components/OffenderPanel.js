@@ -22,7 +22,7 @@ export default class OffenderPanel extends Component<Props, State> {
     const offender = this.props.data;
 
     return (
-      <div className="primary-container space-between">
+      <div className="secondary-container">
         <table role="presentation">
           <tbody>
             <tr>
