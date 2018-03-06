@@ -23,7 +23,7 @@
 
     &.dashed {
       .grid-col {
-        border-right: $app-bg 2px dotted;
+        border-right: $primary-bg 2px dotted;
 
         &:last-child {
           border-right: none;
@@ -39,7 +39,7 @@
   &.side {
     flex: 0.00001;
     animation: flexSidebar 500ms ease-out forwards;
-    background: $panel-sidebar;
+    background: $app-bg;
     padding: 15px;
 
     @include ie() {

@@ -4,13 +4,13 @@
 .primary-container,
 .secondary-container {
   background: $primary-card-bg;
-  border: $app-bg 1px solid;
+  border: $primary-bg 1px solid;
 }
 
 .primary-container {
   border-radius: 5px;
   .container-heading {
-    border-bottom: $app-bg 2px solid;
+    border-bottom: $primary-bg 2px solid;
     padding: 0 $standard-space;
   }
   .container-content {
@@ -20,4 +20,8 @@
 
 .secondary-container {
   padding: 0 $standard-space;
+}
+
+.tertiary-container {
+  background: $app-bg;
 }
