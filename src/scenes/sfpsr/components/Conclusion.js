@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 import SfpsrContext from '../data/SfpsrContext';
+import SfpsrNavigation from './SfpsrNavigation';
 
 type Props = {
   history: Array<any>
@@ -41,24 +42,35 @@ export default class Conclusion extends Component<Props> {
           const offender = context.offender;
 
           return (
-            <div className="space-top fade-in">
-              <h1>Conclusion</h1>
-              <p>&nbsp;</p>
-
-              <div className="form-group">
-                <label htmlFor="sentence">Enter a proposed sentence</label>
-                <textarea
-                  name="sentence"
-                  className="form-control no-border"
-                  placeholder="Start typing here..."
-                />
+            <div className="grid-row">
+              <div className="grid-col sub-nav omit-tablet">
+                <SfpsrNavigation offender={context.offender} />
               </div>
+              <div className="grid-col">
+                <div className="primary-container">
+                  <div className="container-heading">
+                    <h1>Conclusion</h1>
+                  </div>
+                  <div className="container-content">
+                    <div className="form-group">
+                      <label htmlFor="sentence">
+                        Enter a proposed sentence
+                      </label>
+                      <textarea
+                        name="sentence"
+                        className="form-control no-border"
+                        placeholder="Start typing here..."
+                      />
+                    </div>
 
-              <button
-                className="primary"
-                onClick={() => this.continueClick(offender)}>
-                Save &amp; continue
-              </button>
+                    <button
+                      className="primary"
+                      onClick={() => this.continueClick(offender)}>
+                      Save &amp; continue
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           );
         }}

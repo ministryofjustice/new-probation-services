@@ -43,16 +43,10 @@ export default class Navigation extends Component<Props, State> {
    */
   render() {
     return (
-      <div
-        id="main-container-navigation"
-        className={
-          window.location.pathname.indexOf('/sfpsr') !== -1
-            ? 'nav collapsed omit-mobile'
-            : 'nav omit-mobile'
-        }>
+      <div id="main-container-navigation" className="nav omit-mobile">
         <nav className="fixed fade-in">
           {this.state.currentOffenders.length > 0 && (
-            <div className="omit-collapsed margin-top">
+            <div className="omit-tablet margin-top">
               <ul>
                 <li>Current Offender List</li>
               </ul>
@@ -110,28 +104,35 @@ export default class Navigation extends Component<Props, State> {
             </div>
           )}
 
+          <p className="omit-desktop">&nbsp;</p>
+
           <ul>
             <li>
               <Link to="/search">
-                <span className="far fa-search" /> Search
+                <span className="far fa-search" />
+                <span className="omit-tablet"> Search</span>
               </Link>
             </li>
             <li>
               <Link to="/">
-                <span className="far fa-clipboard" /> Cases
+                <span className="far fa-clipboard" />
+                <span className="omit-tablet"> Cases</span>
               </Link>
             </li>
             <li>
-              <span className="far fa-file-text-o" /> Documents
+              <span className="far fa-file-text-o" />
+              <span className="omit-tablet"> Documents</span>
             </li>
             <li>
-              <span className="far fa-tags" /> Tags
+              <span className="far fa-tags" />
+              <span className="omit-tablet"> Tags</span>
             </li>
           </ul>
           <hr />
           <ul>
             <li>
-              <span className="far fa-bell-o" /> Alerts &amp; notifications
+              <span className="far fa-bell-o" />
+              <span className="omit-tablet"> Alerts &amp; notifications</span>
             </li>
           </ul>
 
@@ -139,7 +140,8 @@ export default class Navigation extends Component<Props, State> {
           <ul>
             <li>
               <Link to="/feedback">
-                <span className="far fa-comment" /> Give feedback
+                <span className="far fa-comment" />
+                <span className="omit-tablet"> Give feedback</span>
               </Link>
             </li>
           </ul>

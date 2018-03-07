@@ -1,6 +1,8 @@
 @import './base/palette';
 @import './base/palette';
 
+// @FIXME: Needs refactoring!!
+
 $nav-width: 250px;
 $nav-width-collapsed: 65px;
 
@@ -50,8 +52,7 @@ nav {
   }
   &.nav {
     background: $app-navigation;
-    flex: 0 0 $nav-width-collapsed;
-    animation: flexGrow 500ms ease-out forwards;
+    flex: 0 0 $nav-width;
 
     @include ie() {
       z-index: 0;
@@ -60,23 +61,11 @@ nav {
     }
 
     &.collapsed {
-      flex: 0 0 $nav-width;
-      animation: flexShrink 500ms ease-out forwards;
-      @include ie() {
-        flex: 0 0 $nav-width-collapsed;
-      }
+      flex: 0 0 $nav-width-collapsed;
     }
 
     @include breakpoint(tablet) {
-      flex: 0 0 $nav-width;
-      animation: flexShrink 500ms ease-out forwards;
-      @include ie() {
-        flex: 0 0 $nav-width-collapsed;
-      }
-
-      li {
-        color: transparent;
-      }
+      flex: 0 0 $nav-width-collapsed;
 
       .far {
         color: $app-navigation-content;
@@ -88,23 +77,5 @@ nav {
         width: 45px;
       }
     }
-  }
-
-  .omit-collapsed {
-    @include breakpoint(tablet) {
-      display: none;
-    }
-  }
-}
-
-@keyframes flexGrow {
-  to {
-    flex: 0 0 $nav-width;
-  }
-}
-
-@keyframes flexShrink {
-  to {
-    flex: 0 0 $nav-width-collapsed;
   }
 }

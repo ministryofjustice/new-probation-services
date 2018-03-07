@@ -3,18 +3,14 @@
 $nav-width: 250px;
 
 .sub-nav {
+  max-width: $nav-width;
   z-index: 3;
   background: $sub-nav-bg;
-  flex: 0.00001;
-  animation: flexGrow 500ms ease-out forwards;
-
-  @include ie() {
-    flex: 0 0 $nav-width;
-  }
+  margin-left: -$standard-space;
+  margin-right: $standard-space;
 
   nav {
     color: $sub-nav-text;
-    @include fade-in;
 
     hr {
       border: 1px solid rgba(0, 0, 0, 0.1);

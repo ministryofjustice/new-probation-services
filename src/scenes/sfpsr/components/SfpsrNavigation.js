@@ -11,7 +11,7 @@ export default class SfpsrNavigation extends Component<Props> {
     const offender = this.props.offender;
 
     return (
-      <div className="sub-nav omit-mobile">
+      <div>
         <nav className="margin-top">
           <Link
             to={{

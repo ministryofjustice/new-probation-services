@@ -65,6 +65,13 @@ td {
   }
 }
 
+.omit-desktop {
+  display: none;
+  @include breakpoint(tablet) {
+    display: inline-block !important;
+  }
+}
+
 .omit-tablet {
   @include breakpoint(tablet) {
     display: none;
