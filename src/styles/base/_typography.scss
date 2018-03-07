@@ -1,9 +1,14 @@
-$body-size: 14;
+$body-size: 16;
+$body-size-mobile: 14;
 
 body {
   font-size: $body-size + px;
   font-weight: 400;
   line-height: 1.4;
+
+  @include breakpoint(mobile) {
+    font-size: $body-size-mobile + px;
+  }
 }
 
 a {
@@ -29,6 +34,10 @@ h1 {
   font-size: ($body-size + 4) + px;
   font-weight: 400;
   margin: $standard-space 0;
+
+  @include breakpoint(mobile) {
+    font-size: ($body-size-mobile + 2) + px;
+  }
 }
 
 h2,
@@ -36,18 +45,30 @@ h3 {
   font-size: ($body-size + 1) + px;
   font-weight: 600;
   margin: $standard-space 0;
+
+  @include breakpoint(mobile) {
+    font-size: ($body-size-mobile + 1) + px;
+  }
 }
 
 h4 {
   font-size: $body-size + px;
   font-weight: 600;
   text-transform: uppercase;
+
+  @include breakpoint(mobile) {
+    font-size: $body-size-mobile + px;
+  }
 }
 
 h5,
 h6 {
   font-size: $body-size + px;
   font-weight: 700;
+
+  @include breakpoint(mobile) {
+    font-size: $body-size-mobile + px;
+  }
 }
 
 hr {
@@ -69,14 +90,26 @@ mark {
 
 .text-large {
   font-size: ($body-size + 3) + px;
+
+  @include breakpoint(mobile) {
+    font-size: ($body-size-mobile + 2) + px;
+  }
 }
 
 .text-x-large {
   font-size: ($body-size + 5) + px;
+
+  @include breakpoint(mobile) {
+    font-size: ($body-size-mobile + 3) + px;
+  }
 }
 
 .text-xx-large {
   font-size: ($body-size + 10) + px;
+
+  @include breakpoint(mobile) {
+    font-size: ($body-size-mobile + 5) + px;
+  }
 }
 
 .text-bold {
