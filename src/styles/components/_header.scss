@@ -1,0 +1,29 @@
+header {
+  position: fixed;
+  background: $app-header;
+  width: 100%;
+  height: $header-space;
+  z-index: 999;
+
+  .logo {
+    width: 36px;
+    height: 36px;
+    margin: $half-space $standard-space;
+
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
+
+  .hamburger,
+  .logo-type {
+    position: absolute;
+    top: $standard-space;
+  }
+
+  .logo-type {
+    @include breakpoint(mobile) {
+      margin-left: $double-space;
+    }
+  }
+}

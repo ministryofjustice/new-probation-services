@@ -42,51 +42,52 @@ export default class Feedback extends Component<Props, State> {
 
   render() {
     return (
-      <div className="space-top fade-in">
-        <h1>Give feedback</h1>
+      <div className="primary-container fade-in">
+        <div className="container-heading">
+          <h1>Give feedback</h1>
+        </div>
+        <div className="container-content">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label>
+                1. What were your first impressions of the new service?
+                <textarea
+                  id="impressions"
+                  name="impressions"
+                  className="form-control wide"
+                  value={this.state.impressions || ''}
+                  onChange={this.handleImpressions}
+                />
+              </label>
 
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>
-              1. What were your first impressions of the new service?
-              <textarea
-                id="impressions"
-                name="impressions"
-                className="form-control wide"
-                value={this.state.impressions || ''}
-                onChange={this.handleImpressions}
-              />
-            </label>
+              <p>&nbsp;</p>
 
-            <p>&nbsp;</p>
+              <label className="form-label-bold">
+                2. If you could change anything what would it be?
+                <textarea
+                  id="feedback"
+                  name="feedback"
+                  className="form-control wide"
+                  value={this.state.feedback || ''}
+                  onChange={this.handleFeedback}
+                />
+              </label>
+            </div>
 
-            <label className="form-label-bold">
-              2. If you could change anything what would it be?
-              <textarea
-                id="feedback"
-                name="feedback"
-                className="form-control wide"
-                value={this.state.feedback || ''}
-                onChange={this.handleFeedback}
-              />
-            </label>
-          </div>
+            <p>
+              This is a very early stage test for a new kind of web-based
+              application for the Probation Service.
+            </p>
+            <p>
+              This test does not use any real offender data or store any data in
+              any way.
+            </p>
 
-          <p>
-            This is a very early stage test for a new kind of web-based
-            application for the Probation Service.
-          </p>
-          <p>
-            This test does not use any real offender data or store any data in
-            any way.
-          </p>
-
-          <p>&nbsp;</p>
-
-          <button className="primary" type="submit">
-            Send feedback
-          </button>
-        </form>
+            <button className="margin-top primary" type="submit">
+              Send feedback
+            </button>
+          </form>
+        </div>
 
         {this.state.doRedirect && <Redirect to="/" />}
       </div>

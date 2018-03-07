@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import SfpsrContext from '../data/SfpsrContext';
 import type { Offender } from '../../_shared/model/Offender.type';
+import SfpsrNavigation from './SfpsrNavigation';
 
 type Props = {
   history: Array<any>
@@ -36,31 +37,34 @@ export default class Start extends Component<Props> {
       <SfpsrContext.Consumer>
         {context => {
           return (
-            <div className="space-top fade-in wait">
-              <h1 className="text-large">Short Format Pre-sentence Report</h1>
+            <div>
+              <SfpsrNavigation offender={context.offender} />
+              <div className="space-top fade-in wait">
+                <h1 className="text-large">Short Format Pre-sentence Report</h1>
 
-              <p>&nbsp;</p>
+                <p>&nbsp;</p>
 
-              <h2>Never lose your work again</h2>
-              <p>This service saves your report as you write</p>
+                <h2>Never lose your work again</h2>
+                <p>This service saves your report as you write</p>
 
-              <p>&nbsp;</p>
+                <p>&nbsp;</p>
 
-              <p>You can:</p>
+                <p>You can:</p>
 
-              <ul>
-                <li>save drafts or completed reports</li>
-                <li>update the offender's name, address and other details</li>
-                <li>access guidance to help you fill in the report</li>
-              </ul>
+                <ul>
+                  <li>save drafts or completed reports</li>
+                  <li>update the offender's name, address and other details</li>
+                  <li>access guidance to help you fill in the report</li>
+                </ul>
 
-              <p>&nbsp;</p>
+                <p>&nbsp;</p>
 
-              <button
-                className="primary"
-                onClick={() => this.startClick(context.offender)}>
-                Start now
-              </button>
+                <button
+                  className="primary"
+                  onClick={() => this.startClick(context.offender)}>
+                  Start now
+                </button>
+              </div>
             </div>
           );
         }}

@@ -241,98 +241,110 @@ export default class Search extends Component<Props, State> {
   render() {
     return (
       <div>
-        <div className="panel header space-top">
-          <h1>Search for an offender</h1>
+        <div className="primary-container">
+          <div className="container-heading">
+            <h1>Search for an offender</h1>
+          </div>
 
-          <form
-            onSubmit={event => {
-              event.preventDefault();
-            }}>
-            <label>
-              <input
-                id="searchParams"
-                className="form-control center"
-                placeholder="Enter names, addresses, date of birth, ID numbers and more..."
-                type="text"
-                value={this.state.searchParams}
-                onChange={this.handleChange}
-              />
-            </label>
-          </form>
+          <div className="container-content">
+            <form
+              onSubmit={event => {
+                event.preventDefault();
+              }}>
+              <label>
+                <input
+                  id="searchParams"
+                  className="form-control"
+                  placeholder="Enter names, addresses, date of birth, ID numbers and more..."
+                  type="text"
+                  value={this.state.searchParams}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </form>
 
-          {this.state.suggestions.length > 0 && (
-            <p>
-              Did you mean{' '}
-              <Suggestions
-                suggestions={this.state.suggestions}
-                click={this.handleSuggestion}
-              />?
-            </p>
-          )}
-
-          {this.state.searchParams.length >= 2 &&
-            this.state.hits !== -1 && (
-              <p className="text-bold">
-                Can't find who you are looking for?{' '}
-                <a
-                  className="clickable blue"
-                  onClick={this.handleNewOffenderClick}>
-                  Add a new offender
-                </a>
+            {this.state.suggestions.length > 0 && (
+              <p>
+                Did you mean{' '}
+                <Suggestions
+                  suggestions={this.state.suggestions}
+                  click={this.handleSuggestion}
+                />?
               </p>
             )}
 
-          {this.state.searchParams.length === 0 &&
-            this.state.hits <= 0 && <div>&nbsp;</div>}
-        </div>
-        <div>
-          <p className="text-grey">
-            {this.state.searchParams.length > 0 &&
+            {this.state.searchParams.length >= 2 &&
               this.state.hits !== -1 && (
-                <span>
-                  {this.state.hits} results found
-                  {this.state.hits > this.pageSize && (
-                    <span>
-                      , showing{' '}
-                      {this.state.currentPage === 1
-                        ? 1
-                        : (this.state.currentPage - 1) * this.pageSize + 1}{' '}
-                      to{' '}
-                      {this.state.currentPage * this.pageSize > this.state.hits
-                        ? this.state.hits
-                        : this.state.currentPage * this.pageSize}
-                    </span>
-                  )}
-                </span>
-              )}{' '}
-          </p>
+                <p className="text-bold">
+                  Can't find who you are looking for?{' '}
+                  <a
+                    className="active-link"
+                    onClick={this.handleNewOffenderClick}>
+                    Add a new offender
+                  </a>
+                </p>
+              )}
 
-          {this.state.serverError && (
-            <p className="error-message">
-              The server has encountered an error.
-            </p>
-          )}
-
-          {this.state.results.map((result, i) => (
-            <div key={i}>
-              <Result
-                id={i}
-                params={this.state.searchParams}
-                data={result._source}
-                click={this.handleClick}
-                contact={this.handleContact}
-              />
-            </div>
-          ))}
-
-          {this.state.hits > this.pageSize && (
-            <Pagination
-              state={this.state}
-              pageSize={this.pageSize}
-              changePage={this.changePage}
-            />
-          )}
+            {this.state.searchParams.length === 0 &&
+              this.state.hits <= 0 && <div>&nbsp;</div>}
+          </div>
         </div>
+
+        {this.state.searchParams.length > 0 &&
+          this.state.hits !== -1 && (
+            <div className="primary-container">
+              <div className="container-heading">
+                <h1>
+                  Search results
+                  <span>
+                    {' - ' + this.state.hits} results found
+                    {this.state.hits > this.pageSize && (
+                      <span>
+                        , showing{' '}
+                        {this.state.currentPage === 1
+                          ? 1
+                          : (this.state.currentPage - 1) * this.pageSize +
+                            1}{' '}
+                        to{' '}
+                        {this.state.currentPage * this.pageSize >
+                        this.state.hits
+                          ? this.state.hits
+                          : this.state.currentPage * this.pageSize}
+                      </span>
+                    )}
+                  </span>
+                </h1>
+              </div>
+
+              <div className="container-content">
+                {this.state.serverError && (
+                  <p className="error-message">
+                    The server has encountered an error.
+                  </p>
+                )}
+
+                {this.state.results.map((result, i) => (
+                  <div key={i} className="secondary-container margin-bottom">
+                    <Result
+                      id={i}
+                      params={this.state.searchParams}
+                      data={result._source}
+                      click={this.handleClick}
+                      contact={this.handleContact}
+                    />
+                  </div>
+                ))}
+
+                {this.state.hits > this.pageSize && (
+                  <Pagination
+                    state={this.state}
+                    pageSize={this.pageSize}
+                    changePage={this.changePage}
+                  />
+                )}
+              </div>
+            </div>
+          )}
 
         <p>&nbsp;</p>
       </div>

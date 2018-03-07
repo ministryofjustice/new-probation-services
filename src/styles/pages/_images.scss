@@ -1,0 +1,26 @@
+@import '../base/palette';
+@import '../base/spacing';
+
+.image-offender {
+  margin: $standard-space $standard-space $standard-space 0;
+}
+
+.photo-holder {
+  width: 100px;
+  height: 120px;
+  background: $light-grey;
+
+  &.inline {
+    position: relative;
+    bottom: -10px;
+  }
+
+  &.align-left {
+    margin: 0 15px 15px 15px;
+  }
+
+  &.small {
+    width: 50px;
+    height: 60px;
+  }
+}

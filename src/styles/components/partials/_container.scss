@@ -1,5 +1,5 @@
-@import 'palette';
-@import 'spacing';
+@import '../../base/palette';
+@import '../../base/spacing';
 
 .primary-container,
 .secondary-container {
@@ -8,6 +8,7 @@
 }
 
 .primary-container {
+  margin-top: $standard-space;
   border-radius: 5px;
   .container-heading {
     border-bottom: $primary-bg 2px solid;

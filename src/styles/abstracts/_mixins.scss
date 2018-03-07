@@ -1,3 +1,11 @@
+// Detect Internet Explorer
+@mixin ie() {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+// Breakpoints
 @mixin breakpoint($class) {
   @if $class == mobile {
     @media only screen and (max-width: 640px) {
@@ -12,6 +20,6 @@
       @content;
     }
   } @else {
-    @warn "Breakpoint mixin supports: mobile, tablet, desktop";
+    @warn 'Breakpoint mixin supports: mobile, tablet, desktop';
   }
 }

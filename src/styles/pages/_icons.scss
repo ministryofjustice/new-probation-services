@@ -1,3 +1,7 @@
+@import '../base/palette';
+
+$fa-font-path: './styles/vendors/webfonts';
+
 @font-face {
   font-family: 'Font Awesome 5 Free';
   font-style: normal;
@@ -16,26 +20,6 @@
   font-weight: 400;
 }
 
-.photo-holder {
-  width: 100px;
-  height: 120px;
-  background: $photo-holder;
-
-  &.inline {
-    position: relative;
-    bottom: -10px;
-  }
-
-  &.align-left {
-    margin: 0 15px 15px 15px;
-  }
-
-  &.small {
-    width: 50px;
-    height: 60px;
-  }
-}
-
 .risk-icon {
   display: inline-block;
   position: relative;
@@ -47,12 +31,12 @@
   padding: 0;
 
   &.risk-green {
-    background: $risk-green;
+    background: $green;
   }
   &.risk-amber {
-    background: $risk-yellow;
+    background: $yellow;
   }
   &.risk-red {
-    background: $risk-red;
+    background: $red;
   }
 }

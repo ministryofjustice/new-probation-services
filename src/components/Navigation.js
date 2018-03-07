@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../assets/logo.svg';
-
 type Props = {};
 type State = {
   currentOffenders: Array<any>
@@ -46,32 +44,15 @@ export default class Navigation extends Component<Props, State> {
   render() {
     return (
       <div
+        id="main-container-navigation"
         className={
           window.location.pathname.indexOf('/sfpsr') !== -1
-            ? 'grid-col nav collapsed omit-mobile'
-            : 'grid-col nav omit-mobile'
+            ? 'nav collapsed omit-mobile'
+            : 'nav omit-mobile'
         }>
         <nav className="fixed fade-in">
-          <table role="presentation">
-            <tbody>
-              <tr>
-                <td>
-                  <Link to="/">
-                    <img src={logo} className="logo" alt="logo" />
-                  </Link>
-                </td>
-                <td className="middle">
-                  <Link to="/feedback">
-                    <span className="phase-tag prototype">PROTOTYPE</span>
-                  </Link>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
           {this.state.currentOffenders.length > 0 && (
-            <div className="omit-report">
-              <hr />
+            <div className="omit-collapsed margin-top">
               <ul>
                 <li>Current Offender List</li>
               </ul>
@@ -125,10 +106,10 @@ export default class Navigation extends Component<Props, State> {
                   </li>
                 </Link>
               </ul>
+              <hr />
             </div>
           )}
 
-          <hr />
           <ul>
             <li>
               <Link to="/search">
@@ -151,6 +132,15 @@ export default class Navigation extends Component<Props, State> {
           <ul>
             <li>
               <span className="far fa-bell-o" /> Alerts &amp; notifications
+            </li>
+          </ul>
+
+          <hr />
+          <ul>
+            <li>
+              <Link to="/feedback">
+                <span className="far fa-comment" /> Give feedback
+              </Link>
             </li>
           </ul>
         </nav>

@@ -1,29 +1,43 @@
-@import './styles/fontawesome/variables';
-@import './styles/fontawesome/mixins';
-@import './styles/fontawesome/core';
-@import './styles/fontawesome/larger';
-@import './styles/fontawesome/fixed-width';
-@import './styles/fontawesome/list';
-@import './styles/fontawesome/bordered-pulled';
-@import './styles/fontawesome/animated';
-@import './styles/fontawesome/rotated-flipped';
-@import './styles/fontawesome/stacked';
-@import './styles/fontawesome/icons';
-@import './styles/fontawesome/screen-reader';
+// Vendors
+@import 'styles/vendors/fontawesome/variables';
+@import 'styles/vendors/fontawesome/mixins';
+@import 'styles/vendors/fontawesome/core';
+@import 'styles/vendors/fontawesome/larger';
+@import 'styles/vendors/fontawesome/fixed-width';
+@import 'styles/vendors/fontawesome/list';
+@import 'styles/vendors/fontawesome/bordered-pulled';
+@import 'styles/vendors/fontawesome/animated';
+@import 'styles/vendors/fontawesome/rotated-flipped';
+@import 'styles/vendors/fontawesome/stacked';
+@import 'styles/vendors/fontawesome/icons';
+@import 'styles/vendors/fontawesome/screen-reader';
 
-@import './styles/utils';
-@import './styles/animation';
-@import './styles/breakpoints';
+// Abstracts
+@import './styles/abstracts/abstracts';
+
+// Base
+@import './styles/base/base';
+
+// Layout
+@import './styles/layout/display';
+@import './styles/layout/grid';
+@import './styles/layout/standard';
+@import './styles/layout/sub-navigation';
+
+// Components
+@import './styles/components/partials/container';
+@import './styles/components/header';
+
+// Pages
+@import './styles/pages/icons';
+@import './styles/pages/images';
+
+// Themes
+
+// @TODO: Refactor these
 @import './styles/colours';
-@import './styles/base';
 @import './styles/form';
-@import './styles/grid';
-@import './styles/icons';
 @import './styles/layout';
 @import './styles/navigation';
 @import './styles/panel';
 @import './styles/timeline';
-@import './styles/typography';
-
-@import './styles/container';
-@import './styles/images';

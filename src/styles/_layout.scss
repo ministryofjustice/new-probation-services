@@ -1,4 +1,4 @@
-@import 'spacing';
+@import 'base/spacing';
 
 main {
   max-width: 1250px;
@@ -32,15 +32,27 @@ td {
 }
 
 .space-top {
-  margin-top: 15px;
+  margin-top: $standard-space;
 }
 
 .padding {
-  padding: 15px;
+  padding: $standard-space;
 }
 
 .padding-left {
-  padding-left: 15px;
+  padding-left: $standard-space;
+
+  &.half {
+    padding-left: $half-space;
+  }
+}
+
+.padding-right {
+  padding-right: $standard-space;
+
+  &.half {
+    padding-right: $half-space;
+  }
 }
 
 .center {
@@ -60,7 +72,7 @@ td {
 }
 
 .pad-right {
-  padding-right: 5px;
+  padding-right: $half-space;
 }
 
 .margin-top {

@@ -1,0 +1,6 @@
+.mobile-only {
+  display: none;
+  @include breakpoint(mobile) {
+    display: inline-block;
+  }
+}

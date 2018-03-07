@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 type Props = {
-  location: Object
+  offender: Object
 };
 
 export default class SfpsrNavigation extends Component<Props> {
   render() {
-    const offender = this.props.location.state.offender;
+    const offender = this.props.offender;
 
     return (
-      <div className="grid-col sub-nav omit-mobile">
-        <nav className="space-top">
+      <div className="sub-nav omit-mobile">
+        <nav className="margin-top">
           <Link
             to={{
               pathname: '/offender-summary',
