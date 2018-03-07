@@ -54,7 +54,7 @@ export default class RiskAssessment extends Component<Props> {
                   <div className="container-content">
                     <div className="form-group">
                       <label htmlFor="reoffending">
-                        likelihood of reoffending
+                        Likelihood of reoffending
                       </label>
                       <textarea
                         name="reoffending"
