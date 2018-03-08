@@ -2,12 +2,20 @@
 @import '../../base/spacing';
 
 .primary-container,
-.secondary-container {
+.secondary-container,
+.error-container,
+.warning-container {
   background: $primary-card-bg;
   border: $primary-bg 1px solid;
+  &.tertiary {
+    margin-left: $standard-space;
+  }
 }
 
-.primary-container {
+.primary-container,
+.error-container,
+.warning-container {
+  max-width: 1250px;
   margin-top: $standard-space;
   border-radius: 5px;
   .container-heading {
@@ -19,10 +27,34 @@
   }
 }
 
+.error-container {
+  background: $light-red;
+  .container-heading,
+  .container-content {
+    color: $dark-red;
+  }
+}
+
+.warning-container {
+  background: $light-yellow;
+  .container-heading,
+  .container-content {
+    color: $dark-yellow;
+  }
+}
+
 .secondary-container {
   padding: 0 $standard-space;
 }
 
 .tertiary-container {
-  background: $app-bg;
+  margin-top: $standard-space;
+  border-radius: 5px;
+  padding: $standard-space;
+  background: $tertiary-card-bg;
+  margin-left: $standard-space;
+
+  .secondary-container {
+    background: $primary-bg;
+  }
 }

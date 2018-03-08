@@ -6,7 +6,6 @@
   flex-direction: row;
   min-height: 100vh;
   flex-wrap: wrap;
-  max-width: 1750px;
 
   &.nested {
     min-height: 0;
@@ -36,20 +35,11 @@
 .grid-col {
   flex: 1;
 
-  &.side {
-    flex: 0.00001;
-    animation: flexSidebar 500ms ease-out forwards;
-    background: $app-bg;
-    padding: 15px;
-
-    @include ie() {
-      flex: 0 0 450px;
-    }
+  &.primary-content {
+    max-width: 1250px;
   }
-}
 
-@keyframes flexSidebar {
-  to {
-    flex: 0 0 450px;
+  &.tertiary-content {
+    max-width: 450px;
   }
 }

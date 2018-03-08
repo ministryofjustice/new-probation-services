@@ -1,12 +1,5 @@
 @import 'base/spacing';
 
-main {
-  max-width: 1250px;
-  @include ie() {
-    display: block;
-  }
-}
-
 table {
   border-spacing: 0;
 

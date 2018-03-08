@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import SfpsrContext from '../data/SfpsrContext';
-import type { Offender } from '../../_shared/model/Offender.type';
 import SfpsrNavigation from './SfpsrNavigation';
+
+import type { Offender } from '../../_shared/model/Offender.type';
 
 type Props = {
   history: Array<any>
