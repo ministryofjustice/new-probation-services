@@ -64,9 +64,7 @@ describe('App', () => {
       steps: [
         ({ history, div }) => {
           console.assert(
-            div
-              .querySelector('h1')
-              .innerHTML.match(new Date().toLocaleDateString('en-GB'))
+            div.querySelector('h1').innerHTML.match(/Search for an offender/)
           );
           history.push('/feedback');
         },

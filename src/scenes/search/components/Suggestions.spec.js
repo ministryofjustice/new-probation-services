@@ -21,12 +21,12 @@ describe('Suggestions', () => {
     });
 
     it('renders two suggestions', () => {
-      expect(wrapper.find('.blue')).toHaveLength(2);
+      expect(wrapper.find('.active-link')).toHaveLength(2);
     });
 
     it('allows the suggestion to be selected', () => {
       wrapper
-        .find('.blue')
+        .find('.active-link')
         .first()
         .simulate('click');
       expect(clickSpy.calledOnce).toEqual(true);
@@ -41,7 +41,7 @@ describe('Suggestions', () => {
     });
 
     it('renders no suggestions', () => {
-      expect(wrapper.find('.blue')).toHaveLength(0);
+      expect(wrapper.find('.active-link')).toHaveLength(0);
     });
   });
 });

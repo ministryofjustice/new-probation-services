@@ -31,7 +31,19 @@ describe('Offender Summary', () => {
     });
 
     it('renders successfully', () => {
-      expect(wrapper.find('h1').text()).toEqual('Smith, John');
+      expect(wrapper.find('h1')).toHaveLength(2);
+      expect(
+        wrapper
+          .find('h1')
+          .at(0)
+          .text()
+      ).toEqual('Offender details');
+      expect(
+        wrapper
+          .find('h1')
+          .at(1)
+          .text()
+      ).toEqual('Events');
     });
   });
 });
