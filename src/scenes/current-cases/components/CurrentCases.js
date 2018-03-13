@@ -36,10 +36,18 @@ export default class CurrentCases extends Component<Props, State> {
    *
    */
   componentDidMount() {
-    fetch('/api/offenders')
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(data => this.setState({ currentOffenders: data }));
+    const reqListener = (e: any) => {
+      console.info(e.target.responseText);
+      const data = JSON.parse(e.target.responseText).offenders;
+      this.setState(() => {
+        return { currentOffenders: data };
+      });
+    };
+
+    const oReq = new XMLHttpRequest();
+    oReq.addEventListener('load', reqListener);
+    oReq.open('get', '/data/stub.json', true);
+    oReq.send();
   }
 
   /**
