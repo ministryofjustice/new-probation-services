@@ -1,18 +1,16 @@
-@import '../base/spacing';
-@import '../base/palette';
-
 .grid-row {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
   flex-wrap: wrap;
 
-  &.nested {
-    min-height: 0;
+  &.primary {
+    @include ie() {
+      min-height: 100vh;
+    }
+  }
 
+  &.nested {
     .grid-col {
-      max-width: 400px;
-      min-width: 230px;
       margin-right: $standard-space;
 
       &:last-child {
@@ -34,6 +32,14 @@
 
 .grid-col {
   flex: 1;
+
+  &.panel {
+    min-width: 0;
+    margin: 0;
+    &.tertiary {
+      background: $tertiary-card-bg;
+    }
+  }
 
   &.primary-content {
     max-width: 1250px;

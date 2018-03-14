@@ -1,0 +1,15 @@
+.riskbar {
+  height: 22px;
+  &.green {
+    width: 33%;
+    background: $green;
+  }
+  &.amber {
+    width: 66%;
+    background: $yellow;
+  }
+  &.red {
+    width: 100%;
+    background: $red;
+  }
+}

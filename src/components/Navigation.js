@@ -27,7 +27,6 @@ export default class Navigation extends Component<Props, State> {
    */
   componentDidMount() {
     const reqListener = (e: any) => {
-      console.info(e.target.responseText);
       const data = JSON.parse(e.target.responseText).offenders;
       this.setState(() => {
         return { currentOffenders: data };
@@ -50,6 +49,9 @@ export default class Navigation extends Component<Props, State> {
         <nav className="fixed fade-in">
           <p>&nbsp;</p>
 
+          {/*
+            @FIXME: Hook this up to show recent offender list
+          */}
           <RecentOffendersContext.Consumer>
             {context => {
               return (

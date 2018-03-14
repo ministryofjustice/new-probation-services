@@ -8,16 +8,30 @@ table {
   }
 
   &.border-bottom {
+    thead {
+      td {
+        border-bottom: 3px solid $primary-borders;
+      }
+    }
+
     td {
       vertical-align: middle;
       height: 40px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid $primary-borders;
     }
   }
 }
 
 td {
   vertical-align: top;
+
+  &.third-width {
+    width: 33%;
+  }
+
+  &.half-width {
+    width: 50%;
+  }
 
   &.middle {
     vertical-align: middle;

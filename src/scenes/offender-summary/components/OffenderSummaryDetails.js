@@ -1,186 +1,76 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Utils from '../../../utils/Utils';
 
-type Props = {
-  restricted: boolean,
-  offender: Object
-};
-type State = {
-  addressOpen: any
-};
+import OffenderSummaryContext from '../data/OffenderSummaryContext';
 
-export default class OffenderSummaryDetails extends Component<Props, State> {
-  /**
-   * @constructor
-   * @param props {Props} arbitrary inputs
-   */
-  constructor(props: Props) {
-    super(props);
+const OffenderSummaryDetails = () => (
+  <OffenderSummaryContext.Consumer>
+    {context => {
+      const offender = context.offender;
 
-    this.state = { addressOpen: -1 };
-
-    (this: any).handleAddressClick = this.handleAddressClick.bind(this);
-  }
-
-  /**
-   *
-   * @param event
-   */
-  handleAddressClick(event: any) {
-    const clickId = parseInt(event.target.id, 10);
-
-    this.setState(prevState => {
-      return { addressOpen: clickId === prevState.addressOpen ? -1 : clickId };
-    });
-  }
-
-  render() {
-    const offender = this.props.offender,
-      restricted = this.props.restricted;
-
-    return (
-      <div>
-        {restricted !== 1 && (
-          <div>
-            <h3 className="text-bold">Offender details</h3>
-
-            <p>{offender.OFFENDER_DETAILS}</p>
-
-            <p>
-              <span className="text-bold">Previous surname:</span>{' '}
-              {offender.PREVIOUS_SURNAME}
-            </p>
-            <p>
-              <span className="text-bold">Other names:</span>{' '}
-              {offender.SECOND_NAME + ', ' + offender.THIRD_NAME}
-            </p>
-            <p>
-              <span className="text-bold">NI Number:</span> {offender.NI_NUMBER}
-            </p>
-            {offender.CURRENT_REMAND_STATUS !== null && (
-              <p>
-                <span className="text-bold">Status:</span>{' '}
-                {offender.CURRENT_REMAND_STATUS}
-              </p>
-            )}
-
-            <hr />
-
-            <h3 className="text-bold">Contact details</h3>
-
-            <p>
-              <span className="text-bold">Telephone:</span>{' '}
-              {offender.TELEPHONE_NUMBER}
-            </p>
-            <p>
-              <span className="text-bold">Mobile:</span>{' '}
-              {offender.MOBILE_NUMBER}
-            </p>
-            <p>
-              <span className="text-bold">Email:</span>{' '}
-              {offender.E_MAIL_ADDRESS}
-            </p>
-            <p>
-              <span className="text-bold">Interpreter required:</span>{' '}
-              {offender.INTERPRETER_REQUIRED ? 'Yes' : 'No'}
-            </p>
-
-            {offender.ADDRESSES.length > 0 && (
-              <div>
-                <hr />
-
-                <h3 className="text-bold">Address history</h3>
-
-                {offender.ADDRESSES.map((address, i) => (
-                  <div key={i} className="margin-top">
-                    <a
-                      className={
-                        this.state.addressOpen === i
-                          ? 'expand-content clickable blue active'
-                          : 'expand-content clickable blue'
-                      }
-                      id={i}
-                      onClick={this.handleAddressClick}>
-                      {address.NO_FIXED_ABODE === 'Y'
-                        ? 'No fixed abode'
-                        : address.ADDRESS_NUMBER +
-                          ' ' +
-                          address.STREET_NAME +
-                          ', ' +
-                          address.TOWN_CITY +
-                          ', ' +
-                          address.COUNTY +
-                          '. ' +
-                          address.POSTCODE}
-                    </a>
-
-                    <div
-                      className={
-                        this.state.addressOpen === i
-                          ? 'panel border-left'
-                          : 'js-hidden'
-                      }>
-                      <p className="no-margin-top">
-                        <span className="text-bold">Start date:</span>{' '}
-                        {Utils.pipeDate(address.START_DATE)}
-                      </p>
-                      <p>
-                        <span className="text-bold">End date:</span>{' '}
-                        {address.END_DATE}
-                      </p>
-                      <p>
-                        <span className="text-bold">Telephone:</span>{' '}
-                        {address.TELEPHONE_NUMBER}
-                      </p>
-
-                      <h3 className="text-bold">Notes</h3>
-                      <p>{address.NOTES}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {offender.ALIASES.length > 0 && (
-              <div className="space-top">
-                <hr />
-
-                <h3 className="text-bold">Known aliases</h3>
-
-                {offender.ALIASES.map((alias, i) => (
-                  <p key={i} className="no-margin-bottom">
-                    {alias.SURNAME +
-                      ', ' +
-                      alias.FIRST_NAME +
-                      ' - ' +
-                      Utils.pipeDate(alias.DATE_OF_BIRTH_DATE)}
-                  </p>
-                ))}
-              </div>
-            )}
-
-            <hr className="margin-top" />
-
-            <h3 className="text-bold">Other records</h3>
-
-            <p className="no-margin-bottom">
-              <span className="text-bold">PNC:</span> {offender.PNC_NUMBER}
-            </p>
-            <p className="no-margin-bottom">
-              <span className="text-bold">CRO:</span> {offender.CRO_NUMBER}
-            </p>
-            <p className="no-margin-bottom">
-              <span className="text-bold">NOMS:</span> {offender.NOMS_NUMBER}
-            </p>
-
-            <hr className="margin-top" />
-
-            <h3 className="text-bold">Notes</h3>
-
-            <p>{offender.NOTES}</p>
+      return (
+        <div className="primary-container">
+          <div className="container-heading">
+            <h1 className="text-bold">Personal details</h1>
           </div>
-        )}
-      </div>
-    );
-  }
-}
+          <div className="container-content">
+            <table role="presentation" className="border-bottom full-width">
+              <tbody>
+                <tr>
+                  <td className="third-width text-bold">Title</td>
+                  <td>{offender.TITLE}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">First name</td>
+                  <td>{offender.FIRST_NAME}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Last name</td>
+                  <td>{offender.SURNAME}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Other names</td>
+                  <td>{offender.SECOND_NAME + ', ' + offender.THIRD_NAME}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Previous names</td>
+                  <td>{offender.PREVIOUS_SURNAME}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Gender</td>
+                  <td>{Utils.pipeGender(offender.GENDER_ID)}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Age</td>
+                  <td>{Utils.pipeAge(offender.DATE_OF_BIRTH_DATE)}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Nationality</td>
+                  <td>{offender.NATIONALITY_ID}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Ethnicity</td>
+                  <td>{offender.ETHNICITY_ID}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Primary language</td>
+                  <td>{offender.LANGUAGE_ID}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Interpreter required</td>
+                  <td>{offender.INTERPRETER_REQUIRED}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Disability status</td>
+                  <td>{offender.DISABLED}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }}
+  </OffenderSummaryContext.Consumer>
+);
+
+export default OffenderSummaryDetails;

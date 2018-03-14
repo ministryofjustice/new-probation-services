@@ -125,7 +125,7 @@ button {
   border-radius: 0;
   background: $button;
   padding: 10px 15px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 200;
   cursor: pointer;
   color: white;
@@ -154,6 +154,12 @@ button {
   &.tiny {
     padding: 5px 10px;
     font-size: 14px;
+  }
+
+  &.overflow {
+    position: relative;
+    bottom: -15px;
+    margin: -20px auto;
   }
 
   &.input-bumper {

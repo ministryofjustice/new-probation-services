@@ -1,49 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
+import OffenderSummaryContext from '../data/OffenderSummaryContext';
 
-type Props = {
-  restricted: boolean,
-  offender: Object
-};
-type State = {
-  addressOpen: any
-};
+const OffenderSummaryContact = () => (
+  <OffenderSummaryContext.Consumer>
+    {context => {
+      const offender = context.offender,
+        currentAddress = offender.ADDRESSES[0];
 
-export default class OffenderSummaryContact extends Component<Props, State> {
-  /**
-   * @constructor
-   * @param props {Props} arbitrary inputs
-   */
-  constructor(props: Props) {
-    super(props);
-
-    this.state = { addressOpen: -1 };
-
-    (this: any).handleAddressClick = this.handleAddressClick.bind(this);
-  }
-
-  /**
-   *
-   * @param event
-   */
-  handleAddressClick(event: any) {
-    const clickId = parseInt(event.target.id, 10);
-
-    this.setState(prevState => {
-      return { addressOpen: clickId === prevState.addressOpen ? -1 : clickId };
-    });
-  }
-
-  render() {
-    const restricted = this.props.restricted;
-
-    return (
-      <div>
-        {restricted !== 1 && (
-          <div>
-            <h3 className="text-bold">Contact list</h3>
+      return (
+        <div className="primary-container">
+          <div className="container-heading">
+            <h1 className="text-bold">Contact details</h1>
           </div>
-        )}
-      </div>
-    );
-  }
-}
+          <div className="container-content">
+            <table role="presentation" className="border-bottom full-width">
+              <tbody>
+                <tr>
+                  <td className="third-width text-bold">Address line 1</td>
+                  <td>
+                    {currentAddress.ADDRESS_NUMBER +
+                      ' ' +
+                      currentAddress.STREET_NAME}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Address line 2</td>
+                  <td>{currentAddress.DISTRICT}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Town / City</td>
+                  <td>{currentAddress.TOWN_CITY}</td>
+                </tr>
+                <tr>
+                  <td className="text-bold">Postcode</td>
+                  <td>{currentAddress.POSTCODE}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    }}
+  </OffenderSummaryContext.Consumer>
+);
+
+export default OffenderSummaryContact;

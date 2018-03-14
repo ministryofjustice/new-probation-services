@@ -32,7 +32,7 @@ h6 {
 
 h1 {
   font-size: ($body-size + 4) + px;
-  font-weight: 400;
+  font-weight: 700;
   margin: $standard-space 0;
 
   @include breakpoint(mobile) {
@@ -88,6 +88,14 @@ mark {
   font-weight: 200;
 }
 
+.text-small {
+  font-size: ($body-size - 2) + px;
+
+  @include breakpoint(mobile) {
+    font-size: ($body-size-mobile - 2) + px;
+  }
+}
+
 .text-large {
   font-size: ($body-size + 3) + px;
 
@@ -122,4 +130,12 @@ mark {
 
 .text-grey {
   color: $primary-borders;
+}
+
+.text-fade {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.text-error {
+  color: $red;
 }
