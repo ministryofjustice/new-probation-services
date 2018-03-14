@@ -130,6 +130,10 @@ button {
   cursor: pointer;
   color: white;
 
+  @include breakpoint(mobile) {
+    font-size: 12px;
+  }
+
   &.primary {
     background: $button-color-primary;
   }
