@@ -1,6 +1,11 @@
 .panel {
   padding: $standard-space;
   border-radius: 3px;
+  border: 2px solid transparent;
+
+  &.error {
+    border: 2px solid $red;
+  }
 
   &.header {
     background: $panel-header;

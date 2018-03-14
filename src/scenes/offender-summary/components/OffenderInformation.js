@@ -148,7 +148,11 @@ export default class OffenderInformation extends Component<Props> {
                     </p>
                   </div>
 
-                  <div className="grid-col panel tertiary center">
+                  <div
+                    className={
+                      'grid-col panel tertiary center' +
+                      (hasAlert ? ' error' : '')
+                    }>
                     <div>
                       <p
                         className={
