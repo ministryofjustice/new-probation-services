@@ -24,6 +24,10 @@ export default class Feedback extends Component<Props, State> {
     (this: any).handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    document.title = 'Give feedback - HMPPS Probation Offender Management';
+  }
+
   handleImpressions(event: SyntheticInputEvent<HTMLInputElement>) {
     this.setState({ impressions: event.target.value });
   }

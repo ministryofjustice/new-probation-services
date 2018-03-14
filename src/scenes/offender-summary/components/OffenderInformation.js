@@ -16,7 +16,9 @@ export default class OffenderInformation extends Component<Props> {
           const offender = context.offender,
             restricted =
               offender.CURRENT_RESTRICTION || offender.CURRENT_EXCLUSION,
-            hasAlert = offender.CURRENT_REMAND_STATUS === 'Bail - Conditional';
+            hasAlert =
+              offender.CURRENT_REMAND_STATUS === 'Bail - Conditional' &&
+              offender.CURRENT_DISPOSAL;
 
           return (
             <div className="primary-container">
@@ -50,7 +52,7 @@ export default class OffenderInformation extends Component<Props> {
                             <p className="text-large text-bold no-margin-top">
                               {restricted
                                 ? 'Restricted access'
-                                : offender.FIRST_NAME + ' ' + offender.SURNAME}
+                                : offender.SURNAME + ', ' + offender.FIRST_NAME}
                             </p>
 
                             <p className="no-margin-top">
@@ -97,7 +99,12 @@ export default class OffenderInformation extends Component<Props> {
                           <tr>
                             <td>RoSH</td>
                             <td>
-                              <div className="riskbar red" />
+                              <div
+                                className={
+                                  'riskbar ' +
+                                  offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+                                }
+                              />
                             </td>
                           </tr>
                         </tbody>
@@ -121,7 +128,7 @@ export default class OffenderInformation extends Component<Props> {
                 <div className="grid-row nested">
                   <div className="grid-col panel tertiary center">
                     <p className="text-xx-large text-bold no-margin-top no-margin-bottom">
-                      58
+                      {offender.ORGANISATIONS.length}
                     </p>
                     <p className="no-margin-top no-margin-bottom">Contacts</p>
                     <button className="primary overflow">+ Add Contact</button>
@@ -148,10 +155,7 @@ export default class OffenderInformation extends Component<Props> {
                           'text-xx-large text-bold no-margin-top no-margin-bottom ' +
                           (hasAlert ? 'text-error' : 'text-fade')
                         }>
-                        ALERT{' '}
-                        {hasAlert && (
-                          <span className="far fa-exclamation-circle" />
-                        )}
+                        ALERT <span className="far fa-exclamation-circle" />
                       </p>
                       <p
                         className={
@@ -170,7 +174,12 @@ export default class OffenderInformation extends Component<Props> {
                       <div>
                         <img src="/images/risk_g.png" alt="medium risk" />
                         <p className="no-margin-top no-margin-bottom">
-                          Medium Risk Profile
+                          {offender.CURRENT_HIGHEST_RISK_COLOUR === 'Red'
+                            ? 'High'
+                            : offender.CURRENT_HIGHEST_RISK_COLOUR === 'Amber'
+                              ? 'Medium'
+                              : 'Low'}{' '}
+                          Risk Profile
                         </p>
                       </div>
                     )}

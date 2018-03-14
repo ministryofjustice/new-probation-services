@@ -66,6 +66,8 @@ export default class Search extends Component<Props, State> {
    *
    */
   componentDidMount() {
+    document.title = 'National search - HMPPS Probation Offender Management';
+
     function getParameterByName(name) {
       const regex = new RegExp(
           '[?&]' + name.replace(/[[]]/g, '\\$&') + '(=([^&#]*)|&|#|$)'

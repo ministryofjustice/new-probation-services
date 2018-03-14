@@ -17,7 +17,12 @@ table {
     td {
       vertical-align: middle;
       height: 40px;
-      border-bottom: 1px solid $primary-borders;
+    }
+
+    tr:not(:last-of-type) {
+      td {
+        border-bottom: 1px solid $primary-borders;
+      }
     }
   }
 }

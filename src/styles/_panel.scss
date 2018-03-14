@@ -1,5 +1,5 @@
 .panel {
-  padding: 15px;
+  padding: $standard-space;
   border-radius: 3px;
 
   &.header {
@@ -13,13 +13,13 @@
 
   &.border-left {
     border-left: 5px solid $panel-header;
-    padding: 15px 15px 5px 15px;
+    padding: $standard-space $standard-space 5px $standard-space;
     margin-bottom: 15px;
     border-radius: 0;
   }
 
   &.border {
     border: 5px solid $panel-header;
-    padding: 15px 30px;
+    padding: $standard-space $double-space;
   }
 }

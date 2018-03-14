@@ -36,6 +36,8 @@ export default class CurrentCases extends Component<Props, State> {
    *
    */
   componentDidMount() {
+    document.title = 'HMPPS Probation Offender Management';
+
     const reqListener = (e: any) => {
       console.info(e.target.responseText);
       const data = JSON.parse(e.target.responseText).offenders;

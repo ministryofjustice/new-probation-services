@@ -44,12 +44,21 @@ export default class OffenderSummary extends Component<Props, State> {
    */
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     window.scrollTo(0, 0);
+
+    const offender = nextProps.location.state.offender;
+    document.title =
+      'Offender summary: ' +
+      offender.SURNAME +
+      ', ' +
+      offender.FIRST_NAME +
+      ' - HMPPS Probation Offender Management';
+
     return nextProps.location.state.offender.OFFENDER_ID ===
       prevState.offender.OFFENDER_ID
       ? null
       : {
           currentSection: 'events',
-          offender: nextProps.location.state.offender
+          offender: offender
         };
   }
 
@@ -74,7 +83,7 @@ export default class OffenderSummary extends Component<Props, State> {
         <div className="fade-in grid-row">
           <div className="grid-col primary-content">
             <OffenderInformation />
-            <RecentDocuments />
+            <RecentDocuments reportClick={this.handleViewClick} />
             <OffenderSummaryDetails />
             <OffenderSummaryContact />
             <OffenderManagement />

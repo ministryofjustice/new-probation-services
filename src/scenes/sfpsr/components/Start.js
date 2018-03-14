@@ -19,6 +19,11 @@ export default class Start extends Component<Props> {
     (this: any).startClick = this.startClick.bind(this);
   }
 
+  componentDidMount() {
+    document.title =
+      'Short Format Pre-Sentence Report - HMPPS Probation Offender Management';
+  }
+
   /**
    *
    * @param data
