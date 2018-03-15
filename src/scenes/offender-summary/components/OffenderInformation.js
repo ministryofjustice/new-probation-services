@@ -110,6 +110,11 @@ export default class OffenderInformation extends Component<Props> {
                         </tbody>
                       </table>
                     )}
+
+                    {!offender.CURRENT_HIGHEST_RISK_COLOUR && (
+                      <p>No current risk registers</p>
+                    )}
+
                     {offender.CURRENT_REMAND_STATUS && (
                       <table role="presentation" className="full-width">
                         <tbody>
@@ -127,7 +132,7 @@ export default class OffenderInformation extends Component<Props> {
 
                 <div className="grid-row nested">
                   <div className="grid-col panel tertiary center">
-                    <p className="text-xx-large text-bold no-margin-top no-margin-bottom">
+                    <p className="text-xx-large text-tabular-bold no-margin-top no-margin-bottom">
                       {offender.ORGANISATIONS.length}
                     </p>
                     <p className="no-margin-top no-margin-bottom">Contacts</p>
@@ -176,7 +181,14 @@ export default class OffenderInformation extends Component<Props> {
                   <div className="grid-col panel tertiary center">
                     {offender.CURRENT_HIGHEST_RISK_COLOUR && (
                       <div>
-                        <img src="/images/risk_g.png" alt="medium risk" />
+                        <img
+                          src={
+                            '/images/risk_' +
+                            offender.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase() +
+                            '.png'
+                          }
+                          alt="medium risk"
+                        />
                         <p className="no-margin-top no-margin-bottom">
                           {offender.CURRENT_HIGHEST_RISK_COLOUR === 'Red'
                             ? 'High'
@@ -184,6 +196,17 @@ export default class OffenderInformation extends Component<Props> {
                               ? 'Medium'
                               : 'Low'}{' '}
                           Risk Profile
+                        </p>
+                      </div>
+                    )}
+                    {!offender.CURRENT_HIGHEST_RISK_COLOUR && (
+                      <div>
+                        <img
+                          src={'/images/risk_none.png'}
+                          alt="no risk profile"
+                        />
+                        <p className="no-margin-top no-margin-bottom text-fade">
+                          No Risk Profile
                         </p>
                       </div>
                     )}

@@ -2,19 +2,19 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Start from './Start';
-import OffenderDetails from './OffenderDetails';
-import OffenceAnalysis from './OffenceAnalysis';
-import RiskAssessment from './RiskAssessment';
-import SignYourReport from './SignYourReport';
-import Conclusion from './Conclusion';
-import CourtDetails from './CourtDetails';
-import SourceOfInformation from './SourceOfInformation';
-import OffenderAssessment from './OffenderAssessment';
-import ReportComplete from './ReportComplete';
-import OffenceDetails from './OffenceDetails';
-import SaveDraft from './SaveDraft';
-import SfpsrContext from '../data/SfpsrContext';
+import Start from './components/Start';
+import OffenderDetails from './components/OffenderDetails';
+import OffenceAnalysis from './components/OffenceAnalysis';
+import RiskAssessment from './components/RiskAssessment';
+import SignYourReport from './components/SignYourReport';
+import Conclusion from './components/Conclusion';
+import CourtDetails from './components/CourtDetails';
+import SourceOfInformation from './components/SourceOfInformation';
+import OffenderAssessment from './components/OffenderAssessment';
+import ReportComplete from './components/ReportComplete';
+import OffenceDetails from './components/OffenceDetails';
+import SaveDraft from './components/SaveDraft';
+import SfpsrContext from './data/SfpsrContext';
 
 type Props = {
   location: any

@@ -2,14 +2,14 @@
 import React, { Component } from 'react';
 import elasticsearch from 'elasticsearch';
 
-import Query from '../data/Query';
-import Suggestions from './Suggestions';
-import Result from './Result';
-import Pagination from './Pagination';
+import Query from './data/Query';
+import Suggestions from './components/Suggestions';
+import Result from './components/Result';
+import Pagination from './components/Pagination';
 
-import RecentOffendersContext from '../../_shared/data/RecentOffendersContext';
+import RecentOffendersContext from '../_shared/data/RecentOffendersContext';
 
-import type { Offender } from '../../_shared/model/Offender.type';
+import type { Offender } from '../_shared/model/Offender.type';
 
 type Props = {
   location: any,
@@ -27,7 +27,7 @@ type State = {
   }
 };
 
-export default class Search extends Component<Props, State> {
+export default class SearchScene extends Component<Props, State> {
   pageSize: number = 10;
 
   esClient = new elasticsearch.Client({

@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-import OffenderPanel from './OffenderPanel';
+import OffenderPanel from './components/OffenderPanel';
 
 type Props = {
   history: Array<any>
@@ -14,7 +14,7 @@ type State = {
 /**
  *
  */
-export default class CurrentCases extends Component<Props, State> {
+export default class CurrentCasesScene extends Component<Props, State> {
   /**
    * @constructor
    * @param props {Props} arbitrary inputs
@@ -39,7 +39,6 @@ export default class CurrentCases extends Component<Props, State> {
     document.title = 'HMPPS Probation Offender Management';
 
     const reqListener = (e: any) => {
-      console.info(e.target.responseText);
       const data = JSON.parse(e.target.responseText).offenders;
       this.setState(() => {
         return { currentOffenders: data };

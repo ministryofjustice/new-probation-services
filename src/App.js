@@ -2,14 +2,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Navigation from './Navigation';
-import Header from './Header';
+import Navigation from './components/Navigation';
+import Header from './components/Header';
 
-import Feedback from '../scenes/feedback/components/Feedback';
-import Search from '../scenes/search/components/Search';
-import CurrentCases from '../scenes/current-cases/components/CurrentCases';
-import SfpsrRouter from '../scenes/sfpsr/components/SfpsrRouter';
-import OffenderSummary from '../scenes/offender-summary/components/OffenderSummary';
+import Feedback from './scenes/feedback/FeedbackScene';
+import Search from './scenes/search/SearchScene';
+import CurrentCases from './scenes/current-cases/CurrentCasesScene';
+import SfpsrRouter from './scenes/sfpsr/SfpsrRouter';
+import OffenderSummary from './scenes/offender-summary/OffenderSummaryScene';
 
 const App = () => (
   <div>

@@ -9,7 +9,7 @@ type State = {
   doRedirect: boolean
 };
 
-export default class Feedback extends Component<Props, State> {
+export default class FeedbackScene extends Component<Props, State> {
   constructor() {
     super();
 

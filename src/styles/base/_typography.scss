@@ -1,5 +1,5 @@
-$body-size: 16;
-$body-size-mobile: 14;
+$body-size: 18;
+$body-size-mobile: 16;
 
 body {
   font-size: $body-size + px;
@@ -12,11 +12,15 @@ body {
 }
 
 a {
-  &.active-link {
+  &.active-link,
+  &.error-link {
     cursor: pointer;
     font-weight: 400;
     color: $primary-interactive;
     text-decoration: underline;
+  }
+  &.error-link {
+    color: $dark-red;
   }
 }
 
@@ -121,11 +125,15 @@ mark {
 }
 
 .text-bold {
-  font-weight: 700;
+  font-family: $nta-bold;
 }
 
-.text-x-bold {
-  font-weight: 800;
+.text-tabular {
+  font-family: $nta-light-tabular;
+}
+
+.text-tabular-bold {
+  font-family: $nta-bold-tabular;
 }
 
 .text-grey {

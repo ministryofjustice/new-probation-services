@@ -6,10 +6,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 
-import OffenderSummary from './OffenderSummary';
+import OffenderSummaryScene from './OffenderSummaryScene';
 
 const mockData = fs.readFileSync(
-  path.join(__dirname, '../..', 'search/data', 'Results.stub.json'),
+  path.join(__dirname, '../', 'search/data', 'Results.stub.json'),
   'utf8'
 );
 
@@ -20,14 +20,15 @@ describe('Offender Summary', () => {
     beforeEach(() => {
       wrapper = mount(
         <MemoryRouter>
-          <OffenderSummary
+          <OffenderSummaryScene
             location={{
               state: { offender: JSON.parse(mockData).hits.hits[0]._source }
             }}
+            history={{}}
           />
         </MemoryRouter>
       );
-      offenderSummaryInstance = wrapper.find(OffenderSummary).instance();
+      offenderSummaryInstance = wrapper.find(OffenderSummaryScene).instance();
     });
 
     xit('renders successfully', () => {

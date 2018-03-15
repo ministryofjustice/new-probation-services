@@ -57,7 +57,7 @@ const renderTestSequence = ({
 };
 
 describe('App', () => {
-  it('navigates from initial search page to Feedback', done => {
+  it('navigates from initial search page to FeedbackScene', done => {
     renderTestSequence({
       subject: App,
 
