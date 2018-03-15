@@ -43,13 +43,13 @@ export default class OffenderPanel extends Component<Props, State> {
                 />
               </td>
               <td>
-                <h1>
+                <h2>
                   {offender.SURNAME +
                     ', ' +
                     offender.FIRST_NAME +
                     ' - ' +
                     Utils.pipeDate(offender.DATE_OF_BIRTH_DATE)}
-                </h1>
+                </h2>
                 <p className="margin-top small">
                   <span className="text-x-bold">CRN: {offender.CRN}</span>
 
@@ -74,7 +74,7 @@ export default class OffenderPanel extends Component<Props, State> {
                   View
                 </button>{' '}
                 <button className="tiny inline-secondary">Manage</button>{' '}
-                <button className="tiny">Add contact</button>
+                <button className="tiny">Contact</button>
               </td>
             </tr>
           </tbody>

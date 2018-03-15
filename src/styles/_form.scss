@@ -38,6 +38,10 @@ input[type='text'] {
 
   @include breakpoint(tablet) {
     width: calc(100% - 25px);
+
+    &.inline {
+      width: calc(100% - 45px);
+    }
   }
 }
 
@@ -167,12 +171,17 @@ button {
   }
 
   &.input-bumper {
+    position: relative;
     width: 40px;
     height: 40px;
     color: white;
     background: $input-border;
     padding: 0;
     margin: 0;
+
+    @include breakpoint(mobile) {
+      top: -2px;
+    }
   }
 }
 

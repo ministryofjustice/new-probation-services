@@ -55,11 +55,6 @@ export default class OffenderInformation extends Component<Props> {
                                 : offender.SURNAME + ', ' + offender.FIRST_NAME}
                             </p>
 
-                            <p className="no-margin-top">
-                              CRN number<br />
-                              <span className="text-bold">{offender.CRN}</span>
-                            </p>
-
                             {restricted !== 1 && (
                               <div>
                                 <p>
@@ -114,41 +109,35 @@ export default class OffenderInformation extends Component<Props> {
                     {!offender.CURRENT_HIGHEST_RISK_COLOUR && (
                       <p>No current risk registers</p>
                     )}
-
-                    {offender.CURRENT_REMAND_STATUS && (
-                      <table role="presentation" className="full-width">
-                        <tbody>
-                          <tr>
-                            <td className="third-width">Remand status</td>
-                            <td className="text-bold">
-                              {offender.CURRENT_REMAND_STATUS}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    )}
                   </div>
                 </div>
 
-                <div className="grid-row nested">
+                <div className="grid-row nested margin-top">
                   <div className="grid-col panel tertiary center">
-                    <p className="text-xx-large text-tabular-bold no-margin-top no-margin-bottom">
-                      {offender.ORGANISATIONS.length}
+                    <p className="text-xx-large text-bold no-margin-top no-margin-bottom">
+                      CRN number
                     </p>
-                    <p className="no-margin-top no-margin-bottom">Contacts</p>
-                    <button className="primary overflow">+ Add Contact</button>
+                    <p className="no-margin-top no-margin-bottom">
+                      {offender.CRN}
+                    </p>
+                    <a className="active-link">Other IDs</a>
                   </div>
 
                   <div className="grid-col panel tertiary center">
-                    <p className="text-xx-large text-bold no-margin-top no-margin-bottom">
-                      {offender.CURRENT_DISPOSAL ? 'YES' : 'NO'}
+                    <p
+                      className={
+                        'text-xx-large text-bold no-margin-top no-margin-bottom' +
+                        (offender.CURRENT_DISPOSAL ? '' : ' text-fade')
+                      }>
+                      {offender.CURRENT_DISPOSAL
+                        ? 'Current offender'
+                        : 'Not current offender'}
                     </p>
                     <p className="no-margin-top no-margin-bottom">
                       {offender.CURRENT_DISPOSAL === 1 && (
-                        <a className="active-link">Current Offender</a>
-                      )}
-                      {offender.CURRENT_DISPOSAL !== 1 && (
-                        <span>Not current offender</span>
+                        <a className="active-link">
+                          {offender.CURRENT_REMAND_STATUS}
+                        </a>
                       )}
                     </p>
                   </div>
@@ -158,24 +147,22 @@ export default class OffenderInformation extends Component<Props> {
                       'grid-col panel tertiary center' +
                       (hasAlert ? ' error' : '')
                     }>
-                    <div>
-                      <p
-                        className={
-                          'text-xx-large text-bold no-margin-top no-margin-bottom ' +
-                          (hasAlert ? 'text-error' : 'text-fade')
-                        }>
-                        ALERT <span className="far fa-exclamation-circle" />
-                      </p>
-                      <p
-                        className={
-                          'no-margin-top no-margin-bottom ' +
-                          (hasAlert ? '' : 'text-fade')
-                        }>
-                        {hasAlert
-                          ? 'Breach of conditions of bail'
-                          : 'No current alert'}
-                      </p>
-                    </div>
+                    <p
+                      className={
+                        'text-xx-large text-bold no-margin-top no-margin-bottom ' +
+                        (hasAlert ? 'text-error' : 'text-fade')
+                      }>
+                      ALERT <span className="far fa-exclamation-circle" />
+                    </p>
+                    <p
+                      className={
+                        'no-margin-top no-margin-bottom ' +
+                        (hasAlert ? '' : 'text-fade')
+                      }>
+                      {hasAlert
+                        ? 'Breach of conditions of bail'
+                        : 'No current alert'}
+                    </p>
                   </div>
 
                   <div className="grid-col panel tertiary center">

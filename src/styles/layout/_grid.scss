@@ -13,6 +13,13 @@
     .grid-col {
       margin-right: $standard-space;
 
+      @include breakpoint(mobile) {
+        margin: $standard-space 0 0 0;
+        &:first-child {
+          margin: 0;
+        }
+      }
+
       &:last-child {
         margin-right: 0;
       }
@@ -35,9 +42,14 @@
 
   &.panel {
     min-width: 0;
-    margin: 0;
     &.tertiary {
       background: $tertiary-card-bg;
+    }
+
+    margin: 0 $standard-space 0 0 !important;
+
+    &:last-child {
+      margin-right: 0 !important;
     }
   }
 

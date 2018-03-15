@@ -35,8 +35,7 @@ h6 {
 }
 
 h1 {
-  font-size: ($body-size + 4) + px;
-  font-weight: 700;
+  font: ($body-size + 4) + px $nta-bold;
   margin: $standard-space 0;
 
   @include breakpoint(mobile) {
@@ -46,8 +45,7 @@ h1 {
 
 h2,
 h3 {
-  font-size: ($body-size + 1) + px;
-  font-weight: 600;
+  font: ($body-size + 1) + px $nta-bold;
   margin: $standard-space 0;
 
   @include breakpoint(mobile) {
@@ -56,8 +54,7 @@ h3 {
 }
 
 h4 {
-  font-size: $body-size + px;
-  font-weight: 600;
+  font: $body-size + px $nta-bold;
   text-transform: uppercase;
 
   @include breakpoint(mobile) {
@@ -67,8 +64,7 @@ h4 {
 
 h5,
 h6 {
-  font-size: $body-size + px;
-  font-weight: 700;
+  font: $body-size + px $nta-bold;
 
   @include breakpoint(mobile) {
     font-size: $body-size-mobile + px;
