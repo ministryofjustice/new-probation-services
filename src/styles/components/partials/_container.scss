@@ -49,6 +49,8 @@
 
 .secondary-container {
   padding: 0 $standard-space;
+  border: rgba(0, 0, 0, 0.15) 1px solid;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
 }
 
 .tertiary-container {

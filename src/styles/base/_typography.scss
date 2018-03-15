@@ -93,7 +93,7 @@ mark {
 }
 
 .text-small {
-  font-size: ($body-size - 2) + px;
+  font-size: ($body-size - 4) + px;
 
   @include breakpoint(mobile) {
     font-size: ($body-size-mobile - 2) + px;

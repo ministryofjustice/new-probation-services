@@ -97,6 +97,10 @@ td {
 .margin-top {
   margin-top: $standard-space;
 
+  &.half {
+    margin-top: $half-space;
+  }
+
   &.large {
     margin-top: 20px;
   }

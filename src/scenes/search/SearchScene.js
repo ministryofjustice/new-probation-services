@@ -315,57 +315,53 @@ export default class SearchScene extends Component<Props, State> {
 
           {this.state.searchParams.length > 0 &&
             this.state.hits !== -1 && (
-              <div className="primary-container">
-                <div className="container-heading">
-                  <h1>
-                    Search results
-                    <span>
-                      {' - ' + this.state.hits} results found
-                      {this.state.hits > this.pageSize && (
-                        <span>
-                          , showing{' '}
-                          {this.state.currentPage === 1
-                            ? 1
-                            : (this.state.currentPage - 1) * this.pageSize +
-                              1}{' '}
-                          to{' '}
-                          {this.state.currentPage * this.pageSize >
-                          this.state.hits
-                            ? this.state.hits
-                            : this.state.currentPage * this.pageSize}
-                        </span>
-                      )}
-                    </span>
-                  </h1>
-                </div>
+              <div>
+                <p className="text-small">
+                  Search results
+                  <span>
+                    {' - ' + this.state.hits} results found
+                    {this.state.hits > this.pageSize && (
+                      <span>
+                        , showing{' '}
+                        {this.state.currentPage === 1
+                          ? 1
+                          : (this.state.currentPage - 1) * this.pageSize +
+                            1}{' '}
+                        to{' '}
+                        {this.state.currentPage * this.pageSize >
+                        this.state.hits
+                          ? this.state.hits
+                          : this.state.currentPage * this.pageSize}
+                      </span>
+                    )}
+                  </span>
+                </p>
 
-                <div className="container-content">
-                  {this.state.serverError && (
-                    <p className="error-message">
-                      The server has encountered an error.
-                    </p>
-                  )}
+                {this.state.serverError && (
+                  <p className="error-message">
+                    The server has encountered an error.
+                  </p>
+                )}
 
-                  {this.state.results.map((result, i) => (
-                    <div key={i} className="secondary-container margin-bottom">
-                      <Result
-                        id={i}
-                        params={this.state.searchParams}
-                        data={result._source}
-                        click={this.handleClick}
-                        contact={this.handleContact}
-                      />
-                    </div>
-                  ))}
-
-                  {this.state.hits > this.pageSize && (
-                    <Pagination
-                      state={this.state}
-                      pageSize={this.pageSize}
-                      changePage={this.changePage}
+                {this.state.results.map((result, i) => (
+                  <div key={i}>
+                    <Result
+                      id={i}
+                      params={this.state.searchParams}
+                      data={result._source}
+                      click={this.handleClick}
+                      contact={this.handleContact}
                     />
-                  )}
-                </div>
+                  </div>
+                ))}
+
+                {this.state.hits > this.pageSize && (
+                  <Pagination
+                    state={this.state}
+                    pageSize={this.pageSize}
+                    changePage={this.changePage}
+                  />
+                )}
               </div>
             )}
 

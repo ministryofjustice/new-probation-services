@@ -150,140 +150,144 @@ export default class Result extends Component<Props> {
       restricted = data.CURRENT_RESTRICTION || data.CURRENT_EXCLUSION;
 
     return (
-      <div className="panel">
-        <table role="presentation">
-          <tbody>
-            <tr>
-              <td>
-                <img
-                  className="photo-holder align-left"
-                  alt={'Photograph of ' + data.SURNAME + ', ' + data.FIRST_NAME}
-                  src={
-                    restricted
-                      ? '/images/placeholder_r.jpg'
-                      : data.GENDER_ID === 545
-                        ? '/images/placeholder_m.jpg'
-                        : '/images/placeholder_f.jpg'
-                  }
-                />
-              </td>
-              <td>
-                {!restricted && (
-                  <h1>
-                    <Highlighter
-                      highlightClassName="highlight"
-                      searchWords={searched}
-                      autoEscape={true}
-                      textToHighlight={
-                        data.SURNAME +
-                        ', ' +
-                        data.FIRST_NAME +
-                        ' - ' +
-                        Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
-                      }
-                    />
-                  </h1>
-                )}
-
-                {!!restricted && (
-                  <h1>
-                    {data.CURRENT_RESTRICTION
-                      ? 'Restricted information'
-                      : 'Excluded information'}
-                  </h1>
-                )}
-
-                <p className="no-margin bottom">
-                  <span className="text-extra-bold">
-                    CRN:{' '}
-                    <Highlighter
-                      highlightClassName="highlight"
-                      searchWords={searched}
-                      autoEscape={true}
-                      textToHighlight={data.CRN}
-                    />
-                  </span>
-                  {data.CURRENT_HIGHEST_RISK_COLOUR !== null && (
-                    <span id="risk">
-                      {' '}
-                      | Risk{' '}
-                      <span
-                        className={
-                          'risk-icon risk-' +
-                          data.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
-                        }
-                      />
-                    </span>
-                  )}
+      <div className="primary-container">
+        <div className="container-content">
+          <table role="presentation">
+            <tbody>
+              <tr>
+                <td className="no-margin-bottom">
+                  <img
+                    className="photo-holder align-left"
+                    alt={
+                      'Photograph of ' + data.SURNAME + ', ' + data.FIRST_NAME
+                    }
+                    src={
+                      restricted
+                        ? '/images/placeholder_r.jpg'
+                        : data.GENDER_ID === 545
+                          ? '/images/placeholder_m.jpg'
+                          : '/images/placeholder_f.jpg'
+                    }
+                  />
+                </td>
+                <td className="no-margin-bottom">
                   {!restricted && (
-                    <span>
-                      {data.CURRENT_DISPOSAL > 0 && (
-                        <span>
-                          {' '}
-                          | <span id="currentDisposal">Current offender</span>
-                        </span>
-                      )}
+                    <h1 className="margin-top half">
                       <Highlighter
                         highlightClassName="highlight"
                         searchWords={searched}
                         autoEscape={true}
                         textToHighlight={
-                          ' | ' +
-                          Utils.pipeGender(data.GENDER_ID) +
+                          data.SURNAME +
                           ', ' +
-                          Utils.pipeAge(data.DATE_OF_BIRTH_DATE)
+                          data.FIRST_NAME +
+                          ' - ' +
+                          Utils.pipeDate(data.DATE_OF_BIRTH_DATE)
                         }
                       />
-                    </span>
+                    </h1>
                   )}
-                </p>
 
-                {this.additionalResults().map((item, i) => (
-                  <div key={i}>
-                    <Highlighter
-                      highlightClassName="highlight"
-                      searchWords={searched}
-                      autoEscape={true}
-                      textToHighlight={item}
-                    />
-                  </div>
-                ))}
-
-                <p>
-                  {!restricted && (
-                    <span>
-                      <button
-                        className="tiny inline-primary"
-                        onClick={() => {
-                          this.props.click(this.props.id);
-                        }}>
-                        View
-                      </button>{' '}
-                      <button
-                        id={'contact-' + this.props.id}
-                        className="tiny inline-secondary">
-                        Manage
-                      </button>{' '}
-                      <button
-                        id={'contact-' + this.props.id}
-                        className="tiny"
-                        onClick={this.props.contact}>
-                        Add contact
-                      </button>
-                    </span>
-                  )}
                   {!!restricted && (
-                    <span>
+                    <h1 className="margin-top half">
                       {data.CURRENT_RESTRICTION
-                        ? data.RESTRICTION_MESSAGE
-                        : data.EXCLUSION_MESSAGE}
-                    </span>
+                        ? 'Restricted information'
+                        : 'Excluded information'}
+                    </h1>
                   )}
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+                  <p className="no-margin bottom">
+                    <span className="text-bold">
+                      CRN:{' '}
+                      <Highlighter
+                        highlightClassName="highlight"
+                        searchWords={searched}
+                        autoEscape={true}
+                        textToHighlight={data.CRN}
+                      />
+                    </span>
+                    {data.CURRENT_HIGHEST_RISK_COLOUR !== null && (
+                      <span id="risk">
+                        {' '}
+                        | Risk{' '}
+                        <span
+                          className={
+                            'risk-icon risk-' +
+                            data.CURRENT_HIGHEST_RISK_COLOUR.toLowerCase()
+                          }
+                        />
+                      </span>
+                    )}
+                    {!restricted && (
+                      <span>
+                        {data.CURRENT_DISPOSAL > 0 && (
+                          <span>
+                            {' '}
+                            | <span id="currentDisposal">Current offender</span>
+                          </span>
+                        )}
+                        <Highlighter
+                          highlightClassName="highlight"
+                          searchWords={searched}
+                          autoEscape={true}
+                          textToHighlight={
+                            ' | ' +
+                            Utils.pipeGender(data.GENDER_ID) +
+                            ', ' +
+                            Utils.pipeAge(data.DATE_OF_BIRTH_DATE)
+                          }
+                        />
+                      </span>
+                    )}
+                  </p>
+
+                  {this.additionalResults().map((item, i) => (
+                    <div key={i}>
+                      <Highlighter
+                        highlightClassName="highlight"
+                        searchWords={searched}
+                        autoEscape={true}
+                        textToHighlight={item}
+                      />
+                    </div>
+                  ))}
+
+                  <p className="no-margin-bottom">
+                    {!restricted && (
+                      <span>
+                        <button
+                          className="tiny inline-primary"
+                          onClick={() => {
+                            this.props.click(this.props.id);
+                          }}>
+                          View
+                        </button>{' '}
+                        <button
+                          id={'contact-' + this.props.id}
+                          className="tiny inline-secondary">
+                          Manage
+                        </button>{' '}
+                        <button
+                          id={'contact-' + this.props.id}
+                          className="tiny"
+                          onClick={this.props.contact}>
+                          Add contact
+                        </button>
+                      </span>
+                    )}
+                    {!!restricted && (
+                      <span>
+                        {data.CURRENT_RESTRICTION
+                          ? data.RESTRICTION_MESSAGE
+                          : data.EXCLUSION_MESSAGE}
+                      </span>
+                    )}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
