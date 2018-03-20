@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 
-import SfpsrContext from '../data/SfpsrContext';
+import SfpsrContext from '../_shared/data/SfpsrContext';
 import Utils from '../../../utils/Utils';
 import type { Offender } from '../../_shared/model/Offender.type';
-import SfpsrNavigation from './SfpsrNavigation';
+import SfpsrNavigation from '../_shared/components/SfpsrNavigation';
 
 type Props = {
   history: Array<any>
@@ -41,7 +41,7 @@ export default class OffenderDetails extends Component<Props> {
       <SfpsrContext.Consumer>
         {context => {
           const offender = context.offender,
-            address = offender.ADDRESSES[0];
+            address = context.offender.ADDRESSES[0];
 
           return (
             <div className="grid-row">

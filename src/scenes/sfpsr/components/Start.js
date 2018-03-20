@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import SfpsrContext from '../data/SfpsrContext';
-import SfpsrNavigation from './SfpsrNavigation';
+import SfpsrContext from '../_shared/data/SfpsrContext';
+import SfpsrNavigation from '../_shared/components/SfpsrNavigation';
 
 import type { Offender } from '../../_shared/model/Offender.type';
 

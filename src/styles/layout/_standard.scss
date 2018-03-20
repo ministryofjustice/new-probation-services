@@ -23,6 +23,7 @@ body {
 
 main {
   padding: $header-space 15px 0 15px;
+  height: 100%;
   @include ie() {
     display: block;
   }

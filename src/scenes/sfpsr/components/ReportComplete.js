@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import SfpsrContext from '../data/SfpsrContext';
+import SfpsrContext from '../_shared/data/SfpsrContext';
 
 type Props = {};
 

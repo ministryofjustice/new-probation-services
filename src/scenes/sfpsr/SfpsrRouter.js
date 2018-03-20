@@ -14,7 +14,7 @@ import OffenderAssessment from './components/OffenderAssessment';
 import ReportComplete from './components/ReportComplete';
 import OffenceDetails from './components/OffenceDetails';
 import SaveDraft from './components/SaveDraft';
-import SfpsrContext from './data/SfpsrContext';
+import SfpsrContext from './_shared/data/SfpsrContext';
 
 type Props = {
   location: any

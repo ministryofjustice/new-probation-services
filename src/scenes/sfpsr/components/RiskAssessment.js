@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react';
 
-import SfpsrContext from '../data/SfpsrContext';
+import SfpsrContext from '../_shared/data/SfpsrContext';
 import type { Offender } from '../../_shared/model/Offender.type';
-import SfpsrNavigation from './SfpsrNavigation';
+import SfpsrNavigation from '../_shared/components/SfpsrNavigation';
 
 type Props = {
   history: Array<any>

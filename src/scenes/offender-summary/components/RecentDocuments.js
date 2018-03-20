@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RecentDocuments = () => (
+const RecentDocuments = props => (
   <div className="primary-container">
     <div className="container-heading">
       <h1 className="text-bold">Recent documents</h1>
@@ -22,7 +22,9 @@ const RecentDocuments = () => (
             <td>21/11/2017</td>
             <td>Sarah Francis</td>
             <td className="align-right">
-              <a className="active-link">View</a>{' '}
+              <a className="active-link" onClick={props.reportClick}>
+                View
+              </a>{' '}
               <a className="active-link">Update</a>{' '}
               <a className="active-link">Delete</a>
             </td>

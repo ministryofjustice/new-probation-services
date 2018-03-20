@@ -1,6 +1,6 @@
 import Context, { createContext } from 'react';
 
-import type { Offender } from '../../_shared/model/Offender.type';
+import type { Offender } from '../../../_shared/model/Offender.type';
 
 type CurrentContext = {
   offender: Offender

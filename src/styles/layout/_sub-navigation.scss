@@ -4,6 +4,7 @@ $nav-width: 250px;
 
 .sub-nav {
   max-width: $nav-width;
+  height: 100%;
   z-index: 3;
   background: $sub-nav-bg;
   margin-left: -$standard-space;
