@@ -48,15 +48,15 @@ export default class Start extends Component<Props> {
                 <SfpsrNavigation offender={context.offender} />
               </div>
               <div className="grid-col">
-                <div className="primary-container fade-in wait">
+                <div className="primary-container interrupt fade-in wait">
                   <div className="container-heading">
                     <h1>Short Format Pre-sentence Report</h1>
                   </div>
                   <div className="container-content">
-                    <h2>Never lose your work again</h2>
+                    <h2 className="no-margin-top">
+                      Never lose your work again
+                    </h2>
                     <p>This service saves your report as you write</p>
-
-                    <p>&nbsp;</p>
 
                     <p>You can:</p>
 
@@ -69,7 +69,7 @@ export default class Start extends Component<Props> {
                     </ul>
 
                     <button
-                      className="primary margin-top"
+                      className="interrupt margin-top"
                       onClick={() => this.startClick(context.offender)}>
                       Start now
                     </button>

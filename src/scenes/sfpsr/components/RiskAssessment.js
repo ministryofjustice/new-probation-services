@@ -76,23 +76,39 @@ export default class RiskAssessment extends Component<Props> {
                       <legend>Response to previous supervision</legend>
 
                       <div className="form-group">
-                        <input type="radio" name="supervision" />
-                        <label htmlFor="supervision">Good</label>
+                        <input
+                          type="radio"
+                          name="supervision"
+                          id="response_1"
+                        />
+                        <label htmlFor="response_1">Good</label>
                       </div>
 
                       <div className="form-group">
-                        <input type="radio" name="supervision" />
-                        <label htmlFor="supervision">Satisfactory</label>
+                        <input
+                          type="radio"
+                          name="supervision"
+                          id="response_2"
+                        />
+                        <label htmlFor="response_2">Satisfactory</label>
                       </div>
 
                       <div className="form-group">
-                        <input type="radio" name="supervision" />
-                        <label htmlFor="supervision">Poor</label>
+                        <input
+                          type="radio"
+                          name="supervision"
+                          id="response_3"
+                        />
+                        <label htmlFor="response_3">Poor</label>
                       </div>
 
                       <div className="form-group">
-                        <input type="radio" name="supervision" />
-                        <label htmlFor="supervision">Not applicable</label>
+                        <input
+                          type="radio"
+                          name="supervision"
+                          id="response_4"
+                        />
+                        <label htmlFor="response_4">Not applicable</label>
                       </div>
                     </fieldset>
 

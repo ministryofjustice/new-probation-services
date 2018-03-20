@@ -17,7 +17,7 @@ export default class SfpsrNavigation extends Component<Props> {
             pathname: '/offender-summary',
             state: { offender: offender }
           }}>
-          <table role="presentation">
+          <table role="presentation" className="margin-left">
             <tbody>
               <tr>
                 <td>
@@ -55,6 +55,8 @@ export default class SfpsrNavigation extends Component<Props> {
             </tbody>
           </table>
         </Link>
+
+        <hr />
 
         <ul>
           <NavLink

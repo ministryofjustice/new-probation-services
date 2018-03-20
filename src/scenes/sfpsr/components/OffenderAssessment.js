@@ -59,48 +59,48 @@ export default class OffenderAssessment extends Component<Props> {
                     <p>&nbsp;</p>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_accommodation" />
+                      <input type="checkbox" id="issue_accommodation" />
                       <label htmlFor="issue_accommodation">Accommodation</label>
                     </div>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_employment" />
+                      <input type="checkbox" id="issue_employment" />
                       <label htmlFor="issue_employment">
                         Employment, training and education
                       </label>
                     </div>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_finance" />
+                      <input type="checkbox" id="issue_finance" />
                       <label htmlFor="issue_finance">Finance</label>
                     </div>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_relationships" />
+                      <input type="checkbox" id="issue_relationships" />
                       <label htmlFor="issue_relationships">Relationships</label>
                     </div>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_drugs" />
+                      <input type="checkbox" id="issue_drugs" />
                       <label htmlFor="issue_drugs">Substance misuse</label>
                     </div>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_health" />
+                      <input type="checkbox" id="issue_health" />
                       <label htmlFor="issue_health">
                         Physical &amp; mental health
                       </label>
                     </div>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_behaviour" />
+                      <input type="checkbox" id="issue_behaviour" />
                       <label htmlFor="issue_behaviour">
                         Thinking &amp; behaviour
                       </label>
                     </div>
 
                     <div className="form-group">
-                      <input type="checkbox" name="issue_other" />
+                      <input type="checkbox" id="issue_other" />
                       <label htmlFor="issue_other">Other</label>
                     </div>
 

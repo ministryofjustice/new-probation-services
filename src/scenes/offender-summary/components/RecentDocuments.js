@@ -25,7 +25,9 @@ const RecentDocuments = props => (
               <a className="active-link" onClick={props.reportClick}>
                 View
               </a>{' '}
-              <a className="active-link">Update</a>{' '}
+              <a className="active-link" onClick={props.reportClick}>
+                Update
+              </a>{' '}
               <a className="active-link">Delete</a>
             </td>
           </tr>

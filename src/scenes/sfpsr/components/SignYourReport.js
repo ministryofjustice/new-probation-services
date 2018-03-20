@@ -58,6 +58,7 @@ export default class SignYourReport extends Component<Props> {
                         type="text"
                         name="author"
                         className="form-control"
+                        value={'Sarah Francis'}
                       />
                     </div>
 

@@ -45,27 +45,18 @@ input[type='text'] {
   }
 }
 
-input[type='checkbox'] {
-  position: absolute;
-  z-index: -1000;
-  left: -1000px;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-
-  &:checked + label::after {
-    opacity: 1;
-  }
+input[type='checkbox'],
+input[type='radio'] {
+  @include safe-hide();
 
   + label {
+    display: inline-block;
     position: relative;
     padding-left: 45px;
     cursor: pointer;
 
-    &::before {
+    &:before,
+    &:after {
       content: '';
       border: 2px solid;
       background: transparent;
@@ -75,23 +66,44 @@ input[type='checkbox'] {
       top: -9px;
       left: 0;
     }
+  }
+}
 
-    &::after {
-      content: '';
-      border: solid;
+input[type='radio'] {
+  + label {
+    &:before,
+    &:after {
+      border-radius: 50%;
+    }
+    &:after {
+      background: black;
+      opacity: 0;
+    }
+  }
+
+  &:checked + label {
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+input[type='checkbox'] {
+  + label {
+    &:after {
       border-width: 0 0 5px 5px;
-      background: transparent;
-      width: 17px;
-      height: 7px;
-      position: absolute;
-      top: 5px;
+      width: 20px;
+      height: 10px;
+      top: 2px;
       left: 8px;
-      -moz-transform: rotate(-45deg);
-      -o-transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
       transform: rotate(-45deg);
       opacity: 0;
+    }
+  }
+
+  &:checked + label {
+    &:after {
+      opacity: 1;
     }
   }
 }
@@ -121,67 +133,6 @@ fieldset {
 
   legend {
     margin-bottom: 25px;
-  }
-}
-
-button {
-  border: 0;
-  border-radius: 0;
-  background: $button;
-  padding: 10px 15px;
-  font-size: 18px;
-  font-weight: 200;
-  cursor: pointer;
-  color: white;
-
-  @include breakpoint(mobile) {
-    font-size: 12px;
-  }
-
-  &.primary {
-    background: $button-color-primary;
-  }
-
-  &.inline-primary {
-    background: $button-inline-primary;
-  }
-
-  &.inline-secondary {
-    background: $button-inline-secondary;
-  }
-
-  &.inline-warn {
-    background: $risk-red;
-  }
-
-  &.small {
-    padding: 5px 10px;
-    font-size: 18px;
-  }
-
-  &.tiny {
-    padding: 5px 10px;
-    font-size: 14px;
-  }
-
-  &.overflow {
-    position: relative;
-    bottom: -15px;
-    margin: -20px auto;
-  }
-
-  &.input-bumper {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    color: white;
-    background: $input-border;
-    padding: 0;
-    margin: 0;
-
-    @include breakpoint(mobile) {
-      top: -2px;
-    }
   }
 }
 

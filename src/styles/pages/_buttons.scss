@@ -1,0 +1,65 @@
+button {
+  border: 0;
+  border-radius: 0;
+  background: $button;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 200;
+  cursor: pointer;
+  color: white;
+
+  @include breakpoint(mobile) {
+    font-size: 12px;
+  }
+
+  &.interrupt {
+    background: $white;
+    color: $interrupt-bg;
+  }
+
+  &.primary {
+    background: $button-color-primary;
+  }
+
+  &.inline-primary {
+    background: $button-inline-primary;
+  }
+
+  &.inline-secondary {
+    background: $button-inline-secondary;
+  }
+
+  &.inline-warn {
+    background: $risk-red;
+  }
+
+  &.small {
+    padding: 5px 10px;
+    font-size: 18px;
+  }
+
+  &.tiny {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  &.overflow {
+    position: relative;
+    bottom: -15px;
+    margin: -20px auto;
+  }
+
+  &.input-bumper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    color: white;
+    background: $input-border;
+    padding: 0;
+    margin: 0;
+
+    @include breakpoint(mobile) {
+      top: -2px;
+    }
+  }
+}
